@@ -1,0 +1,50 @@
+name: Continuous Integration and Deployment
+
+on:
+  push:
+    branches:
+      - develop
+      - feature/**
+      - hotfix/**
+      - release/**
+  pull_request:
+    branches:
+      - develop
+  workflow_dispatch:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14' # or any other version or setup relevant to your project
+
+      - name: Install Dependencies
+        run: npm install # or use yarn or any other package manager
+
+      - name: Run Tests
+        run: npm test # adjust this command to match your testing scripts
+
+  deploy:
+    needs: build-and-test
+    if: github.ref == 'refs/heads/release/**' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      
+      - name: Build
+        run: npm run build # your build script
+
+      - name: Deploy to Production
+        run: echo "Deploying to production" # replace this with your actual deployment script
+        env:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
