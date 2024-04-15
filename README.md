@@ -32,5 +32,8 @@ Gitflow es un modelo estructurado de gestión de ramas que facilita el desarroll
 
 Para contribuir a este proyecto, asegúrate de seguir el flujo de trabajo Gitflow descrito. Esto ayuda a mantener un proceso de desarrollo claro y estructurado, facilitando así la colaboración y minimizando los problemas durante las fases de integración y despliegue.
 
+## Representacion de ramas 
+![image](https://github.com/Logiventas/POS_ventas_V1.0.0-alpha/assets/152000187/b97c2587-633b-41f7-ab1b-23a5ca209fee)
+
 
 
