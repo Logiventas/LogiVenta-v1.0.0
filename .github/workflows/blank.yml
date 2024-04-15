@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      
+
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
@@ -29,16 +29,31 @@ jobs:
       - name: Run Tests
         run: npm test # adjust this command to match your testing scripts
 
+      - name: Setup Jira
+        uses: atlassian/gajira-cli@v3
+        with:
+          version: '1.0.27' # optional, specify if you need a specific version, default is latest stable
+
   deploy:
     needs: build-and-test
     if: github.ref == 'refs/heads/release/**' && github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      
+
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
+          node-version: '14'
+      
+      - name: Build
+        run: npm run build # your build script
+
+      - name: Deploy to Production
+        run: echo "Deploying to production" # replace this with your actual deployment script
+        env:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+
           node-version: '14'
       
       - name: Build
