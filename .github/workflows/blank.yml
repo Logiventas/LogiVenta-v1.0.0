@@ -17,22 +17,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-
+      
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '14' # or any other version or setup relevant to your project
+          node-version: '20'  # Actualización a Node.js 20 para estar al día con las últimas versiones soportadas
 
       - name: Install Dependencies
-        run: npm install # or use yarn or any other package manager
+        run: npm install # Verifica que tus paquetes sean compatibles con Node.js 20
 
       - name: Run Tests
-        run: npm test # adjust this command to match your testing scripts
+        run: npm test # Ajusta este comando para tus scripts de pruebas
 
       - name: Setup Jira
         uses: atlassian/gajira-cli@v3
         with:
-          version: '1.0.27' # optional, specify if you need a specific version, default is latest stable
+          version: '1.0.27'  # Especifica la versión del CLI de Jira si es necesario
 
   deploy:
     needs: build-and-test
@@ -44,22 +44,12 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '14'
+          node-version: '20'  # Consistencia al usar Node.js 20 en todas las operaciones de construcción y despliegue
       
       - name: Build
-        run: npm run build # your build script
+        run: npm run build # Asegúrate de que tu entorno de compilación es compatible con Node.js 20
 
       - name: Deploy to Production
-        run: echo "Deploying to production" # replace this with your actual deployment script
-        env:
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-
-          node-version: '14'
-      
-      - name: Build
-        run: npm run build # your build script
-
-      - name: Deploy to Production
-        run: echo "Deploying to production" # replace this with your actual deployment script
+        run: echo "Deploying to production" # Reemplaza esto con tu proceso de despliegue real
         env:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
