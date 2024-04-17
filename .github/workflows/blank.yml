@@ -1,1 +1,56 @@
 
+name: Continuous Integration and Deployment
+
+on:
+  push:
+    branches:
+      - develop
+      - feature/**
+      - hotfix/**
+      - release/**
+  pull_request:
+    branches:
+      - develop
+  workflow_dispatch:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20'  # Actualización a Node.js 20 para estar al día con las últimas versiones soportadas
+
+      - name: Install Dependencies
+        run: npm install # Verifica que tus paquetes sean compatibles con Node.js 20
+
+      - name: Run Tests
+        run: npm test # Ajusta este comando para tus scripts de pruebas
+
+      - name: Setup Jira
+        uses: atlassian/gajira-cli@v3
+        with:
+          version: '1.0.27'  # Especifica la versión del CLI de Jira si es necesario
+
+  deploy:
+    needs: build-and-test
+    if: github.ref == 'refs/heads/release/**' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20'  # Consistencia al usar Node.js 20 en todas las operaciones de construcción y despliegue
+      
+      - name: Build
+        run: npm run build # Asegúrate de que tu entorno de compilación es compatible con Node.js 20
+
+   ##   - name: Deploy to Production
+   ##     run: echo "Deploying to production" # Reemplaza esto con tu proceso de despliegue real
+   ##     env:
+   ##       ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
