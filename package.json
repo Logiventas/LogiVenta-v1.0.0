@@ -26,6 +26,7 @@
     "@electron-toolkit/preload": "^3.0.0",
     "@electron-toolkit/utils": "^3.0.0",
     "@eslint/js": "^9.0.0",
+    "bootstrap": "^5.3.3",
     "electron-reload": "^2.0.0-alpha.1",
     "electron-updater": "^6.1.7",
     "epress": "^0.0.1-security"
