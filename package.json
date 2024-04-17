@@ -24,9 +24,12 @@
   "dependencies": {
     "@electron-toolkit/preload": "^3.0.0",
     "@electron-toolkit/utils": "^3.0.0",
+
     "electron-reload": "^2.0.0-alpha.1",
     "electron-updater": "^6.1.7",
-    "epress": "^0.0.1-security"
+    "epress": "^0.0.1-security",
+    "@eslint/js": "^9.0.0"
+
   },
   "devDependencies": {
     "@electron-toolkit/eslint-config-prettier": "^2.0.0",
