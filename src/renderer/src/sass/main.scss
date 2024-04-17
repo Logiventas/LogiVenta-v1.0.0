@@ -1,10 +1,11 @@
 @import './base.css';
+
 body {
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background-image: url("./wavy-lines.svg");
+  background-image: url('./wavy-lines.svg');
   background-size: cover;
   user-select: none;
 }
@@ -14,7 +15,14 @@ code {
   padding: 3px 5px;
   border-radius: 2px;
   background-color: var(--color-background-mute);
-  font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+  font-family:
+    ui-monospace,
+    SFMono-Regular,
+    SF Mono,
+    Menlo,
+    Consolas,
+    Liberation Mono,
+    monospace;
   font-size: 85%;
 }
 
@@ -36,7 +44,7 @@ code {
 }
 
 .logo:hover {
-  filter: drop-shadow(0 0 1.2em rgba(105, 136, 230, 0.6666666667));
+  filter: drop-shadow(0 0 1.2em #6988e6aa);
 }
 
 .creator {
@@ -121,7 +129,7 @@ code {
   bottom: 30px;
   margin: 0 auto;
   padding: 15px 0;
-  font-family: "Menlo", "Lucida Console", monospace;
+  font-family: 'Menlo', 'Lucida Console', monospace;
   display: inline-flex;
   overflow: hidden;
   align-items: center;
@@ -138,9 +146,9 @@ code {
   font-size: 14px;
   line-height: 14px;
   opacity: 0.8;
-}
-.versions li:last-child {
-  border: none;
+  &:last-child {
+    border: none;
+  }
 }
 
 @media (max-width: 720px) {
@@ -148,16 +156,16 @@ code {
     font-size: 20px;
   }
 }
+
 @media (max-width: 620px) {
   .versions {
     display: none;
   }
 }
+
 @media (max-width: 350px) {
   .tip,
   .actions {
     display: none;
   }
 }
-
-/*# sourceMappingURL=main.css.map */

@@ -6,6 +6,7 @@
   "author": "example.com",
   "homepage": "https://electron-vite.org",
   "scripts": {
+    "sass:watch": "sass --watch ./src/renderer/src/sass/main.scss:./src/renderer/src/assets/main.css",
     "test": "jest",
     "format": "prettier --write .",
     "lint": "eslint . --ext .js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix",
@@ -24,12 +25,10 @@
   "dependencies": {
     "@electron-toolkit/preload": "^3.0.0",
     "@electron-toolkit/utils": "^3.0.0",
-
+    "@eslint/js": "^9.0.0",
     "electron-reload": "^2.0.0-alpha.1",
     "electron-updater": "^6.1.7",
-    "epress": "^0.0.1-security",
-    "@eslint/js": "^9.0.0"
-
+    "epress": "^0.0.1-security"
   },
   "devDependencies": {
     "@electron-toolkit/eslint-config-prettier": "^2.0.0",
@@ -50,6 +49,7 @@
     "prettier": "^3.2.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "sass": "^1.75.0",
     "ts-jest": "^29.1.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3",
