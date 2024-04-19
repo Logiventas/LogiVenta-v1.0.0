@@ -1,4 +1,4 @@
-const configPrincipal=()=>{
+const ConfigPrincipal=()=>{
     return(
         <>
             

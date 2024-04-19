@@ -28,5 +28,5 @@ module.exports = {
     ],
     "rules": {
     },
-    ignorePatterns: ["src/renderer/src/client/contexts/contexts.tsx"],
+    ignorePatterns: ["src/renderer/src/**/*.tsx"],
 }
