@@ -7,7 +7,8 @@ module.exports = {
   extends: [
     'eslint:recommended',
     'plugin:react/recommended',
-    'standard'
+    "eslint-config-love",
+    'standard',
   ],
   overrides: [
     {
