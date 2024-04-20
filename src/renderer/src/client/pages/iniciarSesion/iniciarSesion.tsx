@@ -1,17 +1,13 @@
-import Formulario from "./components/components_formulario"
-import Perfil from "./components/components_perfil"
-function iniciarSesion(){
-
-    
-
-    return(
+import Formulario from './components/components_formulario'
+import Perfil from './components/components_perfil'
+function iniciarSesion () {
+  return (
         <>
                 <Perfil/>
-                <Formulario />  
-                 
-        </>
-    )
+                <Formulario />
 
+        </>
+  )
 }
 
 export default iniciarSesion

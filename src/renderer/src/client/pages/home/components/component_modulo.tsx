@@ -1,8 +1,8 @@
-import { Routes, Route } from 'react-router-dom'; 
-import { Link } from 'react-router-dom'; // Corrección de la importación y del nombre del componente
+import { Routes, Route } from 'react-router-dom'
+import { Link } from 'react-router-dom' // Corrección de la importación y del nombre del componente
 
 const Modulo = (props: any) => {
-    return (
+  return (
         <Routes>
             <Route path='/' element={ // Corrección para usar la prop 'element'
                 <Link to={props.enlace}>
@@ -13,7 +13,7 @@ const Modulo = (props: any) => {
                 </Link>
             }/>
         </Routes>
-    );
+  )
 }
 
-export default Modulo;
+export default Modulo

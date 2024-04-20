@@ -1,31 +1,28 @@
-import  service_login  from '../services/service_niciarSesion';
-import service_validation from '../services/service_validacion';
+import service_login from '../services/service_niciarSesion'
+import service_validation from '../services/service_validacion'
 
 import datos from '../models/inicioSesion'
- const IniciarSesion = () => {
+const IniciarSesion = () => {
+  console.log('iniciando sesion , Contraseña: ' + datos.contrasena + ' Usuario: ' + datos.usuario)
 
-        console.log('iniciando sesion , Contraseña: '+datos.contrasena+' Usuario: '+datos.usuario)
+  console.log('validando tocken')
 
-        console.log('validando tocken')
+  const requesLogin = service_login(datos.usuario, datos.contrasena)
 
-        const requesLogin =service_login(datos.usuario,datos.contrasena);
+  // Rmplazar por adaptador de datos
+  const tocken = requesLogin == false ? false : 'brianKro'
 
-        //Rmplazar por adaptador de datos 
-        const tocken = requesLogin==false?false:'brianKro'
+  // validar tocken
 
-        // validar tocken
-       
-        const validacion= service_validation(tocken)
+  const validacion = service_validation(tocken)
 
-        if(validacion){
-            console.log('token seguro,redirgir a Home')
-            return true
-        }else{
-            console.log('token no seguro')
-            return false
-        }
-
-      
-};
+  if (validacion) {
+    console.log('token seguro,redirgir a Home')
+    return true
+  } else {
+    console.log('token no seguro')
+    return false
+  }
+}
 
 export default IniciarSesion

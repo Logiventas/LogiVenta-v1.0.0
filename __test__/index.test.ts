@@ -3,8 +3,8 @@
 
 // Define tus pruebas usando 'test' o 'it' que Jest proporciona globalmente.
 test('Sample Test', () => {
-  expect(true).toBe(true);
-});
+  expect(true).toBe(true)
+})
 
 // Usando test.todo para definir pruebas pendientes que planeas implementar
-test.todo('test inicial');
+test.todo('test inicial')

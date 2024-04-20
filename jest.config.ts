@@ -1,5 +1,5 @@
 // jest.config.ts
-import type { Config } from '@jest/types';
+import type { Config } from '@jest/types'
 
 const config: Config.InitialOptions = {
   preset: 'ts-jest',
@@ -10,6 +10,6 @@ const config: Config.InitialOptions = {
       tsconfig: 'tsconfig.json'
     }]
   }
-};
+}
 
-export default config;
+export default config

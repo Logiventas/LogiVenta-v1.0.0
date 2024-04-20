@@ -1,27 +1,24 @@
-import { createContext } from "react";
+import { createContext } from 'react'
 
+const SelecteUserContext = createContext({
 
- const SelecteUserContext = createContext({
-
-    usuario: "Brayan Guevara",
-    key: "",
-    nombre: "",
-    apellidos: "",
-    correo: "",
-    cargo:"",
-    permisos:{
-        gestionArchivo:true,
-        gestionSistema:true,
-        gestionCaja:true,
-        gestionUsuairo:true,
-        gestionIventario:true,
-        gestionProveedores:true,
-        registroVentas:true
-    }
-    
+  usuario: 'Brayan Guevara',
+  key: '',
+  nombre: '',
+  apellidos: '',
+  correo: '',
+  cargo: '',
+  permisos: {
+    gestionArchivo: true,
+    gestionSistema: true,
+    gestionCaja: true,
+    gestionUsuairo: true,
+    gestionIventario: true,
+    gestionProveedores: true,
+    registroVentas: true
+  }
 
 })
 
-
-SelecteUserContext.displayName = "DatosUsuario"
+SelecteUserContext.displayName = 'DatosUsuario'
 export default SelecteUserContext

@@ -1,31 +1,28 @@
-import  { useState, ChangeEvent, FormEvent } from "react";
-import inicioSesion from "../models/inicioSesion";
+import { useState, ChangeEvent, FormEvent } from 'react'
+import inicioSesion from '../models/inicioSesion'
 import login from '../interceptors/interceptor_IniciarSesion'
-function Formulario() {
-
-
-  const [user, setUser] = useState<inicioSesion>(inicioSesion);
-
+function Formulario () {
+  const [user, setUser] = useState<inicioSesion>(inicioSesion)
 
   const handleSubmit = (e: FormEvent<HTMLButtonElement>): void => {
-        e.preventDefault();
-        inicioSesion.usuario=user.usuario
-        inicioSesion.contrasena=user.contrasena
-        //validar tocken
-        if(login()){
-            console.log('Inicando Home')
-        }
-  };
+    e.preventDefault()
+    inicioSesion.usuario = user.usuario
+    inicioSesion.contrasena = user.contrasena
+    // validar tocken
+    if (login()) {
+      console.log('Inicando Home')
+    }
+  }
 
   const handleChangePassword = (e: ChangeEvent<HTMLInputElement>): void => {
-    setUser({...user, contrasena: e.target.value});
-    console.log(user.contrasena);
-  };
+    setUser({ ...user, contrasena: e.target.value })
+    console.log(user.contrasena)
+  }
 
   const handleChangeUser = (e: ChangeEvent<HTMLInputElement>): void => {
-    setUser({...user, usuario: e.target.value});
-    console.log(user.usuario);
-  };
+    setUser({ ...user, usuario: e.target.value })
+    console.log(user.usuario)
+  }
 
   return (
     <>
@@ -53,7 +50,7 @@ function Formulario() {
         <button type="submit" onClick={handleSubmit} className="btn btn-primary col-12">Iniciar Sesión</button>
       </form>
     </>
-  );
+  )
 }
 
-export default Formulario;
+export default Formulario
