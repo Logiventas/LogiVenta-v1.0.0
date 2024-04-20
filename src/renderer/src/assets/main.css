@@ -11846,15 +11846,20 @@ textarea.form-control-lg {
   }
 }
 .btn-primary {
-  background-color: var(--background-black-primary);
-  border-color: var(--background-black-primary);
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  outline: none !important;
+  font-weight: 700;
 }
 .btn-primary:hover {
-  background-color: var(--background-black-secondary);
-  border-color: var(--background-black-secondary);
+  background-color: var(--color-primary-dark);
+  border-color: var(--color-primary-dark);
 }
 .btn-primary:active {
-  background-color: var(--background-black-secondary) !important;
+  background-color: var(--color-primary) !important;
+  border-color: transparent;
+  color: var(--color-primary-red) !important;
+  box-shadow: 0px 0px 3px 0px var(--color-primary);
 }
 
 .btn-secondary {
@@ -11869,12 +11874,55 @@ textarea.form-control-lg {
   background-color: var(--background-red-secondary) !important;
 }
 
+:root {
+  --color-primary: #035c55;
+  --color-primary-light: #e1f4fa;
+  --color-primary-red: #d5eaeb;
+  --color-primary-dark: #033935;
+  --color-primary-muted: #f9fcfd;
+  --color-secondary: #8f0404;
+  --color-secondary-dark: #710000;
+  --color-secondary-muted: #f0e3e3;
+  --color-secondary-light: #f5d8d8;
+  --color-accent: #d9d389;
+  --color-accent-dark: #968f38;
+  --color-accent-muted: #fffef8;
+  --color-accent-light: #e8e5c1 --color-primary-active: #024c45;
+  --color-primary-disabled: #b2b2b2;
+  --color-primary-focus: #4dc5bf;
+  --font-family: "Arial", sans-serif;
+  --font-size-small: 14px;
+  --font-size-medium: 16px;
+  --font-size-large: 20px;
+  --font-weight-normal: 400;
+  --font-weight-bold: 700;
+  --bs-link-color:red;
+}
+
 * {
-  color: var(--background-black-primary);
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE 10+/Edge */
+  user-select: none; /* Versión estándar */
+  color: var(--color-primary-dark);
+}
+
+* a, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
+  text-decoration: none;
 }
 
 body {
-  background-color: var(--background-white-primary);
+  background-color: var(--color-primary-light);
+}
+
+body, html {
+  height: 5rem;
+  padding: 0;
 }
 
 .iconoHover:hover {

@@ -1,15 +1,19 @@
-const Modulo= (prop:any)=>{
+import { Routes, Route } from 'react-router-dom'; 
+import { Link } from 'react-router-dom'; // Corrección de la importación y del nombre del componente
 
-
-    return(
-        <>
-            <div style={{width:'8rem' ,cursor:'pointer' }} className="iconoHover d-flex flex-column align-align-items-center m-auto ">
-                <img  className="m-auto" style={{width:'70px'}} src={prop.urlImg}></img>
-                <h6 className="text-center mt-3">{prop.modulo}</h6>
-            </div>  
-        </>
-    )
-
+const Modulo = (props: any) => {
+    return (
+        <Routes>
+            <Route path='/' element={ // Corrección para usar la prop 'element'
+                <Link to={props.enlace}>
+                    <div style={{ width: '8rem', cursor: 'pointer' }} className="iconoHover d-flex flex-column align-items-center m-auto ">
+                        <img className="m-auto" style={{ width: '70px' }} src={props.urlImg} alt="Imagen del módulo"></img>
+                        <h6 className="text-center mt-3">{props.modulo}</h6>
+                    </div>
+                </Link>
+            }/>
+        </Routes>
+    );
 }
 
-export default Modulo
+export default Modulo;

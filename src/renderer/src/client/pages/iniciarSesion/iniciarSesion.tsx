@@ -7,7 +7,8 @@ function iniciarSesion(){
     return(
         <>
                 <Perfil/>
-                <Formulario />   
+                <Formulario />  
+                 
         </>
     )
 

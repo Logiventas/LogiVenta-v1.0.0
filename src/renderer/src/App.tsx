@@ -1,14 +1,16 @@
-  import Principal from "./client/pages/inicioConfiguracion/Principal"
-  import config from "/config"
+import Nav from 'src/renderer/src/client/pages/'
+  import Router from './client/routes/router'
+<Router />  
 
 function App(): JSX.Element {
-  console.log(config)
-  const ipcHandle = (): void => window.electron.ipcRenderer.send('ping')
 
   return (
-    <div className="">
-        {(config.server==false&&config.client==false)?<Principal/>:''}
-    </div>
+<>
+
+    <Router/>
+      
+</>
+
   )
 }
 

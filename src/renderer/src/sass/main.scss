@@ -1,12 +1,31 @@
 @import './base.css';
 @import './themes/theme.sass';
 @import './vendors/bootstrap';
+@import './base/color';
 
 *{
-    color: var(--background-black-primary);
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
+    -webkit-user-select: none;  /* Safari */
+    -moz-user-select: none;     /* Firefox */
+    -ms-user-select: none;      /* IE 10+/Edge */
+    user-select: none;          /* Versión estándar */
+    
+    color: var(--color-primary-dark);
+}
+* a,h4,h3,h2,h1{
+    text-decoration: none;
 }
 body{
-    background-color: var(--background-white-primary);
+    background-color: var( --color-primary-light);
+
+}
+body,html{
+    height: 5rem;
+    padding: 0;
 }
 
 .iconoHover:hover{
@@ -21,3 +40,4 @@ body{
     -ms-transition: 0.5s;
     -o-transition: 0.5s;
 }
+
