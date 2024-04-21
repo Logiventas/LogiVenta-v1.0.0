@@ -1,4 +1,4 @@
-import Modulo from '../home/components/component_icono'
+import Icono from '../home/components/component_icono'
 export default function Principal () {
   return (
 
@@ -12,8 +12,8 @@ export default function Principal () {
         Por favor, elija cómo desea configurar la instalación
       </h1>
       <div className="d-flex justify-content-center gap-5">
-        <Modulo modulo="Caja secundaria" urlImg="src/assets/icon/CajaSecundaria.png" enlace='/config2'/>
-        <Modulo modulo="Caja Principal" urlImg="src/assets/icon/CajaPrincipal.png" enlace='/config1'/>
+        <Icono modulo="Caja secundaria" urlImg="src/assets/icon/CajaSecundaria.png" enlace='/config2'/>
+        <Icono modulo="Caja Principal" urlImg="src/assets/icon/CajaPrincipal.png" enlace='/config1'/>
       </div>
 
     </div>
