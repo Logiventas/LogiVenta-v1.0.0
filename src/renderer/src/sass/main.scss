@@ -1,7 +1,8 @@
 
-@import './themes/theme.sass';
 @import './vendors/bootstrap';
+@import './themes/theme.sass';
 @import './base/color';
+
 
 *{
     -webkit-user-drag: none;
@@ -20,7 +21,7 @@
     text-decoration: none;
 }
 body{
-    background-color: var( --color-primary-light);
+    background-color: var( --color-primary-light )!important;
 
 }
 body,html{
@@ -41,3 +42,13 @@ body,html{
     -o-transition: 0.5s;
 }
 
+.bg-dos{
+    background-color: var(--color-primary-light);
+}
+label{
+    font-weight: 600 !important;
+    color: var(--color-primary-dark);
+}
+.bg-dos{
+    background-color: var(--color-primary-red);
+  }
