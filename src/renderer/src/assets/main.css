@@ -11886,9 +11886,10 @@ textarea.form-control-lg {
   --color-accent: #d9d389;
   --color-accent-dark: #968f38;
   --color-accent-muted: #fffef8;
-  --color-accent-light: #e8e5c1 --color-primary-active: #024c45;
+  --color-accent-light: #e8e5c1
+  --color-primary-active: #024c45;
   --color-primary-disabled: #b2b2b2;
-  --color-primary-focus: #4dc5bf;
+  --color-primary-focus: #0d7052;
   --font-family: "Arial", sans-serif;
   --font-size-small: 14px;
   --font-size-medium: 16px;
@@ -11950,6 +11951,29 @@ label {
 
 .bg-dos {
   background-color: var(--color-primary-red);
+}
+
+/* HTML: <div class="loader"></div> */
+.loader {
+  width: 100px;
+  position: absolute;
+  top: 45vh;
+  right: 45vw;
+  --b: 8px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  padding: 1px;
+  background: conic-gradient(rgba(0, 0, 0, 0) 10%, var(--color-primary-focus)) content-box;
+  -webkit-mask: repeating-conic-gradient(rgba(0, 0, 0, 0) 0deg, #000 1deg 20deg, rgba(0, 0, 0, 0) 21deg 36deg), radial-gradient(farthest-side, rgba(0, 0, 0, 0) calc(80% - var(--b) - 1px), #000 calc(100% - var(--b)));
+  -webkit-mask-composite: destination-in;
+  mask-composite: intersect;
+  animation: l4 1s infinite steps(10);
+}
+
+@keyframes l4 {
+  to {
+    transform: rotate(1turn);
+  }
 }
 
 /*# sourceMappingURL=main.css.map */
