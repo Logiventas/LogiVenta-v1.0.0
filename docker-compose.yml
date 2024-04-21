@@ -1,0 +1,32 @@
+version: '3.1'
+
+services:
+  db:
+    image: mysql
+    restart: always
+    ports:
+      - "4000:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "12345"
+      MYSQL_DATABASE: "dbpos"
+      MYSQL_USER: "admin"
+      MYSQL_PASSWORD: "admin"
+    volumes:
+      - ./db/dbpos.sql:/docker-entrypoint-initdb.d/dbpos.sql
+    networks:
+      - mynetwork
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    ports:
+      - "3000:80"
+    environment:
+      PMA_HOST: db
+      MYSQL_ROOT_PASSWORD: "12345"
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+    driver: bridge
