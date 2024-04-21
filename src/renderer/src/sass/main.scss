@@ -23,7 +23,7 @@
     text-decoration: none;
 }
 body{
-    background-color: var( --color-primary-light )!important;
+    background-color: var( --color-primary-muted )!important;
 
 }
 body,html{
@@ -44,9 +44,6 @@ body,html{
     -o-transition: 0.5s;
 }
 
-.bg-dos{
-    background-color: var(--color-primary-light);
-}
 label{
     font-weight: 600 !important;
     color: var(--color-primary-dark);

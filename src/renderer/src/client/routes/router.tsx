@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Principal from '../pages/inicioConfiguracion/Principal'
 import ConfigPrincipal from '../pages/inicioConfiguracion/ConfigPrincipal'
@@ -25,7 +25,7 @@ function AppRouter() {
             <Router>
                 <Routes>
                     <Route path="/" element={inicial ? <IniciarSesion  /> : <Principal  />} />
-                    <Route path="/home" element={<Home  />} />
+                    <Route path="/home/*" element={<Home />} />
                     <Route path="/config1" element={<ConfigPrincipal  />} />
                     <Route path="/config2" element={<ConfigSecundaria  />} />
                 </Routes>

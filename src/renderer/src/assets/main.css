@@ -11875,7 +11875,7 @@ textarea.form-control-lg {
 
 :root {
   --color-primary: #035c55;
-  --color-primary-light: #e1f4fa;
+  --color-primary-light: #E1F4FA;
   --color-primary-red: #d5eaeb;
   --color-primary-dark: #033935;
   --color-primary-muted: #f9fcfd;
@@ -11919,7 +11919,7 @@ textarea.form-control-lg {
 }
 
 body {
-  background-color: var(--color-primary-light) !important;
+  background-color: var(--color-primary-muted) !important;
 }
 
 body, html {
@@ -11938,10 +11938,6 @@ body, html {
   -moz-transition: 0.5s;
   -ms-transition: 0.5s;
   -o-transition: 0.5s;
-}
-
-.bg-dos {
-  background-color: var(--color-primary-light);
 }
 
 label {
