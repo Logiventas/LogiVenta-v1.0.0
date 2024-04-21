@@ -9,7 +9,8 @@ import Config from '../../../../../config.json'
 
 
 function AppRouter() {
-    const inicial = Config.server && Config.client ? true : false;
+
+    const inicial = !Config.server && !Config.client ? false:true;
 
     const [loading, setLoading] = useState(false);  // Estado para controlar la visibilidad del loader
 
@@ -17,8 +18,6 @@ function AppRouter() {
     const handleLoadComplete = (option:boolean) => {
         option? setLoading(true): setLoading(false)    
     }
-
-
     return (
         <>
         {   }
