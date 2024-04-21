@@ -1,4 +1,4 @@
-import Modulo from '../home/components/component_modulo'
+import Modulo from '../home/components/component_icono'
 export default function Principal () {
   return (
 

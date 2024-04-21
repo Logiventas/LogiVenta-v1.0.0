@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom'
 import { Link } from 'react-router-dom' // Corrección de la importación y del nombre del componente
 
-const Modulo = (props: any) => {
+const Icono = (props: any) => {
   return (
         <Routes>
             <Route path='/' element={ // Corrección para usar la prop 'element'
@@ -16,4 +16,4 @@ const Modulo = (props: any) => {
   )
 }
 
-export default Modulo
+export default Icono
