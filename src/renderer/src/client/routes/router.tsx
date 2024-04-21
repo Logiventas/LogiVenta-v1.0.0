@@ -4,17 +4,20 @@ import ConfigPrincipal from '../pages/inicioConfiguracion/ConfigPrincipal'
 import ConfigSecundaria from '../pages/inicioConfiguracion/configSecundaria'
 import Home from '../pages/home/Home'
 import IniciarSesion from '../pages/iniciarSesion/iniciarSesion'
+import  Config  from '../../../../../config.json'
 
 function AppRouter () {
+
+    const inicial = Config.server && Config.client?true:false
+
   return (
 
         <>
 
             <Router>
                 <Routes>
-                    <Route path="/" element={<IniciarSesion />} />
+                    <Route path="/" element={inicial?<IniciarSesion />:<Principal />} />
                     <Route path="/home" element={<Home />} />
-                    <Route path="/principal" element={<Principal />} />
                     <Route path="/config1" element={<ConfigPrincipal />} />
                     <Route path="/config2" element={<ConfigSecundaria />} />
                 </Routes>
