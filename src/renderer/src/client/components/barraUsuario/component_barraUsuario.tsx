@@ -1,20 +1,9 @@
-import React, { useContext, useEffect, useState } from "react";
+
 import Notificaciones from './barraUsuario_notificaciones';
 import Salir from './barraUsuario_salir';
-import DatosUsuario from '../../contexts/contexts';
 import Atras from './barraUsuario_atras'
 
-const BarraUsuario = () => {
-    const { usuario } = useContext(DatosUsuario);
-    const [Notificacion, setNotificacion] = useState(3);
-
-    useEffect(() => {
-        const notificacion = localStorage.getItem('notificacion');
-        if (notificacion) {
-            setNotificacion(parseInt(notificacion));
-        }
-    }, []);
-
+const BarraUsuario = ({nombre,apellidos,notificaciones}) => {
     return (
         <nav
             style={{ backgroundColor: "var(--color-primary-red)" }}
@@ -29,10 +18,10 @@ const BarraUsuario = () => {
                         src="/src/assets/img/usuario.png"
                         alt="Avatar"
                     />
-                    <h4 className="m-0 ms-3">{usuario}</h4>
+                    <h4 className="m-0 ms-3">{nombre+' '+apellidos}</h4>
                 </div>
                 <div className="d-flex align-items-center">
-                    <Notificaciones numero={Notificacion} />
+                    <Notificaciones numero={notificaciones} />
                     <Salir />
                 </div>
             </div>

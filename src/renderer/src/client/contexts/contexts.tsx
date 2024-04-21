@@ -2,13 +2,17 @@ import { createContext } from 'react'
 
 const SelecteUserContext = createContext({
 
-  usuario: 'Thyago Lozada Guevara',
+  usuario: 'Usuario',
   key: '',
-  nombre: '',
-  apellidos: '',
+  nombre: 'Brayan',
+  apellidos: 'Guevara Vanegas',
   correo: '',
   cargo: '',
-  permisos: {
+  sexo: 'Femenino',
+  notificacion:{
+    novista:11
+  },
+  acceso: {
     gestionArchivo: true,
     gestionSistema: true,
     gestionCaja: true,

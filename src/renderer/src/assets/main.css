@@ -11873,6 +11873,10 @@ textarea.form-control-lg {
   background-color: var(--background-red-secondary) !important;
 }
 
+button {
+  border: none !important;
+}
+
 :root {
   --color-primary: #035c55;
   --color-primary-light: #E1F4FA;

@@ -10,7 +10,7 @@ const atras: React.FC = () => {
   return (
     <>
       <button onClick={handleShowModal} className="btn">
-        <img style={{ width: "40px", height: "40px" }} src="/src/assets/icon/exit.png" alt="Salir" />
+        <img style={{ width: "40px", height: "40px" }} src="/src/assets/icon/atras.png" alt="Salir" />
       </button>
     </>
   );
