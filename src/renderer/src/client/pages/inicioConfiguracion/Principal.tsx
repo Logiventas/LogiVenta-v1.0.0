@@ -15,6 +15,7 @@ export default function Principal () {
         <Modulo modulo="Caja secundaria" urlImg="src/assets/icon/CajaSecundaria.png" enlace='/config2'/>
         <Modulo modulo="Caja Principal" urlImg="src/assets/icon/CajaPrincipal.png" enlace='/config1'/>
       </div>
+
     </div>
 
 </>

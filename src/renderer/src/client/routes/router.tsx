@@ -17,9 +17,7 @@ function AppRouter() {
     const handleLoadComplete = (option:boolean) => {
         option? setLoading(true): setLoading(false)    
     }
-    useEffect(() =>{
-        handleLoadComplete(true)
-    })
+
 
     return (
         <>

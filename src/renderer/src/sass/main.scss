@@ -74,3 +74,22 @@ label{
     animation:l4 1s infinite steps(10);
   }
   @keyframes l4 {to{transform: rotate(1turn)}}
+
+
+  @keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.svg {
+    display: block;
+    margin: auto; /* Centrar SVG en la página */
+    height: 800px;
+    width: 800px;
+    transform-origin: center; /* Asegurarse de que la rotación sea alrededor del centro */
+    animation: rotate 20s linear infinite; /* Aplicar la animación */
+}

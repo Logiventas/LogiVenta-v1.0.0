@@ -37,21 +37,6 @@ const ConfigPrincipal = () => {
       <form  onSubmit={handleSubmit} className="col-8 bg-dos p-5 rounded shadow-sm" style={{ maxWidth: '750px' }}>
         <h3 className="mb-4 text-center">Configuración de Usuario</h3>
 
-        {error && <div className="alert alert-danger">{error}</div>}
-
-        <div className="mb-3 d-flex  justify-content-center">
-          <div className="w-50">
-            <label htmlFor="usuario" className="form-label">Usuario</label>
-            <input
-              className="form-control"
-              type="text"
-              id="usuario"
-              placeholder="Ingresa tu usuario"
-              value={usuario}
-              onChange={(e) => setUsuario(e.target.value)}
-            />
-          </div>
-        </div>
 
         <div className="mb-3 d-flex justify-content-center">
           <div className="w-50">
