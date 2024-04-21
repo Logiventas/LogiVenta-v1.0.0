@@ -1,7 +1,8 @@
 import express, { Response } from 'express' // Uso de ES6 import
+import Config from './config/server.json'
 
 const app = express()
-const port = process.env.PORT || 8080 // Establece el puerto
+const port = Config.PORT
 
 // Ejemplo de ajustes en las rutas
 app.get('/', (_, res: Response) => {
