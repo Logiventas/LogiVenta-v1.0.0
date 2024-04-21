@@ -1,7 +1,7 @@
 import { useState, useContext } from 'react'
 import Modulo from './components/component_modulo'
-
-import myContexto from '../../contexts/contexts'
+import {TituloModulo} from '../../components/tituloModulo'
+import myContexto from '../../components/contexts/contexts'
 
 const Home = () => {
   const data = useContext(myContexto)
