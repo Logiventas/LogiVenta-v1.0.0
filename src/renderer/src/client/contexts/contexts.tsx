@@ -2,7 +2,7 @@ import { createContext } from 'react'
 
 const SelecteUserContext = createContext({
 
-  usuario: 'Brayan Guevara',
+  usuario: 'Thyago Lozada Guevara',
   key: '',
   nombre: '',
   apellidos: '',

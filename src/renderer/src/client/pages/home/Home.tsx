@@ -11,7 +11,7 @@ function Home() {
   return (
     <>
 
-      <BarraUsuario usuario="Brayan"/>
+      <BarraUsuario/>
       <div className="container mt-5 p-5" style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '20px' }}>
 
         {acceso.gestionArchivo ? <Icono enlace="/" modulo="Gestión de Archivo" urlImg="src/assets/icon/gestionDeArchivo.png" /> : ''}
