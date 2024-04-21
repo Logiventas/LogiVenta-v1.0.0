@@ -1,4 +1,4 @@
-@import './base.css';
+
 @import './themes/theme.sass';
 @import './vendors/bootstrap';
 @import './base/color';
@@ -24,7 +24,7 @@ body{
 
 }
 body,html{
-    height: 5rem;
+    height: 10vh!important;
     padding: 0;
 }
 
