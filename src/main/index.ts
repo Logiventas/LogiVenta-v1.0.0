@@ -2,7 +2,7 @@ import { app, shell, BrowserWindow, ipcMain } from 'electron'
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
-import '../renderer/src/server/server'
+import {starServer} from '../../src/renderer/src/server/server'
 require('electron-reload')(__dirname)
 
 function createWindow (): void {
@@ -16,7 +16,7 @@ function createWindow (): void {
     webPreferences: {
       preload: join(__dirname, '../preload/index.js'),
       sandbox: true,
-      nodeIntegration: true
+      nodeIntegration: false
     }
   })
 
@@ -56,6 +56,8 @@ app.whenReady().then(() => {
   ipcMain.on('ping', () => console.log('pong'))
 
   createWindow()
+
+  starServer()
 
   app.on('activate', function () {
     // On macOS it's common to re-create a window in the app when the

@@ -2,10 +2,10 @@ import { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const ConfigPrincipal = () => {
-  const [usuario, setUsuario] = useState('');
+  const [usuario] = useState('');
   const [contrasena, setContrasena] = useState('');
   const [confirmarContrasena, setConfirmarContrasena] = useState('');
-  const [error, setError] = useState('');
+  const [_, setError] = useState('');
 
   const validarFormulario = () => {
     if (!usuario || !contrasena || !confirmarContrasena) {

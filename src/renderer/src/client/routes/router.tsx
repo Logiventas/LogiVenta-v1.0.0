@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { useEffect, useState } from 'react';
+import { HashRouter  as Router, Route, Routes } from 'react-router-dom'
 import Principal from '../pages/inicioConfiguracion/Principal'
 import ConfigPrincipal from '../pages/inicioConfiguracion/ConfigPrincipal'
 import ConfigSecundaria from '../pages/inicioConfiguracion/configSecundaria'
@@ -18,6 +18,10 @@ function AppRouter() {
     const handleLoadComplete = (option:boolean) => {
         option? setLoading(true): setLoading(false)    
     }
+
+    useEffect(()=>{
+        handleLoadComplete(true)
+    })
     return (
         <>
         {   }

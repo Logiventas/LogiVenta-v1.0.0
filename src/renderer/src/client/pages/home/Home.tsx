@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Icono from './components/component_icono'
 import myContexto from '../../contexts/contexts'
 import BarraUsuario from "../../components/barraUsuario/component_barraUsuario";

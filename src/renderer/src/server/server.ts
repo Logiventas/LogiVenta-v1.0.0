@@ -20,7 +20,10 @@ app.post('/', (_, res: Response) => {
 app.delete('/', (_, res: Response) => {
   res.json({ mensaje: 'Método delete' })
 })
+export function starServer (){
+  
+    app.listen(port, () => {
+      console.log(`API escuchando en el puerto ${port}`)
+    })
 
-app.listen(port, () => {
-  console.log(`API escuchando en el puerto ${port}`)
-})
+}
