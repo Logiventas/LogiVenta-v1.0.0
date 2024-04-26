@@ -20,7 +20,7 @@ function AppRouter() {
     }
 
     useEffect(()=>{
-        handleLoadComplete(true)
+        handleLoadComplete(false)
     })
     return (
         <>

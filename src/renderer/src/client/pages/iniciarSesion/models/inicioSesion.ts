@@ -1,3 +1,4 @@
+
 interface IniciarSesion{
     usuario: string,
     contrasena: string
