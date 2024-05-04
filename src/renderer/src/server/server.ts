@@ -1,9 +1,8 @@
-import express, { Request, Response } from "express";
-import getServerIP from "./util/getServerIP";
+import express from "express";
 import Config from "./config/server.json"; // Configuración del servidor
 import configuracionInicial from "../config.json"; // Configuración inicial
 import buscarIpServidor from "./util/buscarIpServidor"; // Verificación de IP
-
+import routes from "./router/routes";
 const app = express(); // Instancia de la aplicación Express
 const port = Config.PORT; // Puerto desde la configuración
 
@@ -20,12 +19,7 @@ async function iniciarConfiguracion(IPServer:string): Promise<string | false> {
 }
 
 // Definir un controlador para la ruta principal
-app.get("/", (_: Request, res: Response) => {
-  let ip = getServerIP(); // Obtener la IP del servidor
-  // Para obtener la IP real si estás detrás de un proxy
-  // ip = req.headers['x-forwarded-for'] || req.ip;
-  res.send(ip); // Responder con la IP obtenida
-});
+app.use("/api", routes);
 
 // Función para iniciar el servidor
 async function startServer(IPServer:string): Promise<string | false> {
