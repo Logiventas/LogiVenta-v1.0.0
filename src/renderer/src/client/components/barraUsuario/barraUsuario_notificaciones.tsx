@@ -1,5 +1,5 @@
 
-
+import icon_notificacin from '/src/assets/icon/notificacion.png'
 const notificacion =(prop:any)=>{
     return(
         <>
@@ -7,7 +7,7 @@ const notificacion =(prop:any)=>{
                     <i className="fas fa-bell">
                         <img
                             style={{ width: "40px", height: "40px", marginRight: "10px" }}
-                            src="/src/assets/icon/notificacion.png"
+                            src={icon_notificacin}
                             alt="Notificaciones"
                         />
                          <span   

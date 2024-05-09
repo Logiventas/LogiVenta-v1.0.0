@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
-import { HashRouter  as Router, Route, Routes } from 'react-router-dom'
-import Principal from '../pages/inicioConfiguracion/Principal'
-import ConfigPrincipal from '../pages/inicioConfiguracion/ConfigPrincipal'
-import ConfigSecundaria from '../pages/inicioConfiguracion/configSecundaria'
-import Home from '../pages/home/Home'
-import IniciarSesion from '../pages/iniciarSesion/iniciarSesion'
-import Config from '../../../../../config.json'
+import { HashRouter, Route, Routes } from 'react-router-dom'
+import Principal from '@client/pages/inicioConfiguracion/Principal'
+import ConfigPrincipal from '@client/pages/inicioConfiguracion/ConfigPrincipal'
+import ConfigSecundaria from '@client/pages/inicioConfiguracion/configSecundaria'
+import Home from '@client/pages/home/Home'
+import IniciarSesion from '@client/pages/iniciarSesion/iniciarSesion'
+import Config from '@renderer/config.json'
 
 
 function AppRouter() {
@@ -26,14 +26,14 @@ function AppRouter() {
         <>
         {   }
             {loading?<div className="loader"></div>:''} 
-            <Router>
+            <HashRouter>
                 <Routes>
                     <Route path="/" element={inicial ? <IniciarSesion  /> : <Principal  />} />
                     <Route path="/home/*" element={<Home />} />
                     <Route path="/config1" element={<ConfigPrincipal  />} />
                     <Route path="/config2" element={<ConfigSecundaria  />} />
                 </Routes>
-            </Router>
+            </HashRouter>
         </>
     )
 }

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Modal from '../component_modal';
-
+import Modal from '@client/components/component_modal';
+import  icon_exit from '/src/assets/icon/exit.png'
 const Salir: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -19,10 +19,11 @@ const Salir: React.FC = () => {
     setIsOpen(true);
   };
 
+
   return (
     <>
       <button onClick={handleShowModal} className="btn">
-        <img style={{ width: "40px", height: "40px" }} src="/src/assets/icon/exit.png" alt="Salir" />
+        <img style={{ width: "40px", height: "40px" }} src={icon_exit} alt="Salir" />
       </button>
       <Modal
         myOnclick={handleOnClick}

@@ -1,4 +1,4 @@
-import Icono from '../home/components/component_icono'
+import Icono from '@client/pages/home/components/component_icono'
 export default function Principal () {
   return (
 

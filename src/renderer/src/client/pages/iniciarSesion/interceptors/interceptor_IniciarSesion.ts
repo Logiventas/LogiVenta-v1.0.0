@@ -1,7 +1,7 @@
-import service_login from '../services/service_niciarSesion'
-import service_validation from '../services/service_validacion'
+import service_login from '@client/pages/iniciarSesion/services/service_niciarSesion'
+import service_validation from '@client/pages/iniciarSesion/services/service_validacion'
 
-import datos from '../models/inicioSesion'
+import datos from '@client/pages/iniciarSesion/models/inicioSesion'
 const IniciarSesion = () => {
   console.log('iniciando sesion , Contraseña: ' + datos.contrasena + ' Usuario: ' + datos.usuario)
 
@@ -10,7 +10,7 @@ const IniciarSesion = () => {
   const requesLogin = service_login(datos.usuario, datos.contrasena)
 
   // Rmplazar por adaptador de datos
-  const tocken = requesLogin == false ? false : 'brianKro'
+  const tocken =requesLogin
 
   // validar tocken
 

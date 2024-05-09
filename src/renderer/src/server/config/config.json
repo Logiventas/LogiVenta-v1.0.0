@@ -1,0 +1,4 @@
+{
+    "jwtSecret" :"mi_secreto",
+    "jwtExpiration": "1h"
+}

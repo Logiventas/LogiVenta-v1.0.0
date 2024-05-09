@@ -1,8 +1,8 @@
 
-import Notificaciones from './barraUsuario_notificaciones';
-import Salir from './barraUsuario_salir';
-import Atras from './barraUsuario_atras'
-
+import Notificaciones from '@client/components/barraUsuario/barraUsuario_notificaciones';
+import Salir from '@client/components/barraUsuario//barraUsuario_salir';
+import Atras from '@client/components/barraUsuario//barraUsuario_atras'
+import avatar from '/assets/img/usuario.png'
 const BarraUsuario = ({nombre,apellidos,notificaciones}) => {
     return (
         <nav
@@ -15,7 +15,7 @@ const BarraUsuario = ({nombre,apellidos,notificaciones}) => {
                     <img
                         style={{ width: "40px", height: "40px" }}
                         className="mr-2"
-                        src="/src/assets/img/usuario.png"
+                        src={avatar}
                         alt="Avatar"
                     />
                     <h4 className="m-0 ms-3">{nombre+' '+apellidos}</h4>
