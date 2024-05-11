@@ -2,7 +2,7 @@ import { app, shell, BrowserWindow, ipcMain } from "electron";
 import { join } from "path";
 import { electronApp, optimizer, is } from "@electron-toolkit/utils";
 import icon from "../../resources/icon.png?asset";
-import starServer from "../../src/renderer/src/server/server";
+import starServer from "../renderer/src/server";
 
 require("electron-reload")(__dirname);
 
@@ -16,7 +16,7 @@ function createWindow(): void {
     ...(process.platform === "linux" ? { icon } : undefined),
     webPreferences: {
       preload: join(__dirname, "../preload/index.js"),
-      sandbox: true,
+      sandbox: false,
       nodeIntegration: false,
     },
   });
@@ -30,21 +30,6 @@ function createWindow(): void {
     return { action: "deny" };
   });
 
-  starServer("localhost")
-    .then((res) => {
-      console.log("Este es el main , el servidor tiene: ", res);
-      if (res == false) {
-        console.log("Ingresa la IP del servidor: ");
-        // Si el servidor está deshabilitado, buscar y mostrar la dirección IP del servidor
-        if (is.dev && process.env.ELECTRON_RENDERER_URL) {
-          mainWindow.loadURL(process.env.ELECTRON_RENDERER_URL);
-        } else {
-          mainWindow.loadFile(join(__dirname, "../renderer/index.html"));
-        }
-     
-     
-     
-      } else {
         // HMR for renderer base on electron-vite cli.
         // Load the remote URL for development or the local html file for production.
         if (is.dev && process.env.ELECTRON_RENDERER_URL) {
@@ -52,15 +37,14 @@ function createWindow(): void {
         } else {
           mainWindow.loadFile(join(__dirname, "../renderer/index.html"));
         }
-        console.log("Mostrar incio de secion " + res);
-      }
-    })
-    .catch((err) => console.log(err));
+
+
 }
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
+// deepcode ignore PromiseNotCaughtNode: <please specify a reason of ignoring this>
 app.whenReady().then(() => {
   // Set app user model id for windows
   electronApp.setAppUserModelId("com.electron");
@@ -71,9 +55,11 @@ app.whenReady().then(() => {
   app.on("browser-window-created", (_, window) => {
     optimizer.watchWindowShortcuts(window);
   });
+  ipcMain.on("startSever", () => starServer());
+  
   createWindow();
   // IPC test
-  ipcMain.on("ping", () => console.log("pong"));
+
 
   app.on("activate", function () {
     // On macOS it's common to re-create a window in the app when the

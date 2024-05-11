@@ -30,18 +30,18 @@
 }
 
 .btn-secondary{
-  background-color: var(--background-red-primary); // Color de fondo predeterminado del botón primario
-  border-color: var(--background-red-primary); // Color del borde predeterminado del botón primario
+  background-color: var(  --color-secondary); // Color de fondo predeterminado del botón primario
+  border-color: var(--color-secondary-dark); // Color del borde predeterminado del botón primario
   
   // Cambiar el color de fondo del botón primario cuando se pasa el mouse sobre él
   &:hover {
-    background-color: var(--background-red-secondary); // Nuevo color de fondo cuando se pasa el mouse sobre el botón primario
-    border-color: var(--background-red-secondary); // Opcional: cambiar el color del borde cuando se pasa el mouse sobre el botón primario
+    background-color: var(  --color-secondary-dark); // Nuevo color de fondo cuando se pasa el mouse sobre el botón primario
+    border-color: var(--color-secondary-dark); // Opcional: cambiar el color del borde cuando se pasa el mouse sobre el botón primario
   }
 
   // Cambiar el color de fondo del botón primario cuando se hace clic en él
   &:active {
-      background-color: var(--background-red-secondary)!important // Nuevo color de fondo cuando se hace clic en el botón primario
+      background-color: var(  --color-secondary)!important // Nuevo color de fondo cuando se hace clic en el botón primario
       // También puedes agregar estilos adicionales aquí si lo deseas
   }
 

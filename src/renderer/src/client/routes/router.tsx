@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react';
 import { HashRouter, Route, Routes } from 'react-router-dom'
-import Principal from '@client/pages/inicioConfiguracion/Principal'
-import ConfigPrincipal from '@client/pages/inicioConfiguracion/ConfigPrincipal'
-import ConfigSecundaria from '@client/pages/inicioConfiguracion/configSecundaria'
+import ConfigInitial from '@renderer/client/pages/inicioConfiguracion/inicioConfiguracion'
 import Home from '@client/pages/home/Home'
 import IniciarSesion from '@client/pages/iniciarSesion/iniciarSesion'
 import Config from '@renderer/config.json'
@@ -10,7 +8,7 @@ import Config from '@renderer/config.json'
 
 function AppRouter() {
 
-    const inicial = !Config.server && !Config.client ? false:true;
+    const inicial = Config.server
 
     const [loading, setLoading] = useState(false);  // Estado para controlar la visibilidad del loader
 
@@ -28,10 +26,8 @@ function AppRouter() {
             {loading?<div className="loader"></div>:''} 
             <HashRouter>
                 <Routes>
-                    <Route path="/" element={inicial ? <IniciarSesion  /> : <Principal  />} />
+                    <Route path="/" element={inicial==null?<ConfigInitial  />: <IniciarSesion  /> } />
                     <Route path="/home/*" element={<Home />} />
-                    <Route path="/config1" element={<ConfigPrincipal  />} />
-                    <Route path="/config2" element={<ConfigSecundaria  />} />
                 </Routes>
             </HashRouter>
         </>

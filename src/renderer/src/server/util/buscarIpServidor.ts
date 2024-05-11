@@ -9,7 +9,7 @@ const isIPv6 = (ip: string): boolean => ip.includes(":");
 
 // Función para formatear la URL correctamente dependiendo del tipo de IP
 const formatURL = (ip: string, port: number): string => {
-  return `http://${isIPv6(ip) ? `[${ip}]` : ip}:${port}/server`;
+  return `http://${isIPv6(ip) ? `[${ip}]` : ip}:${port}/api/server`;
 };
 
 // Función asíncrona para verificar si una IP es accesible

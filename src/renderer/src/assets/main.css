@@ -11862,15 +11862,15 @@ textarea.form-control-lg {
 }
 
 .btn-secondary {
-  background-color: var(--background-red-primary);
-  border-color: var(--background-red-primary);
+  background-color: var(--color-secondary);
+  border-color: var(--color-secondary-dark);
 }
 .btn-secondary:hover {
-  background-color: var(--background-red-secondary);
-  border-color: var(--background-red-secondary);
+  background-color: var(--color-secondary-dark);
+  border-color: var(--color-secondary-dark);
 }
 .btn-secondary:active {
-  background-color: var(--background-red-secondary) !important;
+  background-color: var(--color-secondary) !important;
 }
 
 button {
@@ -11990,6 +11990,10 @@ label {
   width: 800px;
   transform-origin: center; /* Asegurarse de que la rotación sea alrededor del centro */
   animation: rotate 20s linear infinite; /* Aplicar la animación */
+}
+
+#root {
+  height: 100vh;
 }
 
 /*# sourceMappingURL=main.css.map */

@@ -1,5 +1,4 @@
 
 { 
-    "server":true,
-    "client":true
+    "server":null
 }
