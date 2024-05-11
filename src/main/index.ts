@@ -10,7 +10,7 @@ function createWindow(): void {
   const mainWindow = new BrowserWindow({
     width: 900,
     height: 670,
-    show: false,
+    show: false,  
     autoHideMenuBar: true,
     ...(process.platform === "linux" ? { icon } : undefined),
     webPreferences: {
@@ -20,6 +20,9 @@ function createWindow(): void {
       contextIsolation: true, // Recomendado para usar con sandbox
     },
   });
+  
+
+
 
   mainWindow.on("ready-to-show", () => {
     mainWindow.show();
@@ -33,12 +36,14 @@ function createWindow(): void {
   if (is.dev && process.env.ELECTRON_RENDERER_URL) {
     mainWindow.loadURL(process.env.ELECTRON_RENDERER_URL);
   } else {
+    mainWindow.maximize();
     mainWindow.loadFile(join(__dirname, "../renderer/index.html"));
   }
 }
 
 // deepcode ignore PromiseNotCaughtNode: <please specify a reason of ignoring this>
 app.whenReady().then(() => {
+  
   electronApp.setAppUserModelId("com.electron");
   app.on("browser-window-created", (_, window) => {
     optimizer.watchWindowShortcuts(window);
