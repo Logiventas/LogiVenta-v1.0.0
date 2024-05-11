@@ -41,3 +41,4 @@ Para contribuir a este proyecto, asegúrate de seguir el flujo de trabajo Gitflo
 
 
 # LogiVenta-v1.0.0
+# LogiVenta-v1.0.0
