@@ -1,8 +1,10 @@
-import { ElectronAPI } from '@electron-toolkit/preload'
+// preload.d.ts
+export {};
 
 declare global {
   interface Window {
-    electron: ElectronAPI
-    api: unknown
+    electronAPI: {
+      startServer: () => void;
+    }
   }
 }

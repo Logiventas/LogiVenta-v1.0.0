@@ -2,7 +2,6 @@
 import React, { FormEvent } from 'react';
 import { usePasswordValidation } from '../hooks/usePasswordValidation';
 import InputField from './InputFieldConfigPrincipal';
-const ipcHandle = (): void => window.electron.ipcRenderer.send('startSever')
 
 
 const ConfigPrincipal: React.FC = () => {
@@ -18,9 +17,7 @@ const ConfigPrincipal: React.FC = () => {
   const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     if (validarFormulario()) {
-      console.log('Formulario válido, enviar datos');
-      ipcHandle()
-      // Enviar datos o realizar acción
+      window.electronAPI.startServer();  
     }
   };
 
@@ -35,7 +32,7 @@ const ConfigPrincipal: React.FC = () => {
         <div className="text-center">
           <button type="submit" className="btn btn-primary col-4">Iniciar</button>
         </div>
-        <button onClick={ipcHandle}>ping</button>
+
       </form>
     </div>
   );
