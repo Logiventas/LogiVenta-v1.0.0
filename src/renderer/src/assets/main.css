@@ -12027,7 +12027,7 @@ body {
 }
 
 body, html {
-  height: 10vh !important;
+  height: 98% !important;
   padding: 0;
 }
 
@@ -12090,10 +12090,6 @@ label {
   width: 800px;
   transform-origin: center; /* Asegurarse de que la rotación sea alrededor del centro */
   animation: rotate 20s linear infinite; /* Aplicar la animación */
-}
-
-#root {
-  height: 100vh;
 }
 
 /*# sourceMappingURL=main.css.map */

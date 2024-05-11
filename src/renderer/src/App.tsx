@@ -2,6 +2,7 @@ import  { useState, useEffect } from 'react';
 import Router from './client/routes/router';
 import Logiventas from './client/components/Logiventas';
 
+
 function App(): JSX.Element {
   // Estado para controlar qué componente mostrar
   const [showLogiventas, setShowLogiventas] = useState(true);
@@ -18,6 +19,8 @@ function App(): JSX.Element {
 
   return (
     <>
+
+
       <div className='h-100'>
       {showLogiventas ? <Logiventas /> : <Router />}
       </div>

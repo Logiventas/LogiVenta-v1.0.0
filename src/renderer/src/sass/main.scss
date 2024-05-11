@@ -27,7 +27,7 @@ body{
 
 }
 body,html{
-    height: 10vh!important;
+    height: 98%!important;
     padding: 0;
 }
 
@@ -91,6 +91,3 @@ label{
     animation: rotate 20s linear infinite; /* Aplicar la animación */
 }
 
-#root{
-    height: 100vh;
-}

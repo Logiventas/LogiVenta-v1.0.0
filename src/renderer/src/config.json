@@ -1,4 +1,6 @@
 
 { 
-    "server":null
+    "server":true,
+    "IP_SERVER":"localhost",
+    "PORT_SERVER":8080
 }
