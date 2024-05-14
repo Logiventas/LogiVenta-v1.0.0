@@ -1,16 +1,27 @@
-// src/renderer/src/client/pages/inicioConfiguracion/services/initUserAdmin.service.ts
-import AdminCredentials from '../models/adminCredentials'
+import AdminCredentials from '../models/adminCredentials';
 import api from '@renderer/client/services/api.service';
 import { responseInterceptor, errorInterceptor } from '@renderer/client/pages/inicioConfiguracion/interceptors/initUserAdmin.interceptor';
-// Añadir interceptores específicos para esta instancia
+import bcrypt from 'bcryptjs';
+
 api.interceptors.response.use(responseInterceptor, errorInterceptor);
 
-const URL = '/usuario/admin/init'
+const URL = '/usuario/admin/init';
 
-// Función para enviar datos de inicialización del administrador
 const initializeAdmin = async (credentials: AdminCredentials) => {
     try {
-        const response = await api.post(URL, credentials);
+        if (credentials.password !== credentials.confirmPassword) {
+            throw new Error('Las contraseñas no coinciden');
+        }
+
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(credentials.password, salt);
+
+        const secureCredentials = {
+            password: hashedPassword,
+            confirmPassword: undefined  // No es necesario enviar la confirmación
+        };
+
+        const response = await api.post(URL, secureCredentials);
         console.log("Admin initialized successfully:", response.data);
         return response.data;
     } catch (error) {
