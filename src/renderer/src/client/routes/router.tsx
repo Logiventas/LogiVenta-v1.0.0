@@ -3,13 +3,11 @@ import { HashRouter, Route, Routes } from 'react-router-dom'
 import ConfigInitial from '@renderer/client/pages/inicioConfiguracion/inicioConfiguracion'
 import Home from '@client/pages/home/Home'
 import IniciarSesion from '@client/pages/iniciarSesion/iniciarSesion'
-import Config from '@renderer/config.json'
 
-
+let inicial = null
 function AppRouter() {
 
-    const inicial = Config.server
-
+     
     const [loading, setLoading] = useState(false);  // Estado para controlar la visibilidad del loader
 
     // Función para ocultar el loader
@@ -28,6 +26,8 @@ function AppRouter() {
                 <Routes>
                     <Route path="/" element={inicial==null?<ConfigInitial  />: <IniciarSesion  /> } />
                     <Route path="/home/*" element={<Home />} />
+                    <Route path="iniciarSesion" element={<IniciarSesion  />} />
+                    <Route path="*" element={<h1>404 Not Found</h1>} />
                 </Routes>
             </HashRouter>
         </>

@@ -1,16 +1,16 @@
-import api from '@client/utilities/api.utility';
+// src/renderer/src/client/interceptors/initUserAdminInterceptor.ts
+import { AxiosError, AxiosResponse } from 'axios';
 
-// Response interceptor for handling responses globally
-api.interceptors.response.use(response => response, error => {
-    if (error.response) {
-        const { status } = error.response;
-        if (status === 404) {
-            console.error('Recurso no encontrado:', error.config.url);
-        } else if (status >= 500) {
-            console.error('Error del servidor:', status);
-        }
-    } else {
-        console.error('Error de red o no se recibió respuesta:', error.message);
+export const responseInterceptor = (response: AxiosResponse) => {
+    // Aquí podrías manejar respuestas específicas
+    return response;
+};
+
+export const errorInterceptor = (error: AxiosError) => {
+    if (error.response && error.response.status === 401) {
+        console.error('Authentication error:', error.response.status);
+    } else if (error.response && error.response.status >= 500) {
+        console.error('Server error:', error.response.status);
     }
     return Promise.reject(error);
-});
+};

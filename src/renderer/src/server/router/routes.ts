@@ -1,4 +1,6 @@
 import express, { Request, Response } from "express";
+
+
 // Importar rutas de las características específicas
 import sesion from './routes_InicioSesion_Seguridad';
 import caja from './routes_gestion_Caja';

@@ -1,5 +1,5 @@
 appId: com.electron.app
-productName: electron-app
+productName: logiVenta
 directories:
   buildResources: build
 files:

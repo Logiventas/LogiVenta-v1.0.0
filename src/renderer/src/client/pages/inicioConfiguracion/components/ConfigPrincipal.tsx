@@ -1,8 +1,8 @@
-// ConfigPrincipal.tsx
 import React, { FormEvent } from 'react';
 import { usePasswordValidation } from '../hooks/usePasswordValidation';
 import InputField from './InputFieldConfigPrincipal';
-import getData from '@client/services/initUserAdmin.service'
+import initializeAdmin from '@renderer/client/pages/inicioConfiguracion/services/initUserAdmin.service';
+import { useNavigate } from 'react-router-dom';
 
 const ConfigPrincipal: React.FC = () => {
   const {
@@ -13,18 +13,32 @@ const ConfigPrincipal: React.FC = () => {
     error,
     validarFormulario,
   } = usePasswordValidation();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
     if (validarFormulario()) {
-      window.electronAPI.startServer();  
+      window.electronAPI.startServer();
       try {
-        const data = await getData();
-        console.log('Data received:', data);
-    } catch (error) {
-        console.error("Error while fetching data:", error);
+        const adminData = {
+          password: contrasena,
+          confirmPassword: confirmarContrasena
+        };
+        const data = await initializeAdmin(adminData);
+        if (data) {
+          // Cambiar la configuración del archivo JSON
+          const res = await window.electronAPI.updateConfig('SERVER', true);
+          if (res.success) {
+            navigate('/iniciarSesion');
+          } else {
+            console.error('Error al actualizar la configuración:', res);
+          }
+        }
+      } catch (error) {
+        console.error('Error while initializing admin:', error);
+      }
     }
-    }
+  
   };
 
   return (
@@ -38,7 +52,6 @@ const ConfigPrincipal: React.FC = () => {
         <div className="text-center">
           <button type="submit" className="btn btn-primary col-4">Iniciar</button>
         </div>
-
       </form>
     </div>
   );

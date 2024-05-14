@@ -33,6 +33,7 @@
     "child_process": "^1.0.2",
     "cors": "^2.8.5",
     "electron-reload": "^2.0.0-alpha.1",
+    "electron-store": "^9.0.0",
     "electron-updater": "^6.1.8",
     "epress": "^0.0.1-security",
     "express-validator": "^7.0.1",
