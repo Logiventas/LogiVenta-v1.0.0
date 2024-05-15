@@ -26,6 +26,7 @@ const ConfigPrincipal: React.FC = () => {
         };
         const data = await initializeAdmin(adminData);
         if (data) {
+          console.log("Estos son los datos que llegan al cliente ",data);
           // Cambiar la configuración del archivo JSON
           const res = await window.electronAPI.updateConfig('SERVER', true);
           if (res.success) {

@@ -12,6 +12,11 @@ export const usePasswordValidation = () => {
       return false;
     }
 
+    if (contrasena.length < 9) {
+      setError('La contraseña debe tener al menos 8 caracteres');
+      return false;
+    }
+
     if (contrasena !== confirmarContrasena) {
       setError('Las contraseñas no coinciden');
       return false;

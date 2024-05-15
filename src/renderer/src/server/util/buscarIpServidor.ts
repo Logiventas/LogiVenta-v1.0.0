@@ -1,8 +1,8 @@
 import axios from "axios";
-import config from "../config/server.json"; // Asegúrate de que server.json contiene "PORT" y "HOST"
+import config from "../../config.json"; // Asegúrate de que server.json contiene "PORT" y "HOST"
 import getLocalIPs from "./getLocalIPs";
 
-const PORT = config.PORT;
+const PORT = config.PORT_SERVER;
 
 // Función para determinar si una dirección IP es IPv6
 const isIPv6 = (ip: string): boolean => ip.includes(":");

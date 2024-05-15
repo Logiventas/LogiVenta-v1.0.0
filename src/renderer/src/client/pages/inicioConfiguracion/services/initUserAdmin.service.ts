@@ -5,20 +5,22 @@ import bcrypt from 'bcryptjs';
 
 api.interceptors.response.use(responseInterceptor, errorInterceptor);
 
-const URL = '/usuario/admin/init';
+const URL = '/users/admin/init';
 
 const initializeAdmin = async (credentials: AdminCredentials) => {
     try {
         if (credentials.password !== credentials.confirmPassword) {
             throw new Error('Las contraseñas no coinciden');
         }
+        if (credentials.password.length < 8) {
+            throw new Error('La contraseña debe tener al menos 8 caracteres');
+        }
 
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(credentials.password, salt);
 
         const secureCredentials = {
-            password: hashedPassword,
-            confirmPassword: undefined  // No es necesario enviar la confirmación
+            password: hashedPassword
         };
 
         const response = await api.post(URL, secureCredentials);

@@ -2,12 +2,12 @@ import express, { Request, Response } from "express";
 
 
 // Importar rutas de las características específicas
-import sesion from './routes_InicioSesion_Seguridad';
-import caja from './routes_gestion_Caja';
-import inventario from './routes_gestion_inventario';
-import usuario from './routes_gestion_usuario'; // Corrección del nombre
-import ventas from './routes_gestion_ventas';
-import getServerIP from "../util/getServerIP"; // Utilidad para obtener la IP del servidor
+import sesion from './routes_sessions';
+import cash from './routes_cash_management';
+import inventory from './routes_inventory_management';
+import users from './routes_user_management'; // Corrección del nombre
+import sales from './routes_sales_management';
+import getServerIP from "../../util/getServerIP"; // Utilidad para obtener la IP del servidor
 
 const router = express.Router();
 
@@ -22,10 +22,10 @@ router.get("/server", (_: Request, res: Response) => {
 });
 
 // Rutas para diferentes módulos de la aplicación
-router.use('/sesion', sesion);
-router.use('/caja', caja);
-router.use('/inventario', inventario);
-router.use('/usuario', usuario);
-router.use('/ventas', ventas);
+router.use('/session', sesion);
+router.use('/cash', cash);
+router.use('/inventory', inventory);
+router.use('/users', users);
+router.use('/sales', sales);
 
 export default router;
