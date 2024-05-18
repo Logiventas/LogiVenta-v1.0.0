@@ -4,6 +4,9 @@ import { electronApp, optimizer, is } from "@electron-toolkit/utils";
 import icon from "../../resources/icon.png?asset";
 import startServer from "../renderer/src/server"; // Asegúrate de que la ruta y la exportación son correctas.
 
+// Configura electron-reload
+require("electron-reload")(__dirname);
+
 function createWindow(): void {
   const mainWindow = new BrowserWindow({
     width: 900,
