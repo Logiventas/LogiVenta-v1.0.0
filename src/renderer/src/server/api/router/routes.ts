@@ -2,11 +2,11 @@ import express, { Request, Response } from "express";
 
 
 // Importar rutas de las características específicas
-import sesion from './routes_sessions';
-import cash from './routes_cash_management';
-import inventory from './routes_inventory_management';
-import users from './routes_user_management'; // Corrección del nombre
-import sales from './routes_sales_management';
+import sesion from './routes_sessions.routes';
+import cash from './routes_cash_management.routes';
+import inventory from './routes_inventory_management.routes';
+import users from './routes_user_management.routes'; // Corrección del nombre
+import sales from './routes_sales_management.routes';
 import getServerIP from "../../util/getServerIP"; // Utilidad para obtener la IP del servidor
 
 const router = express.Router();

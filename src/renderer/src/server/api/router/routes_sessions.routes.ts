@@ -6,5 +6,8 @@ const router = express.Router();
 router.get('/', (_: Request, res: Response) => {
     res.send('sesion');
 });
+router.post('/login', (_: Response, res: Response) => {
+    console.log('Este es mi servidor ')
+})
 
 export default router;
