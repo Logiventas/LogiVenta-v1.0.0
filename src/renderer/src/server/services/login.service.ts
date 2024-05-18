@@ -7,7 +7,6 @@ export const loginService = async (userName: string, password: string) => {
   try {
     // Buscar el usuario por nombre de usuario
     const user = await User.findOne({ where: { userName }  });
-    console.log(user)
     if (!user) {
       return null; // Usuario no encontrado
     }else{
@@ -24,10 +23,12 @@ export const loginService = async (userName: string, password: string) => {
     const isPasswordValid = await bcrypt.compare(password, user.dataValues.password);
 
     if (!isPasswordValid) {
-      return null; // Contraseña incorrecta
+      return false;
+    }else{
+      return true;
     }
 
-    return user; // Retornar el usuario si la autenticación es exitosa
+
   } catch (error) {
     console.error("Error in loginService: ", error);
     throw new Error("Authentication failed");
