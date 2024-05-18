@@ -1,150 +1,186 @@
-CREATE SCHEMA IF NOT EXISTS `dbpos` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
-USE `dbpos` ;
+import { DataTypes, Model, Optional } from "sequelize";
+import sequelize from "../../config/db.config"; // Verifica la ruta
 
--- -----------------------------------------------------
--- Table `dbpos`.`payrolls`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbpos`.`payrolls` (
-  `idPayroll` INT NOT NULL AUTO_INCREMENT,
-  `salaryBase` DECIMAL(12,2) NULL DEFAULT NULL,
-  PRIMARY KEY (`idPayroll`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
+// Define los atributos de User
+interface UserAttributes {
+  idUser: number;
+  identification?: string | null;
+  firstName: string;
+  secondName?: string | null;
+  surname: string;
+  secondSurname?: string | null;
+  email: string;
+  userName: string;
+  password: string;
+  phone1?: string | null;
+  phone2?: string | null;
+  homeCountry?: string | null;
+  homeCity?: string | null;
+  homeAddress?: string | null;
+  emergencyContactFirstName?: string | null;
+  emergencyContactSecondName?: string | null;
+  emergencyContactSurname?: string | null;
+  emergencyContactSecondSurname?: string | null;
+  emergencyContactEmail?: string | null;
+  emergencyContactPhone1?: string | null;
+  emergencyContactPhone2?: string | null;
+  active: boolean;
+  idProfile?: number | null;
+  createdAt?: Date;
+  updatedAt?: Date;
+}
 
+// Define los atributos opcionales para la creación
+interface UserCreationAttributes extends Optional<UserAttributes, "idUser" | "createdAt" | "updatedAt"> {}
 
--- -----------------------------------------------------
--- Table `dbpos`.`fixedcharges`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbpos`.`fixedcharges` (
-  `idPayroll` INT NULL DEFAULT NULL,
-  `name` VARCHAR(255) NOT NULL,
-  `description` TEXT NULL DEFAULT NULL,
-  `amount` DECIMAL(10,2) NULL DEFAULT NULL,
-  `affect` VARCHAR(10) NULL DEFAULT NULL,
-  INDEX `idPayroll` (`idPayroll` ASC) VISIBLE,
-  CONSTRAINT `fixedcharges_ibfk_1`
-    FOREIGN KEY (`idPayroll`)
-    REFERENCES `dbpos`.`payrolls` (`idPayroll`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
+// Define la clase User extendiendo de Model
+export class User extends Model<UserAttributes, UserCreationAttributes> implements UserAttributes {
+  public idUser!: number;
+  public identification?: string | null;
+  public firstName!: string;
+  public secondName?: string | null;
+  public surname!: string;
+  public secondSurname?: string | null;
+  public email!: string;
+  public userName!: string;
+  public password!: string;
+  public phone1?: string | null;
+  public phone2?: string | null;
+  public homeCountry?: string | null;
+  public homeCity?: string | null;
+  public homeAddress?: string | null;
+  public emergencyContactFirstName?: string | null;
+  public emergencyContactSecondName?: string | null;
+  public emergencyContactSurname?: string | null;
+  public emergencyContactSecondSurname?: string | null;
+  public emergencyContactEmail?: string | null;
+  public emergencyContactPhone1?: string | null;
+  public emergencyContactPhone2?: string | null;
+  public active!: boolean;
+  public idProfile?: number | null;
+  public readonly createdAt!: Date;
+  public readonly updatedAt!: Date;
+}
 
+// Inicializa el modelo con la definición de los campos
+User.init(
+  {
+    idUser: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true,
+    },
+    identification: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      unique: true,
+    },
+    firstName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    secondName: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    surname: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    secondSurname: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+    },
+    userName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    phone1: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    phone2: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    homeCountry: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    homeCity: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    homeAddress: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    emergencyContactFirstName: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    emergencyContactSecondName: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    emergencyContactSurname: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    emergencyContactSecondSurname: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    emergencyContactEmail: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    emergencyContactPhone1: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    emergencyContactPhone2: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    active: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: true,
+    },
+    idProfile: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      references: {
+        model: "profiles",
+        key: "idProfile",
+      },
+    },
+    createdAt: {
+      type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW,
+    },
+    updatedAt: {
+      type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW,
+    },
+  },
+  {
+    sequelize,
+    modelName: "User",
+    tableName: "users",
+    timestamps: true, // Asegura que Sequelize maneje automáticamente las columnas createdAt y updatedAt
+  }
+);
 
--- -----------------------------------------------------
--- Table `dbpos`.`profiles`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbpos`.`profiles` (
-  `idProfile` INT NOT NULL AUTO_INCREMENT,
-  `nameProfile` VARCHAR(255) NOT NULL,
-  `description` TEXT NULL DEFAULT NULL,
-  `idPayrolls` INT NULL DEFAULT NULL,
-  PRIMARY KEY (`idProfile`),
-  INDEX `idPayrolls` (`idPayrolls` ASC) VISIBLE,
-  CONSTRAINT `profiles_ibfk_2`
-    FOREIGN KEY (`idPayrolls`)
-    REFERENCES `dbpos`.`payrolls` (`idPayroll`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
-
-
--- -----------------------------------------------------
--- Table `dbpos`.`permissions`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbpos`.`permissions` (
-  `IdPermission` INT NOT NULL AUTO_INCREMENT,
-  `moduleName` VARCHAR(255) NOT NULL,
-  `Permission` TINYINT NOT NULL DEFAULT 1,
-  `profiles_idProfile` INT NOT NULL,
-  PRIMARY KEY (`IdPermission`),
-  INDEX `fk_permissions_profiles1_idx` (`profiles_idProfile` ASC) VISIBLE,
-  CONSTRAINT `fk_permissions_profiles1`
-    FOREIGN KEY (`profiles_idProfile`)
-    REFERENCES `dbpos`.`profiles` (`idProfile`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
-
-
--- -----------------------------------------------------
--- Table `dbpos`.`module`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbpos`.`module` (
-  `IdPermission` INT NULL DEFAULT NULL,
-  `permissionName` VARCHAR(255) NOT NULL,
-  `Permission` TINYINT NULL DEFAULT 1,
-  INDEX `IdPermission` (`IdPermission` ASC) VISIBLE,
-  CONSTRAINT `module_ibfk_1`
-    FOREIGN KEY (`IdPermission`)
-    REFERENCES `dbpos`.`permissions` (`IdPermission`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
-
-
--- -----------------------------------------------------
--- Table `dbpos`.`users`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbpos`.`users` (
-  `idUser` INT NOT NULL AUTO_INCREMENT,
-  `identification` VARCHAR(255) NULL DEFAULT NULL,
-  `firstName` VARCHAR(255) NOT NULL,
-  `secondName` VARCHAR(255) NULL DEFAULT NULL,
-  `surname` VARCHAR(255) NOT NULL,
-  `secondSurname` VARCHAR(255) NULL DEFAULT NULL,
-  `email` VARCHAR(255) NOT NULL,
-  `userName` VARCHAR(255) NOT NULL,
-  `password` VARCHAR(255) NOT NULL,
-  `phone1` VARCHAR(255) NULL DEFAULT NULL,
-  `phone2` VARCHAR(255) NULL DEFAULT NULL,
-  `homeCountry` VARCHAR(255) NULL DEFAULT NULL,
-  `homeCity` VARCHAR(255) NULL DEFAULT NULL,
-  `homeAddress` VARCHAR(255) NULL DEFAULT NULL,
-  `emergencyContactFirstName` VARCHAR(255) NULL DEFAULT NULL,
-  `emergencyContactSecondName` VARCHAR(255) NULL DEFAULT NULL,
-  `emergencyContactSurname` VARCHAR(255) NULL DEFAULT NULL,
-  `emergencyContactSecondSurname` VARCHAR(255) NULL DEFAULT NULL,
-  `emergencyContactEmail` VARCHAR(255) NULL DEFAULT NULL,
-  `emergencyContactPhone1` VARCHAR(255) NULL DEFAULT NULL,
-  `emergencyContactPhone2` VARCHAR(255) NULL DEFAULT NULL,
-  `active` TINYINT(1) NOT NULL DEFAULT '1',
-  `idProfile` INT NULL DEFAULT NULL,
-  `createdAt` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
-  `updatedAt` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`idUser`),
-  UNIQUE INDEX `email` (`email` ASC) VISIBLE,
-  UNIQUE INDEX `userName` (`userName` ASC) VISIBLE,
-  UNIQUE INDEX `identification` (`identification` ASC) VISIBLE,
-  INDEX `idProfile` (`idProfile` ASC) VISIBLE,
-  CONSTRAINT `users_ibfk_1`
-    FOREIGN KEY (`idProfile`)
-    REFERENCES `dbpos`.`profiles` (`idProfile`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
-
-
--- -----------------------------------------------------
--- Table `dbpos`.`variablecharges`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dbpos`.`variablecharges` (
-  `idPayroll` INT NULL DEFAULT NULL,
-  `name` VARCHAR(255) NOT NULL,
-  `description` TEXT NULL DEFAULT NULL,
-  `amount` DECIMAL(12,2) NULL DEFAULT NULL,
-  `affect` VARCHAR(10) NULL DEFAULT NULL,
-  INDEX `idPayroll` (`idPayroll` ASC) VISIBLE,
-  CONSTRAINT `variablecharges_ibfk_1`
-    FOREIGN KEY (`idPayroll`)
-    REFERENCES `dbpos`.`payrolls` (`idPayroll`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
-
-
-SET SQL_MODE=@OLD_SQL_MODE;
-SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
-SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+export default User;
