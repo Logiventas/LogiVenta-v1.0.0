@@ -1,53 +1,67 @@
+// src/renderer/src/client/pages/iniciarSesion/components/components_formulario.tsx
 import { useState, ChangeEvent, FormEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
-import inicioSesion from '@client/pages/iniciarSesion/models/inicioSesion';
-import IniciarSesion from '@client/pages/iniciarSesion/interceptors/interceptor_IniciarSesion';
+import Login from '../models/login.model';
+import iniciarSesion from '../services/login.service';
+
+const initialLoginState: Login = {
+  userName: '',
+  password: ''
+};
 
 function Formulario() {
-  const [user, setUser] = useState<inicioSesion>(inicioSesion);
+  const [user, setUser] = useState<Login>(initialLoginState);
+  const [errorMessage, setErrorMessage] = useState<string>(''); // Estado para el mensaje de error
   const navigate = useNavigate();
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
-    inicioSesion.usuario = user.usuario;
-    inicioSesion.contrasena = user.contrasena;
 
-    // Validar token
-    if (IniciarSesion()) {
-      console.log('Iniciando Home');
-      navigate('/home')
+    try {
+      const response = await iniciarSesion(user);
+      console.log('esta es la respuesta de login',response)
+      if (response===200) {
+        navigate('/home');
+      } 
+    } catch (error: any) {
+      setErrorMessage(error.message || 'Ocurrió un error inesperado.');
     }
   };
 
   const handleChangePassword = (e: ChangeEvent<HTMLInputElement>): void => {
-    setUser({ ...user, contrasena: e.target.value });
-    console.log(user.contrasena);
+    setUser({ ...user, password: e.target.value });
+    console.log(user.password);
   };
 
   const handleChangeUser = (e: ChangeEvent<HTMLInputElement>): void => {
-    setUser({ ...user, usuario: e.target.value });
-    console.log(user.usuario);
+    setUser({ ...user, userName: e.target.value });
+    console.log(user.userName);
   };
 
   return (
+
     <form className="col-3 m-auto" onSubmit={handleSubmit}>
+      {errorMessage && <div className="alert alert-danger">{errorMessage}</div>} {/* Mostrar mensaje de error si está definido */}
+
       <div className="mb-4">
-        <label className="form-label" htmlFor="form1Example1">Usuario</label>
+        <label className="form-label" htmlFor="user">Usuario</label>
         <input
           type="text"
           id="user"
           className="form-control"
           onChange={handleChangeUser}
+          value={user.userName}
         />
       </div>
 
       <div className="mb-4">
-        <label className="form-label" htmlFor="form1Example2">Contraseña</label>
+        <label className="form-label" htmlFor="password">Contraseña</label>
         <input
           type="password"
           id="password"
           className="form-control"
           onChange={handleChangePassword}
+          value={user.password}
         />
       </div>
 
