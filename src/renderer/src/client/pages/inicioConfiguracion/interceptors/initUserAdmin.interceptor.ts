@@ -1,16 +1,19 @@
-// src/renderer/src/client/interceptors/initUserAdminInterceptor.ts
-import { AxiosError, AxiosResponse } from 'axios';
+import api from '../../../interceptors/api.interceptor';
 
-export const responseInterceptor = (response: AxiosResponse) => {
-    // Aquí podrías manejar respuestas específicas
-    return response;
-};
-
-export const errorInterceptor = (error: AxiosError) => {
-    if (error.response && error.response.status === 401) {
-        console.error('Authentication error:', error.response.status);
-    } else if (error.response && error.response.status >= 500) {
-        console.error('Server error:', error.response.status);
+api.interceptors.response.use(
+  (response) => {
+    // Aquí podrías extraer cookies de la respuesta si fuera necesario
+    const setCookieHeader = response.headers['set-cookie'];
+    if (setCookieHeader) {
+      console.log('Cookies recibidas:', setCookieHeader);
+      // Opcional: puedes hacer algo con las cookies aquí
     }
+    return response;
+  },
+  (error) => {
+    // Aquí puedes manejar errores de respuesta si es necesario
     return Promise.reject(error);
-};
+  }
+);
+
+export default api;

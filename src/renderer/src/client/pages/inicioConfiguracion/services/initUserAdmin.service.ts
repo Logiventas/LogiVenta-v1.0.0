@@ -1,9 +1,7 @@
+//src\renderer\src\client\pages\inicioConfiguracion\services\initUserAdmin.service.ts
 import AdminCredentials from '../models/adminCredentials';
-import api from '@renderer/client/services/api.service';
-import { responseInterceptor, errorInterceptor } from '@renderer/client/pages/inicioConfiguracion/interceptors/initUserAdmin.interceptor';
+import api from '../interceptors/initUserAdmin.interceptor';
 import bcrypt from 'bcryptjs';
-
-api.interceptors.response.use(responseInterceptor, errorInterceptor);
 
 const URL = '/users/admin/init';
 

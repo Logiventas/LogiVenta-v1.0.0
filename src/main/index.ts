@@ -2,10 +2,10 @@ import { app, shell, BrowserWindow, ipcMain } from "electron";
 import { join } from "path";
 import { electronApp, optimizer, is } from "@electron-toolkit/utils";
 import icon from "../../resources/icon.png?asset";
-import startServer from "../renderer/src/server"; // Asegúrate de que la ruta y la exportación son correctas.
+import startServer from "../renderer/src/server"; // Asegúrate de que la ruta y la exportación sean correctas.
 
 // Configura electron-reload
-require("electron-reload")(__dirname);
+//require('electron-reload')(__dirname);
 
 function createWindow(): void {
   const mainWindow = new BrowserWindow({
@@ -54,7 +54,6 @@ app.whenReady().then(() => {
   // IPC para actualizar la configuración
   ipcMain.handle("update-config", async (_event, key: string, value: any) => {
     if (key === "SERVER") {
-
       return { success: true, SERVER: value };
     }
     return { success: false, message: "Clave de configuración no válida" };
@@ -63,11 +62,11 @@ app.whenReady().then(() => {
   // IPC para consultar la configuración
   ipcMain.handle("get-config", async (_event, key: string) => {
     if (key === "SERVER") {
-
       return { success: true, SERVER: true };
     }
     return { success: false, message: "Clave de configuración no válida" };
   });
+
   createWindow();
 
   app.on("activate", () => {

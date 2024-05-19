@@ -6,6 +6,7 @@ import db from './config/db.config';  // Importa la configuración de Sequelize
 // Configura CORS para permitir solicitudes de un origen específico
 const corsOptions = {
   origin: 'http://localhost:5173',  // Asegúrate de cambiar esto por tu origen específico si es diferente
+  credentials: true, // Permite enviar cookies
 };
 
 const app = express(); // Instancia de la aplicación Express
