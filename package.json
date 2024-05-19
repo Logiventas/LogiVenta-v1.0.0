@@ -31,6 +31,7 @@
     "bcryptjs": "^2.4.3",
     "bootstrap": "^5.3.3",
     "child_process": "^1.0.2",
+    "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "electron-store": "^9.0.0",
     "electron-updater": "^6.1.8",

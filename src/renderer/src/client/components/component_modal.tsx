@@ -13,24 +13,21 @@ const Modal: React.FC<ModalProps> = ({ mensaje, titulo, onClose, isOpen, myOncli
 
   return (
     <>
-      <div className={modalClass } style={isOpen ? { display: "block" } : { display: "none" }} aria-labelledby="exampleModalLabel" aria-hidden={!isOpen}>
-        <div style={{ translate: '0 20vh' }} className="  modal-dialog">
+      <div className={modalClass} style={isOpen ? { display: "block" } : { display: "none" }} aria-labelledby="exampleModalLabel" aria-hidden={!isOpen}>
+        <div style={{ translate: '0 20vh' }} className="modal-dialog">
           <div style={{
             backgroundColor: 'var(--color-primary-red)',
             width: '30rem',
             minHeight: '15rem'
-          }} className="modal-content ">
-
+          }} className="modal-content">
             <div className="modal-header">
               <h1 className="modal-title fs-5" id="exampleModalLabel">{titulo}</h1>
               <button type="button" className="btn-close" onClick={onClose} aria-label="Close"></button>
             </div>
-
             <div className="modal-body">{mensaje}</div>
-            
             <div className="modal-footer">
-              <button name='false' type="button" className="btn btn-secondary" onClick={myOnclick}>Cancelar</button>
-              <button name='true'type="button" className="btn btn-primary" onClick={myOnclick}>Aceptar</button>
+              <button data-action="cancel" type="button" className="btn btn-secondary" onClick={myOnclick}>Cancelar</button>
+              <button data-action="accept" type="button" className="btn btn-primary" onClick={myOnclick}>Aceptar</button>
             </div>
           </div>
         </div>

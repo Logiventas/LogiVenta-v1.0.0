@@ -1,14 +1,40 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Modal from '@client/components/component_modal';
-import  icon_exit from '/src/assets/icon/exit.png'
+import icon_exit from '/src/assets/icon/exit.png';
+import SelecteUserContext from '@client/contexts/contexts'; // Ajusta la ruta según tu estructura
+
 const Salir: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
+  const { setUser } = useContext(SelecteUserContext);
 
   const handleOnClick = (e) => {
-    if(e.target.name=='true'){
-        console.log('Cerrar sesion')
+    const action = e.target.getAttribute('data-action');
+    if (action === 'accept') {
+      console.log('Cerrar sesión');
+      // Reiniciar los datos del usuario
+      setUser({
+        idUser: "",
+        firstName: "User",
+        secondName: "",
+        surname: "user",
+        secondSurname: "",
+        email: "",
+        userName: "",
+        acceso: {
+          gestionArchivo: false,
+          gestionSistema: false,
+          gestionCaja: false,
+          gestionUsuairo: false,
+          gestionIventario: false,
+          gestionProveedores: false,
+          registroVentas: false
+        }
+      });
+      navigate('/iniciarSesion'); // Redirigir a la página de inicio de sesión
     }
-    setIsOpen(false); // Cerrar modal después de aceptar
+    setIsOpen(false); // Cerrar modal después de aceptar o cancelar
   };
 
   const handleClose = () => {
@@ -18,7 +44,6 @@ const Salir: React.FC = () => {
   const handleShowModal = () => {
     setIsOpen(true);
   };
-
 
   return (
     <>

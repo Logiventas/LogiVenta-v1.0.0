@@ -44,7 +44,7 @@ app.whenReady().then(() => {
   electronApp.setAppUserModelId("com.electron");
   app.on("browser-window-created", (_, window) => {
     optimizer.watchWindowShortcuts(window);
-  });
+  })
 
   // Escuchar el evento para iniciar el servidor
   ipcMain.on('start-server', () => {
