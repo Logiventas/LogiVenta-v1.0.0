@@ -1,0 +1,57 @@
+├── main:contiene el código principal de tu aplicación Electron, como el archivo principal  main.ts y la configuración de la ventana.
+├── preload:script preload para Electron, que se ejecuta antes de que la página web se cargue en la ventana del renderizador. Este script es útil para exponer APIs seguras al contexto del renderizador.
+└── renderer
+    ├── assets: Archivos estáticos como imágenes, fuentes, etc.
+    ├── index.html :El punto de entrada HTML para la parte del renderizador de la aplicación.
+    └── src
+        ├── App.tsx :El componente raíz de tu aplicación React.
+        ├── assets :Activos específicos de la aplicación, como imágenes y archivos de estilo.
+        ├── client -----> Directorio principal del FrontEnd
+        │   ├── adapters: Adaptadores para manejar datos y comunicar entre diferentes partes de la aplicación.
+        │   ├── components: Componentes React reutilizables.
+        │   ├── contexts: Contextos de React para el manejo del estado global.
+        │   ├── controller: Controladores para manejar la lógica de negocio.
+        │   ├── hooks: Custom hooks de React.
+        │   ├── interceptors: Interceptores para las solicitudes HTTP, posiblemente para agregar encabezados de autenticación.
+        │   ├── model: Definiciones de los modelos de datos.
+        │   ├── pages:Componentes de página, representa una vista o ruta diferente en tu aplicación y sub componentes.
+        │   ├── redux:(aun no implemntado) Redux para el manejo del estado, esta carpeta contendría tus acciones, reductores y store.
+        │   ├── routes: Configuración de las rutas de la aplicación.
+        │   ├── services: Servicios para manejar la comunicación con APIs externas o lógica de negocio que no está directamente relacionada con la UI.
+        │   ├── styled-components
+        │   └── utilities: Funciones utilitarias que pueden ser reutilizadas en varias partes de la aplicación.
+        ├── config.json: Archivo de configuración para la aplicación.
+        ├── env.d.ts: Definiciones de tipos para variables de entorno
+        ├── main.tsx: Punto de entrada para la aplicación electron.
+        ├── sass
+        │   ├── base: Estilos básicos y reset CSS.
+        │   ├── components: Estilos específicos para componentes.
+        │   ├── layout: Estilos para el layout general de la aplicación.
+        │   ├── main.scss :Archivo principal de SASS que importa todos los demás archivos de SASS.
+        │   ├── themes: Temas de la aplicación
+        │   ├── utilities :Clases utilitarias.
+        │   ├── vendors: Estilos de terceros.
+        │   └── views: Estilos específicos para vistas o páginas.
+        └── server:-------->Directorio principal del Backend (API server)
+            ├── api
+            │   ├── controllers :Controladores para manejar las diferentes áreas de la API, organizados por funcionalidad (Admin, Config, Inventory, etc.).
+            │   │   ├── Admin
+            │   │   ├── Config
+            │   │   ├── Inventory
+            │   │   ├── Products
+            │   │   ├── Provider
+            │   │   ├── sales
+            │   │   ├── Session
+            │   │   ├── Transactions
+            │   │   └── Users
+            │   ├── middlewares: Middlewares para manejar peticiones HTTP.
+            │   ├── models: Definiciones de los modelos de datos con sequalize
+            │   └── router: Configuración de las rutas de la API.
+            ├── config: Configuración del servidor, incluyendo base de datos, entorno, etc.
+            ├── index.ts : Punto de entrada para el servidor.
+            ├── public: Archivos públicos que pueden ser servidos directamente.
+            ├── README: Documentación del proyecto.
+            ├── script: Scripts para tareas automatizadas.
+            ├── services: Servicios para la lógica de negocio del servidor.
+            ├── tests: Pruebas unitarias e integración.
+            └── utils: Utilidades para el servidor.
