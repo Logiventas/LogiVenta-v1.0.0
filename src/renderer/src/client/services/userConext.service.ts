@@ -8,6 +8,7 @@ const getUserData = async (): Promise<UserModel> => {
   try {
     const response = await api.get<UserModel>(URL);
     console.log('Fetched User Data from API:', response.data); // Añadir log para verificar los datos
+    
     return response.data;
   } catch (error) {
     console.error('Error fetching user data:', error);

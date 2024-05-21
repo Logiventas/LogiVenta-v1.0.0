@@ -12,7 +12,6 @@ const Salir: React.FC = () => {
   const handleOnClick = (e) => {
     const action = e.target.getAttribute('data-action');
     if (action === 'accept') {
-      console.log('Cerrar sesión');
       // Reiniciar los datos del usuario
       setUser({
         idUser: "",
@@ -26,10 +25,11 @@ const Salir: React.FC = () => {
           gestionArchivo: false,
           gestionSistema: false,
           gestionCaja: false,
-          gestionUsuairo: false,
-          gestionIventario: false,
+          gestionUsuario: false,
+          gestionInventario: false,
           gestionProveedores: false,
-          registroVentas: false
+          registroVentas: false,
+        
         }
       });
       navigate('/iniciarSesion'); // Redirigir a la página de inicio de sesión

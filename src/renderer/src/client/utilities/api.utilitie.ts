@@ -9,7 +9,8 @@ if (!config.IP_SERVER || !config.PORT_SERVER) {
 const api = axios.create({
     baseURL: `http://${config.IP_SERVER}:${config.PORT_SERVER}/api`,
     headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
     },
     timeout: 10000,
 });

@@ -72,7 +72,7 @@ app.whenReady().then(() => {
   app.on("activate", () => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow();
   });
-});
+}).catch(()=>{});
 
 app.on("window-all-closed", () => {
   if (process.platform !== "darwin") {

@@ -20,7 +20,7 @@ function Formulario() {
     try {
       const response = await iniciarSesion(user);
       console.log('esta es la respuesta de login',response)
-      if (response===200) {
+      if (response===201) {
         navigate('/home');
       } 
     } catch (error: any) {

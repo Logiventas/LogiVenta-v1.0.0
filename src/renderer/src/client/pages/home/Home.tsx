@@ -46,8 +46,8 @@ const Home: React.FC = () => {
         {user.acceso.gestionArchivo && <Icono enlace="/" modulo="Gestión de Archivo" urlImg={img_gestionArchivo} />}
         {user.acceso.gestionSistema && <Icono enlace="/" modulo="Configuración de Sistema" urlImg={img_gestionSistema} />}
         {user.acceso.gestionCaja && <Icono enlace="/" modulo="Gestión de Caja" urlImg={img_gestionCaja} />}
-        {user.acceso.gestionUsuairo && <Icono enlace="/" modulo="Gestión de Usuarios" urlImg={img_gestionUsuairo} />}
-        {user.acceso.gestionIventario && <Icono enlace="/" modulo="Gestión de Inventario" urlImg={img_gestionIventario} />}
+        {user.acceso.gestionUsuario && <Icono enlace="/" modulo="Gestión de Usuarios" urlImg={img_gestionUsuairo} />}
+        {user.acceso.gestionInventario && <Icono enlace="/" modulo="Gestión de Inventario" urlImg={img_gestionIventario} />}
         {user.acceso.registroVentas && <Icono enlace="/" modulo="Registro de Ventas" urlImg={img_registroVentas} />}
         {user.acceso.gestionProveedores && <Icono enlace="/" modulo="Gestión de Proveedores" urlImg={img_gestionProveedores} />}
       </div>

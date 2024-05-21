@@ -13,8 +13,8 @@ const initialUserState = {
     gestionArchivo: true,
     gestionSistema: true,
     gestionCaja: true,
-    gestionUsuairo: true,
-    gestionIventario: true,
+    gestionUsuario: true,
+    gestionInventario: true,
     gestionProveedores: true,
     registroVentas: true
   }
@@ -23,7 +23,7 @@ const initialUserState = {
 // Crear el contexto con los datos del usuario y una función para actualizarlos
 const SelecteUserContext = createContext({
   user: initialUserState,
-  setUser: (user: typeof initialUserState) => {}
+  setUser: (_: typeof initialUserState) => {}
 });
 
 SelecteUserContext.displayName = 'DatosUsuario';

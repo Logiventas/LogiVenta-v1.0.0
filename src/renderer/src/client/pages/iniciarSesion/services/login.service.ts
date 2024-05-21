@@ -7,9 +7,7 @@ const URL = '/session/login';
 const login = async (credentials: Login) => {
   try {
     const response = await api.post(URL, credentials, {
-      headers: {
-        'Content-Type': 'application/json'
-      }
+
     });
     console.log(response.headers);
     return response.status;
