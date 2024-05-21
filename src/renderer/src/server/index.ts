@@ -8,7 +8,6 @@ import getServerIP from "./utils/getServerIP"; // Utilidad para obtener la IP de
 import helmet from "helmet";
 
 const corsOptions = {
-  origin: 'http://*:*',
   credentials: true,
 };
 
