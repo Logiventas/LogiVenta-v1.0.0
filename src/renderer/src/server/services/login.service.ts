@@ -1,6 +1,6 @@
-//src\renderer\src\server\services\login.service.ts
+
 // src/renderer/src/server/services/login.service.ts
-import { User } from "../api/models/user.model"; // Asegúrate de que esta ruta sea correcta
+import  User  from "../api/models/user.model"; // Asegúrate de que esta ruta sea correcta
 import bcrypt from "bcryptjs";
 
 export const loginService = async (userName: string, password: string) => {

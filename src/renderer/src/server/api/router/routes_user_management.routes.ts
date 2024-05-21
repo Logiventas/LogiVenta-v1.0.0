@@ -1,6 +1,6 @@
 import express, { Request, Response } from "express";
 import { initAdmin } from '../controllers/Admin/updatePassword.controller';
-import { getUserData } from "../controllers/Users/user.controller";
+import getUserDataController  from "../controllers/Users/userData.controller";
 
 const router = express.Router();
 
@@ -21,7 +21,7 @@ router.post('/admin/init', async (req: Request, res: Response) => {
 
 
 // Ruta protegida para obtener datos del usuario
-router.get('/data', getUserData);
+router.get('/data', getUserDataController);
 
 
 export default router;

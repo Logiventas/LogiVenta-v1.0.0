@@ -1,3 +1,4 @@
+//src\renderer\src\server\api\models\user.model.ts
 import { DataTypes, Model, Optional } from "sequelize";
 import sequelize from "../../config/db.config"; // Verifica la ruta
 
@@ -56,8 +57,6 @@ export class User extends Model<UserAttributes, UserCreationAttributes> implemen
   public emergencyContactPhone1?: string | null;
   public emergencyContactPhone2?: string | null;
   public active!: boolean;
-  public readonly createdAt!: Date;
-  public readonly updatedAt!: Date;
 }
 
 // Inicializa el modelo con la definición de los campos
