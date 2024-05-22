@@ -10,6 +10,7 @@ import { loadAdminUser } from "./script/loadAdminUser";
 import { loadAdminPermissions } from "./script/loadAdminPermissions";
 
 const corsOptions = {
+  origin: true,
   credentials: true,
 };
 

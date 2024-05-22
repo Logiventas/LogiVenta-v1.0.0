@@ -5,9 +5,9 @@ const Icono = (props: any) => {
   return (
         <Routes>
             <Route path='/' element={ // Corrección para usar la prop 'element'
-                <Link to={props.enlace}>
+                <Link className='w-25 py-3' to={props.enlace}>
                     <div style={{ width: '8rem', cursor: 'pointer' }} className="iconoHover d-flex flex-column align-items-center m-auto ">
-                        <img className="m-auto" style={{ width: '70px' }} src={props.urlImg} alt="Imagen del módulo"></img>
+                        <img className="" style={{ width: '75px' }} src={props.urlImg} alt="Imagen del módulo"></img>
                         <h6 className="text-center mt-3">{props.modulo}</h6>
                     </div>
                 </Link>
