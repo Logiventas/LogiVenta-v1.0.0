@@ -12024,24 +12024,26 @@ button {
 
 body {
   background-color: var(--color-primary-muted) !important;
+  height: 100vh;
 }
 
-body, html {
-  height: 98% !important;
-  padding: 0;
+html {
+  height: 100% !important;
+  width: 100% !important;
+  margin: 0 !important;
 }
 
 .iconoHover:hover {
-  transition: 0.5s;
-  transform: scale(1.1);
-  -webkit-transform: scale(1.1);
-  -moz-transform: scale(1.1);
-  -ms-transform: scale(1.1);
-  -o-transform: scale(1.1);
-  -webkit-transition: 0.5s;
-  -moz-transition: 0.5s;
-  -ms-transition: 0.5s;
-  -o-transition: 0.5s;
+  transition: 0.3s;
+  transform: scale(1.05);
+  -webkit-transform: scale(1.05);
+  -moz-transform: scale(1.05);
+  -ms-transform: scale(1.05);
+  -o-transform: scale(1.05);
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -ms-transition: 0.3s;
+  -o-transition: 0.3s;
 }
 
 label {
@@ -12090,6 +12092,10 @@ label {
   width: 800px;
   transform-origin: center; /* Asegurarse de que la rotación sea alrededor del centro */
   animation: rotate 20s linear infinite; /* Aplicar la animación */
+}
+
+#root {
+  height: 100%;
 }
 
 /*# sourceMappingURL=main.css.map */

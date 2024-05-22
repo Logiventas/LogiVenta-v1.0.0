@@ -18,13 +18,11 @@ function App(): JSX.Element {
   }, []); // El array vacío asegura que el efecto se ejecute solo una vez después del montaje inicial
 
   return (
-    <>
-
-
-      <div className='h-100'>
+ 
+      <>
       {showLogiventas ? <Logiventas /> : <Router />}
-      </div>
-    </>
+      </>
+    
   );
 }
 

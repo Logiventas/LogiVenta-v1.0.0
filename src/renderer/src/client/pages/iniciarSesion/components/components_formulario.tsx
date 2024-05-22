@@ -40,10 +40,10 @@ function Formulario() {
 
   return (
 
-    <form className="col-3 m-auto" onSubmit={handleSubmit}>
+    <form className="row m-auto w-25"  onSubmit={handleSubmit}>
       {errorMessage && <div className="alert alert-danger">{errorMessage}</div>} {/* Mostrar mensaje de error si está definido */}
 
-      <div className="mb-4">
+      <div className=" ">
         <label className="form-label" htmlFor="user">Usuario</label>
         <input
           type="text"
@@ -54,7 +54,7 @@ function Formulario() {
         />
       </div>
 
-      <div className="mb-4">
+      <div className="">
         <label className="form-label" htmlFor="password">Contraseña</label>
         <input
           type="password"
@@ -65,7 +65,7 @@ function Formulario() {
         />
       </div>
 
-      <button type="submit" className="btn btn-primary col-12">Iniciar Sesión</button>
+      <button type="submit" className="btn mt-3 btn-primary mx-auto col-11">Iniciar Sesión</button>
     </form>
   );
 }
