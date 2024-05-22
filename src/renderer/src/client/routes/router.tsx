@@ -4,6 +4,7 @@ import ConfigInitial from '@renderer/client/pages/inicioConfiguracion/inicioConf
 import Home from '@client/pages/home/Home';
 import IniciarSesion from '@client/pages/iniciarSesion/iniciarSesion';
 import { SelecteUserProvider } from '@client/contexts/contexts';
+import UserManagement from '@renderer/client/pages/userManagmen/index'
 
 let inicial = true;
 inicial ? window.electronAPI.startServer() : '';
@@ -28,6 +29,7 @@ function AppRouter() {
           <Route path="/" element={inicial == null ? <ConfigInitial /> : <IniciarSesion />} />
           <Route path="/home/*" element={<Home />} />
           <Route path="iniciarSesion" element={<IniciarSesion />} />
+          <Route path="userManagement" element={<UserManagement />} />
           <Route path="*" element={<h1>404 Not Found</h1>} />
         </Routes>
       </HashRouter>
