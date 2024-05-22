@@ -5,19 +5,24 @@ import routes from "./api/router/routes";
 import db from './config/db.config';
 import cookieParser from "cookie-parser";
 import getServerIP from "./utils/getServerIP"; // Utilidad para obtener la IP del servidor
-import helmet from "helmet";
+
 import { loadAdminUser } from "./script/loadAdminUser";
 import { loadAdminPermissions } from "./script/loadAdminPermissions";
+const whilelist=['http://localhost:*']
 
 const corsOptions = {
-  origin: true,
-  credentials: true,
-};
-
+  origin: function(origin,callback){
+    if(whilelist.indexOf(origin) === -1){
+        callback(null,true);
+  
+  }else{
+    callback(new Error('Not allowed by CORS'))
+  }
+}
+}
 const app = express();
 // deepcode ignore UseCsurfForExpress: <please specify a reason of ignoring this>
 
-app.use(helmet());
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors(corsOptions));

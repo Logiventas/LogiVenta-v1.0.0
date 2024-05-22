@@ -31,6 +31,25 @@ function createWindow(): void {
     return { action: "deny" };
   });
 
+  mainWindow.webContents.session.webRequest.onBeforeSendHeaders(
+    (details, callback) => {
+      callback({ requestHeaders: { Origin: '*', ...details.requestHeaders } });
+    },
+  );
+  
+  mainWindow.webContents.session.webRequest.onHeadersReceived((details, callback) => {
+    callback({
+      responseHeaders: {
+        'Access-Control-Allow-Origin': ['*'],
+        // We use this to bypass headers
+        'Access-Control-Allow-Headers': ['*'],
+        ...details.responseHeaders,
+      },
+    });
+  });
+
+
+
   if (is.dev && process.env.ELECTRON_RENDERER_URL) {
     mainWindow.loadURL(process.env.ELECTRON_RENDERER_URL);
   } else {
