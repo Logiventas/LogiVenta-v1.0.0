@@ -20,7 +20,7 @@ export const loginController = async (req: Request, res: Response) => {
       const token = generateAccessToken(user);
       res.cookie('token', token, {
         httpOnly: true,
-        secure: process.env.NODE_ENV === 'production',
+        secure: true,
         sameSite: 'None',
       });
 
