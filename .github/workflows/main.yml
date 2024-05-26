@@ -1,4 +1,4 @@
-name: Continuous Integration and Deployment
+name: Integración y Despliegue Continuo
 
 on:
   push:
@@ -16,40 +16,56 @@ jobs:
   build-and-test:
     runs-on: ubuntu-latest
     steps:
+      # Clona el repositorio en el runner
       - uses: actions/checkout@v3
       
-      - name: Set up Node.js
+      # Configura el entorno de Node.js
+      - name: Configurar Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '20'  # Actualización a Node.js 20 para estar al día con las últimas versiones soportadas
+          node-version: '20'  # Usar Node.js 20 para tener soporte actualizado
 
-      - name: Install Dependencies
-        run: npm install # Verifica que tus paquetes sean compatibles con Node.js 20
+      # Instala las dependencias de npm
+      - name: Instalar Dependencias
+        run: npm install # Verifica la compatibilidad de los paquetes con Node.js 20
 
-      - name: Run Tests
-        run: npm test # Ajusta este comando para tus scripts de pruebas
+      # Ejecuta las pruebas definidas en package.json
+      - name: Ejecutar Pruebas
+        run: npm test # Ajusta este comando según tus scripts de pruebas
 
-      - name: Setup Jira
+      # Configura Jira CLI si necesitas integrar con Jira
+      - name: Configurar Jira
         uses: atlassian/gajira-cli@v3
         with:
-          version: '1.0.27'  # Especifica la versión del CLI de Jira si es necesario
+          version: '1.0.27'  # Especifica la versión de Jira CLI si es necesario
 
   deploy:
     needs: build-and-test
-    if: github.ref == 'refs/heads/release/**' && github.event_name == 'push'
+    if: startsWith(github.ref, 'refs/heads/release/') && github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
+      # Clona el repositorio en el runner
       - uses: actions/checkout@v3
 
-      - name: Set up Node.js
+      # Configura el entorno de Node.js
+      - name: Configurar Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '20'  # Consistencia al usar Node.js 20 en todas las operaciones de construcción y despliegue
+          node-version: '20'  # Mantener consistencia al usar Node.js 20 en todas las operaciones de construcción y despliegue
       
-      - name: Build
-        run: npm run build # Asegúrate de que tu entorno de compilación es compatible con Node.js 20
+      # Ejecuta el script de build definido en package.json
+      - name: Construir
+        run: npm run build # Asegúrate de que el proceso de construcción sea compatible con Node.js 20
 
-   ##   - name: Deploy to Production
-   ##     run: echo "Deploying to production" # Reemplaza esto con tu proceso de despliegue real
-   ##     env:
-   ##       ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+       # Ejecuta el script de build definido en package.json
+      - name: Construir
+        run: npm run build:win # Asegúrate de que el proceso de construcción sea compatible con Node.js 20
+        
+
+      # Marcador de posición para el proceso real de despliegue
+      # Reemplaza esto con tus comandos reales de despliegue
+      - name: Desplegar a Producción
+        run: echo "Desplegando a producción"
+        env:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }} # Usa los secretos de GitHub para tokens de acceso seguro
+
