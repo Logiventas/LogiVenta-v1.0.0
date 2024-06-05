@@ -9,7 +9,7 @@ import getServerIP from "./utils/getServerIP"; // Utilidad para obtener la IP de
 import { loadAdminUser } from "./script/loadAdminUser";
 import { loadAdminPermissions } from "./script/loadAdminPermissions";
 const whilelist=['http://localhost:*']
-
+/*
 const corsOptions = {
   origin: function(origin,callback){
     if(whilelist.indexOf(origin) === -1){
@@ -19,7 +19,12 @@ const corsOptions = {
     callback(new Error('Not allowed by CORS'))
   }
 }
-}
+}*/
+
+const corsOptions = {
+  origin: true,
+  credentials: true,
+};
 const app = express();
 // deepcode ignore UseCsurfForExpress: <please specify a reason of ignoring this>
 
