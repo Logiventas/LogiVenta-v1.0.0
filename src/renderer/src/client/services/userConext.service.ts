@@ -1,12 +1,10 @@
 // src/renderer/src/client/services/userContext.service.ts
 import api from '../interceptors/api.interceptor';
-import UserModel from '../model/User.model';
-
 const URL = '/users/data';
 
-const getUserData = async (): Promise<UserModel> => {
+const getUserData = async (): Promise<any> => {
   try {
-    const response = await api.get<UserModel>(URL);
+    const response = await api.get(URL);
     console.log('Fetched User Data from API:', response.data); // Añadir log para verificar los datos
     
     return response.data;
