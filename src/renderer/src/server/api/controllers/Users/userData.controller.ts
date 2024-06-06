@@ -3,6 +3,7 @@ import { Request, Response } from "express";
 import { getUserData } from "../../../services/userData.service"; // Asegúrate de que esta ruta sea correcta
 import { userPermissions } from "../../../services/userPermissions.service"; // Asegúrate de que esta ruta sea correcta
 
+
 const getUserDataController = async (req: Request, res: Response) => {
   const idUser = req.user.user.idUser;
   const userName = req.user.user.userName;
@@ -29,7 +30,7 @@ const getUserDataController = async (req: Request, res: Response) => {
       secondSurname: user.dataValues.secondSurname,
       email: user.dataValues.email,
       userName: user.dataValues.userName,
-      acceso: {
+      access: {
         gestionArchivo: permissions.dataValues.gestionArchivo,
         gestionSistema: permissions.dataValues.gestionSistema,
         gestionCaja: permissions.dataValues.gestionCaja,
