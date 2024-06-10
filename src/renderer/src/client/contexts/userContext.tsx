@@ -1,5 +1,5 @@
 import React, { createContext, useState, ReactNode } from 'react';
-import userContexts from '../model/userContexts.model';
+import userContexts from '../model/UserContexts.model';
 
 // Define la estructura del usuario y los permisos
 const initialUserState:userContexts = {

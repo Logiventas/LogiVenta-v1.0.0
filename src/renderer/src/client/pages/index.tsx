@@ -1,8 +1,8 @@
 //src\renderer\src\client\pages\home\Home.tsx
 import React, { useEffect, useState, useContext } from "react";
-import Icono from '@renderer/client/components/component_icono';
-import SelecteUserContext from '@client/contexts/contexts';
-import BarraUsuario from '@client/components/barraUsuario/component_barraUsuario';
+import Icono from '@renderer/client/components/Icon.component';
+import SelecteUserContext from '@client/contexts/userContext';
+import BarraUsuario from '@client/components/userBar/index';
 import userContextController from '@renderer/client/adapters/userConext.adapters';
 
 import img_gestionArchivo from '/assets/icon/gestionDeArchivo.png';

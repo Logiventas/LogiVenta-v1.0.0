@@ -1,0 +1,98 @@
+/* styles.css */
+.cls-1,
+.cls-3 {
+  fill: #fff;
+}
+.cls-1,
+.cls-2,
+.cls-4,
+.cls-6 {
+  stroke: #033935;
+  stroke-miterlimit: 10;
+}
+.cls-1 {
+  stroke-width: 10px;
+}
+.cls-2,
+.cls-5,
+.cls-6 {
+  fill: #033935;
+} /* color inicial */
+.cls-2 {
+  stroke-width: 9px;
+}
+.cls-4 {
+  fill: none;
+  stroke-width: 3px;
+}
+.cls-6 {
+  font-size: 54px;
+  stroke-width: 0.25px;
+  font-family: "Bauhaus93", "Bauhaus 93";
+}
+/* Define la animación de cambio de color */
+@keyframes colorShiftAnimation {
+  0% {
+    fill: #d5eaeb; /* Color intermedio */
+    stroke: #29235c00;
+  }
+  50% {
+    fill: #033935; /* Color original */
+    stroke: #033935;
+  }
+  100% {
+    fill: #033935; /* Color intermedio */
+    stroke: #033935;
+  }
+}
+
+@keyframes flechaAnimationstroke {
+  0% {
+   
+    stroke: #f0f0f000; /* Color intermedio */
+  }
+  100% {
+    stroke: #033935; /* Color intermedio */
+  }
+}
+
+@keyframes flechaAnimationsfill {
+  0% {
+    fill: #d5eaeb00; /* Color intermedio */
+  }
+  100% {
+
+    fill: #033935; /* Color intermedio */
+  }
+}
+
+/* Aplica la animación a los elementos con clase .cls-2 */
+.cls-2:nth-of-type(1) {
+  animation: colorShiftAnimation 2s ease-in-out infinite;
+  animation-delay: 1s;
+  -webkit-animation: colorShiftAnimation 2s ease-in-out infinite;
+}
+
+.cls-2:nth-of-type(2) {
+  animation: colorShiftAnimation 2s ease-in-out infinite;
+  animation-delay: 6s;
+  -webkit-animation: colorShiftAnimation 2s ease-in-out infinite;
+}
+.cls-2:nth-of-type(3) {
+  animation: colorShiftAnimation 2s ease-in-out infinite;
+  animation-delay: 5s;
+  -webkit-animation: colorShiftAnimation 2s ease-in-out infinite;
+}
+
+.cls-5 {
+    animation: flechaAnimationsfill 2s ease-in-out infinite;
+    animation-delay: 1s;
+    -webkit-animation: flechaAnimationsfill 2s ease-in-out infinite;
+  }
+  
+.cls-4 {
+  animation: flechaAnimationstroke 2s ease-in-out infinite;
+  animation-delay: 0s;
+  -webkit-animation: flechaAnimationstroke 2s ease-in-out infinite;
+}
+

@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react';
-import { HashRouter, Route, Routes } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import ConfigInitial from '@renderer/client/pages/inicioConfiguracion/inicioConfiguracion';
-import Home from '@client/pages/home/Home';
-import IniciarSesion from '@client/pages/iniciarSesion/iniciarSesion';
-import { SelecteUserProvider } from '@client/contexts/contexts';
-import UserManagement from '@renderer/client/pages/userManagmen';
-import Users from '@client/pages/users';
+import Home from '@client/pages/index';
+import LogIn from '@renderer/client/pages/LogIn';
+import { SelecteUserProvider } from '@client/contexts/userContext';
+import UserManagementSwitch from './switch/UserManagment.switch';
 
 let inicial = true;
 if (inicial) {
@@ -28,15 +27,10 @@ function AppRouter() {
       {loading && <div className="loader">Loading...</div>}
       <HashRouter>
         <Routes>
-          <Route path="/" element={inicial ? <IniciarSesion /> : <ConfigInitial />} />
+          <Route path="/" element={inicial ? <LogIn /> : <ConfigInitial />} />
           <Route path="/home/*" element={<Home />} />
-          <Route path="/iniciarSesion" element={<IniciarSesion />} />
-          <Route path="/userManagement" element={<UserManagement />}>
-            <Route path="users" element={<Users />} />
-            <Route path="newUser" element={<h1>nuevo usaurio</h1>} />
-            <Route path="retiredUsers" element={<h1>Usuarios retirados</h1>} />
-            <Route path="editUser" element={<h1>Editar Usuario</h1>} />
-          </Route>
+          <Route path="/LogIn" element={<LogIn />} />
+          <Route path="/*" element={<UserManagementSwitch />} />
           <Route path="*" element={<h1>404 Not Found</h1>} />
         </Routes>
       </HashRouter>
