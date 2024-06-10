@@ -1,8 +1,8 @@
 //src\renderer\src\client\components\barraUsuario\component_barraUsuario.tsx
 import React, { useContext } from 'react';
-import Salir from '@client/components/barraUsuario/barraUsuario_salir';
-import Atras from '@client/components/barraUsuario/barraUsuario_atras';
-import SelecteUserContext from '@client/contexts/contexts';
+import Salir from '@renderer/client/components/userBar/BtnExit.component';
+import Atras from '@renderer/client/components/userBar/BtnReturn.component';
+import SelecteUserContext from '@client/contexts/userContext';
 import avatar from '/assets/img/usuario.png';
 
 const BarraUsuario: React.FC = () => {

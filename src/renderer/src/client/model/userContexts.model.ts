@@ -1,4 +1,4 @@
-import User from "./user.model";
+import User from "./User.model";
 import AccessUser from './AccessUser.model'
 
 interface UserContexts extends User, AccessUser {

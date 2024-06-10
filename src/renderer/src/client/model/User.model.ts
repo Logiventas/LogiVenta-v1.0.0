@@ -1,3 +1,4 @@
+//src\renderer\src\client\model\User.model.ts
 interface User {
       /** ID único */
       idUser: number;

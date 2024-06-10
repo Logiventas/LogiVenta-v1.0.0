@@ -1,10 +1,10 @@
 import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Modal from '@client/components/component_modal';
+import Modal from '@renderer/client/components/Modal.component';
 import icon_exit from '/src/assets/icon/exit.png';
-import SelecteUserContext from '@client/contexts/contexts'; // Ajusta la ruta según tu estructura
+import SelecteUserContext from '@client/contexts/userContext'; // Ajusta la ruta según tu estructura
 
-const Salir: React.FC = () => {
+const BtnExit: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
   const { setUser } = useContext(SelecteUserContext);
@@ -14,14 +14,13 @@ const Salir: React.FC = () => {
     if (action === 'accept') {
       // Reiniciar los datos del usuario
       setUser({
-        idUser: "",
+        idUser:0,
         firstName: "User",
         secondName: "",
         surname: "user",
         secondSurname: "",
-        email: "",
         userName: "",
-        acceso: {
+        access: {
           gestionArchivo: false,
           gestionSistema: false,
           gestionCaja: false,
@@ -61,4 +60,4 @@ const Salir: React.FC = () => {
   );
 };
 
-export default Salir;
+export default BtnExit;

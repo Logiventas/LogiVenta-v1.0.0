@@ -1,7 +1,7 @@
 import { useNavigate, useLocation } from 'react-router-dom';
 import icon_atras from '/src/assets/icon/atras.png';
 
-const Atras: React.FC = () => {
+const BtnReturn: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -21,4 +21,4 @@ const Atras: React.FC = () => {
   );
 };
 
-export default Atras;
+export default BtnReturn;

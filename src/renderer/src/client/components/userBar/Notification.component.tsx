@@ -1,6 +1,6 @@
 
 import icon_notificacin from '/src/assets/icon/notificacion.png'
-const notificacion =(prop:any)=>{
+const Notification =(prop:any)=>{
     return(
         <>
                 <button className="btn">
@@ -22,4 +22,4 @@ const notificacion =(prop:any)=>{
         </>
     )
 }
-export  default notificacion
+export  default Notification

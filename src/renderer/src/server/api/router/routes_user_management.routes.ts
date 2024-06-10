@@ -1,3 +1,4 @@
+//src\renderer\src\server\api\router\routes_user_management.routes.ts
 import express, { Request, Response } from "express";
 import { initAdmin } from '../controllers/Admin/updatePassword.controller';
 import getUserDataController  from "../controllers/Users/userData.controller";
@@ -5,8 +6,34 @@ import getUserDataController  from "../controllers/Users/userData.controller";
 const router = express.Router();
 
 // Define la ruta GET para '/users'
-router.get('/users', (_: Request, res: Response) => {
-    res.send('Usuario');
+router.get('/allUsers', (_: Request, res: Response) => {
+    res.json([
+        {
+            idUser: 1,
+            identification: 12345678,
+            firstName: "Juan",
+            secondName: "Carlos",
+            surname: "Pérez",
+            secondSurname: "Gómez",
+            email: "juan.perez@example.com",
+            phone1: 5551234,
+            profile: "Perfil2",
+            job: "Administracion"
+        },
+        {
+            idUser: 2,
+            identification: 87654321,
+            firstName: "Ana",
+            secondName: "Luisa",
+            surname: "Martínez",
+            secondSurname: "Ramírez",
+            email: "ana.martinez@example.com",
+            phone1: 5552345,
+            profile: "Perfil1",
+            job: "Cajero"
+        },
+        // Agrega más usuarios si es necesario
+    ]);
 });
 
 // Ruta POST para inicializar admin (o actualizar contraseña, según lo que hace `initAdmin`)

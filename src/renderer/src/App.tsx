@@ -1,6 +1,6 @@
 import  { useState, useEffect } from 'react';
 import Router from './client/routes/router';
-import Logiventas from './client/components/Logiventas';
+import Logiventas from './client/components/logoLogiventas.component';
 
 
 function App(): JSX.Element {
