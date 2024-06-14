@@ -22,7 +22,8 @@ const loadUser = async (): Promise<boolean> => {
       phone: 1221,
       mail: "bguevara@gmail.com",
       sex: "H",
-      accountId:1
+      accountId:1,
+      photo:null
     });
 
     console.log("Usuario cargado exitosamente");

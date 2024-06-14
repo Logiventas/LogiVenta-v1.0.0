@@ -18,6 +18,7 @@ interface UserAttributes {
   sex?: string | null;
   accountId?: number | null;
   jobId?: number | null;
+  photo?: File | null; // Añadido el tipo para photo
   
 }
 
@@ -36,6 +37,7 @@ export class User extends Model<UserAttributes> implements UserAttributes {
   public jobId?: number | null;
   public Account?: any; // Relación con Account
   public Job?: any; // Relación con Job
+  public photo?: File | null; // Corregido el tipo para photo
 }
 
 User.init(
@@ -83,6 +85,10 @@ User.init(
     },
     accountId: {
       type: DataTypes.INTEGER,
+      allowNull: true,
+    },
+    photo: {
+      type: DataTypes.BLOB, // Ajustado para almacenar archivos binarios
       allowNull: true,
     },
   },

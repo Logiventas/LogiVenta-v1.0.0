@@ -2,12 +2,13 @@ import express, { Request, Response } from "express";
 import { initAdmin } from '../controllers/Admin/updatePassword.controller';
 import getUserDataController from "../controllers/Users/userData.controller";
 import { getAllUsersController } from '../controllers/Users/allUseres.controlller'; // Importa el controlador correctamente
-
+import {getUserController} from '../controllers/Users/getUserController'
 const router = express.Router();
 
 // Define la ruta GET para '/allUsers'
 router.get('/allUsers', getAllUsersController); // Usa el controlador
-
+// Get all users
+router.get('/user', getUserController); //
 // Ruta POST para inicializar admin (o actualizar contraseña, según lo que hace `initAdmin`)
 router.post('/admin/init', async (req: Request, res: Response) => {
     try {
