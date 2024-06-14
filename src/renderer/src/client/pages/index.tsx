@@ -40,13 +40,13 @@ const Home: React.FC = () => {
     <>
       <BarraUsuario />
       <div className="d-flex w-100 mx-auto my-5  row" >
-        {user.access.gestionArchivo && <Icono  enlace="#" modulo="Gestión de Archivo" urlImg={img_gestionArchivo} />}
-        {user.access.gestionSistema && <Icono enlace="#" modulo="Configuración de Sistema" urlImg={img_gestionSistema} />}
-        {user.access.gestionCaja && <Icono  enlace="#" modulo="Gestión de Caja" urlImg={img_gestionCaja} />}
-        {user.access.gestionUsuario && <Icono enlace="/userManagement" modulo="Gestión de Usuarios" urlImg={img_gestionUsuairo} />}
-        {user.access.gestionInventario && <Icono enlace="#" modulo="Gestión de Inventario" urlImg={img_gestionIventario} />}
-        {user.access.registroVentas && <Icono enlace="#" modulo="Registro de Ventas" urlImg={img_registroVentas} />}
-        {user.access.gestionProveedores && <Icono enlace="" modulo="Gestión de Proveedores" urlImg={img_gestionProveedores} />}
+        {user.access["GA00-00"] && <Icono  enlace="#" modulo="Gestión de Archivo" urlImg={img_gestionArchivo} />}
+        {user.access["GS00-00"] && <Icono enlace="#" modulo="Configuración de Sistema" urlImg={img_gestionSistema} />}
+        {user.access["GC00-00"] && <Icono  enlace="#" modulo="Gestión de Caja" urlImg={img_gestionCaja} />}
+        {user.access["GU00-00"] && <Icono enlace="/userManagement" modulo="Gestión de Usuarios" urlImg={img_gestionUsuairo} />}
+        {user.access["GI00-00"] && <Icono enlace="#" modulo="Gestión de Inventario" urlImg={img_gestionIventario} />}
+        {user.access["RV00-00"] && <Icono enlace="#" modulo="Registro de Ventas" urlImg={img_registroVentas} />}
+        {user.access["GP00-00"] && <Icono enlace="" modulo="Gestión de Proveedores" urlImg={img_gestionProveedores} />}
       </div>
     </>
   );

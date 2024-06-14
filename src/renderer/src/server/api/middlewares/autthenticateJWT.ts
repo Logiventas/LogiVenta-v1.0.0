@@ -14,13 +14,10 @@ export const authenticateJWT = (req: Request, res: Response, next: NextFunction)
     return res.status(401).json({ message: "Access token is missing or invalid" });
   }
 
-  jwt.verify(token, JWT_SECRET, (err, decoded) => {
+  jwt.verify(token, JWT_SECRET, (err) => {
     if (err) {
       return res.status(403).json({ message: "Token is not valid" });
     }
-
-    req.user = decoded;
-    console.log("Middleware user: ", req.user); // Verifica el contenido de req.user aquí
     next();
   });
 };

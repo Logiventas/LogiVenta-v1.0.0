@@ -22,19 +22,20 @@ const TableUsers: React.FC<TableUsersProps> = ({ data }) => {
     };
 
     const columnDefs: ColDef[] = [
-        { headerName: "ID Usuario", field: "identification", sortable: true, filter: true, resizable: true },
-        { headerName: "Primer Nombre", field: "firstName", sortable: true, filter: true, resizable: true },
-        { headerName: "Segundo Nombre", field: "secondName", sortable: true, filter: true, resizable: true },
-        { headerName: "Primer Apellido", field: "surname", sortable: true, filter: true, resizable: true },
-        { headerName: "Segundo Apellido", field: "secondSurname", sortable: true, filter: true, resizable: true },
-        { headerName: "Perfil", field: "profile", sortable: true, filter: true, resizable: true },
-        { headerName: "Cargo", field: "job", sortable: true, filter: true, resizable: true },
-        { headerName: "Teléfono ", field: "phone1", sortable: true, filter: true, resizable: true },
-        { headerName: "Email", field: "email", sortable: true, filter: true, resizable: true },
-        { 
+        { headerName: "ID Usuario", field: "identification", sortable: true, filter: false, resizable: true },
+        { headerName: "Primer Nombre", field: "firstName", sortable: true, filter: false, resizable: true },
+        { headerName: "Segundo Nombre", field: "secondName", sortable: true, filter: false, resizable: true },
+        { headerName: "Primer Apellido", field: "surname", sortable: true, filter: false, resizable: true },
+        { headerName: "Segundo Apellido", field: "secondSurname", sortable: true, filter: false, resizable: true },
+        { headerName: "Perfil", field: "profile", sortable: true, filter: false, resizable: true },
+        { headerName: "Cargo", field: "job", sortable: true, filter: false, resizable: true },
+        { headerName: "Teléfono ", field: "phone1", sortable: true, filter: false, resizable: true },
+        { headerName: "Email", field: "email", sortable: true, filter: false, resizable: true },
+        { headerName: "Sexo", field: "sex", sortable: true, filter: false, resizable: true },
+        {
             headerName: "Acciones",
             cellRenderer: (params) => (
-              <Link to={`/userManagement/editUser/${params.data.idUser}`} className="btn btn-primary">Editar</Link>
+                <Link to={`/userManagement/editUser/${params.data.idUser}`}  className="btn py-0 px-2 btn-primary">Ver</Link>
             ),
         }
     ];

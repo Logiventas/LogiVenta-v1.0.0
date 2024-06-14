@@ -1,12 +1,11 @@
-//src\renderer\src\server\services\userData.service.ts
-import { User } from "../api/models/user.model"; // Asegúrate de que esta ruta sea correcta
+// src/renderer/src/server/services/getUser.service.ts
+import User from "../models/User.model"; // Asegúrate de que esta ruta sea correcta
 
-export const getUserData = async (idUser: number, userName: string) => {
+export const getUser = async (idUser: number) => {
   try {
     const user = await User.findOne({
       where: {
-        idUser,
-        userName,
+        id: idUser,
       },
     });
 

@@ -1,7 +1,7 @@
 //src\renderer\src\client\controller\userConext.controller.ts
 
-import getUserData from '../services/userConext.service';
-import userContexts from '../model/UserContexts.model';
+import getUserData from '../services/userContexts.service';
+import userContexts from '../model/userContexts.model';
 
 class UserContextController {
   async fetchUserData(): Promise<userContexts> {

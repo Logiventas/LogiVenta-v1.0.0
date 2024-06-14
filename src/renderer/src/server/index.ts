@@ -7,8 +7,9 @@ import cookieParser from "cookie-parser";
 import getServerIP from "./utils/getServerIP"; // Utilidad para obtener la IP del servidor
 import initializeDatabase from "./script/index";
 
-const whilelist = ["http://localhost:*"];
+
 /*
+const whilelist = ["http://localhost:*"];
 const corsOptions = {
   origin: function(origin,callback){
     if(whilelist.indexOf(origin) === -1){
@@ -25,7 +26,7 @@ const corsOptions = {
   credentials: true,
 };
 const app = express();
-// deepcode ignore UseCsurfForExpress: <please specify a reason of ignoring this>
+
 
 app.use(express.json());
 app.use(cookieParser());

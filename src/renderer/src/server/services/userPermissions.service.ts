@@ -1,19 +1,33 @@
-//src\renderer\src\server\services\dataUser.service.ts
-import { UserPermission } from "../api/models/UserPermission.model"; // Asegúrate de que esta ruta sea correcta
+import ProfilePermission from "../models/ProfilePermission.model";
+import Account from "../models/Account.model";
 
-export const userPermissions = async (idUser: number) => {
+export const userPermissions = async (accountId: number) => {
   try {
-    const permissions = await UserPermission.findOne({
+    // Encontrar la cuenta del usuario y obtener el profileId
+    let account = await Account.findOne({
       where: {
-        userId: idUser,
+        id: accountId,
       },
     });
 
-    if (!permissions) {
+    if (!account) {
+      console.error("Cuenta no encontrada");
       return null;
     }
 
-    return permissions;
+    const profileId = account.dataValues.profileId;
+    console.log('Perfil de usuario:', profileId);
+
+    // Encontrar el perfil y sus permisos asociados
+    const profilePermissions = await ProfilePermission.findAll({
+      where: { profileId: profileId },
+
+    });
+    let data:any = []
+    profilePermissions.map((permision)=>{
+      data.push(permision.dataValues)
+    })
+    return data;
   } catch (error) {
     console.error("Error al obtener los permisos del usuario:", error);
     throw new Error("Error al obtener los permisos del usuario");

@@ -5,7 +5,7 @@ const URL = '/users/data';
 const getUserData = async (): Promise<any> => {
   try {
     const response = await api.get(URL);
-    console.log('Fetched User Data from API:', response.data); // Añadir log para verificar los datos
+    console.log('Fetched User Data from API:', response.data); 
     
     return response.data;
   } catch (error) {

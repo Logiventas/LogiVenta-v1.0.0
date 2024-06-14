@@ -17,6 +17,8 @@ interface UserAttributes {
   mail?: string | null;
   sex?: string | null;
   accountId?: number | null;
+  jobId?: number | null;
+  
 }
 
 export class User extends Model<UserAttributes> implements UserAttributes {
@@ -31,6 +33,9 @@ export class User extends Model<UserAttributes> implements UserAttributes {
   public mail?: string | null;
   public sex?: string | null;
   public accountId?: number | null;
+  public jobId?: number | null;
+  public Account?: any; // Relación con Account
+  public Job?: any; // Relación con Job
 }
 
 User.init(

@@ -1,51 +1,50 @@
-//src\renderer\src\server\api\controllers\Users\userData.controller.ts
 import { Request, Response } from "express";
-import { getUserData } from "../../../services/userData.service"; // Asegúrate de que esta ruta sea correcta
-import { userPermissions } from "../../../services/userPermissions.service"; // Asegúrate de que esta ruta sea correcta
-
+import { getUser } from "../../../services/getUser.service";
+import { userPermissions } from "../../../services/userPermissions.service";
+import jwt from 'jsonwebtoken';
 
 const getUserDataController = async (req: Request, res: Response) => {
-  const idUser = req.user.user.idUser;
-  const userName = req.user.user.userName;
+  const JWT_SECRET = process.env.JWT_SECRET || "my_super_secret_key";
+  const token = req.cookies.token;
+
+  if (!token) {
+    return res.status(401).json({ message: "Token no proporcionado" });
+  }
 
   try {
-    // Obtener datos del usuario
-    const user = await getUserData(idUser, userName);
+    const decoded = jwt.verify(token, JWT_SECRET) as jwt.JwtPayload;
+    const userId = decoded.user.id;
+
+    const user = await getUser(userId);
+
     if (!user) {
       return res.status(404).json({ message: "Usuario no encontrado" });
     }
+    const id:any = user.dataValues.accountId
 
     // Obtener permisos del usuario
-    const permissions = await userPermissions(idUser);
-    if (!permissions) {
-      return res.status(404).json({ message: "Permisos de usuario no encontrados" });
-    }
-    console.log('Datos optenidos: ',user);
-    // Asegurarse de que los datos están correctamente accesibles
+    const permissions = await userPermissions(id);
+    
+    const access: { [key: string]: boolean } = {};
+    permissions.forEach((permiso) => {
+      access[permiso.permissionsId] = permiso.state;
+    });
+
+    const username = `${user.dataValues.firstName} ${user.dataValues.surname}`;
     const userData = {
-      idUser: user.dataValues.idUser,
+      idUser: user.dataValues.id,
       firstName: user.dataValues.firstName,
       secondName: user.dataValues.secondName,
       surname: user.dataValues.surname,
       secondSurname: user.dataValues.secondSurname,
-      email: user.dataValues.email,
-      userName: user.dataValues.userName,
-      access: {
-        gestionArchivo: permissions.dataValues.gestionArchivo,
-        gestionSistema: permissions.dataValues.gestionSistema,
-        gestionCaja: permissions.dataValues.gestionCaja,
-        gestionUsuario: permissions.dataValues.gestionUsuario,
-        gestionInventario: permissions.dataValues.gestionInventario,
-        gestionProveedores: permissions.dataValues.gestionProveedores,
-        registroVentas: permissions.dataValues.registroVentas,
-      },
+      userName: username,
+      access: {...access},
     };
 
-    console.log("User data retrieved successfully:", userData);
     return res.status(200).json(userData);
   } catch (error) {
-    console.error("Error in getUserDataController:", error);
-    return res.status(500).json({ message: "Internal server error" });
+    console.error("Error en getUserDataController:", error);
+    return res.status(500).json({ message: "Error interno del servidor" });
   }
 };
 
