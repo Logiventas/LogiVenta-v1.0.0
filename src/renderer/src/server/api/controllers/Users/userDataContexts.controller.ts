@@ -1,20 +1,12 @@
 import { Request, Response } from "express";
 import { getUser } from "../../../services/getUser.service";
 import { userPermissions } from "../../../services/userPermissions.service";
-import jwt from 'jsonwebtoken';
-
 const getUserDataController = async (req: Request, res: Response) => {
-  const JWT_SECRET = process.env.JWT_SECRET || "my_super_secret_key";
-  const token = req.cookies.token;
-
-  if (!token) {
-    return res.status(401).json({ message: "Token no proporcionado" });
-  }
 
   try {
-    const decoded = jwt.verify(token, JWT_SECRET) as jwt.JwtPayload;
-    const userId = decoded.user.id;
-
+    console.log( 'UserDataContexs controlador: ', req.user)
+    const userId = req.user.data.idUser;
+    
     const user = await getUser(userId);
 
     if (!user) {

@@ -1,8 +1,8 @@
 import React, { createContext, useState, ReactNode, Dispatch, SetStateAction } from 'react';
 import userContexts from '../model/userContexts.model';
-import { Country} from '@renderer/client/model/Country.model';
+import { Country } from '@renderer/client/model/Country.model';
 import { Job } from '../model/Job.model';
-import { Profile } from '../model/Profile.model';  // Importa la interfaz Profile
+import { Profile } from '../model/Profile.model';
 
 // Define la estructura del usuario y los permisos
 const initialUserState: userContexts = {
@@ -71,8 +71,8 @@ const initialUserState: userContexts = {
 interface UserContextType {
   user: userContexts;
   setUser: Dispatch<SetStateAction<userContexts>>;
-  profiles: Profile[];  // Cambia el tipo a Profile[]
-  jobs: Job[];  // Cambia el tipo a Job[]
+  profiles: Profile[];
+  jobs: Job[];
   countries: Country[];
 }
 
@@ -80,18 +80,36 @@ interface UserContextType {
 const SelecteUserContext = createContext<UserContextType>({
   user: initialUserState,
   setUser: () => { },
-  profiles: [],  // Inicializa como un array vacío de Profile
-  jobs: [],  // Inicializa como un array vacío de Job
+  profiles: [],
+  jobs: [],
   countries:[]
 });
 
 SelecteUserContext.displayName = 'DatosUsuario';
 
-
-
-const initialJobs: Job[] =[]
-const initialProfiles: Job[] =[]
-const initialCountries: Country[] = []
+// Estados iniciales
+const initialJobs: Job[] = [];
+const initialProfiles: Profile[] = [];
+const initialCountries = [
+  {
+    id: 1,
+    name: "Argentina",
+    cities: [
+      { id: 1, name: "Buenos Aires" },
+      { id: 2, name: "Córdoba" },
+      { id: 3, name: "Rosario" }
+    ]
+  },
+  {
+    id: 2,
+    name: "Brasil",
+    cities: [
+      { id: 1, name: "São Paulo" },
+      { id: 2, name: "Rio de Janeiro" },
+      { id: 3, name: "Brasilia" }
+    ]
+  }
+];
 
 interface SelecteUserProviderProps {
   children: ReactNode;
@@ -99,9 +117,9 @@ interface SelecteUserProviderProps {
 
 export const SelecteUserProvider: React.FC<SelecteUserProviderProps> = ({ children }) => {
   const [user, setUser] = useState(initialUserState);
-  const [profiles] = useState<Profile[]>(initialProfiles);  // Inicializa como un array vacío de Profile
-  const [jobs] = useState<Job[]>(initialJobs);  // Inicializa como un array vacío de Job
-  const [countries] = useState<Country[]>(initialCountries);
+  const [profiles] = useState<Profile[]>(initialProfiles);
+  const [jobs] = useState<Job[]>(initialJobs);
+  const [countries] = useState<any>(initialCountries);
 
   return (
     <SelecteUserContext.Provider value={{ user, setUser, profiles, jobs, countries }}>

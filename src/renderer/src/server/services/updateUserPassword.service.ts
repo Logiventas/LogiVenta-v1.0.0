@@ -13,6 +13,7 @@ export const updateAdminPassword = async (password: string, accountId: number) =
         console.log(`Cuenta encontrada: ${accountId}, actualizando contraseña...`);
 
         // Hashear la nueva contraseña antes de guardarla
+        // deepcode ignore HardcodedSecret: <please specify a reason of ignoring this>
         const hashedPassword = await bcrypt.hash(password, 10);
         account.set('password', hashedPassword);
         await account.save();

@@ -20,7 +20,6 @@ export const getAllUsersController = async (_: Request, res: Response) => {
       job: user.Job?.name 
     }));
 
-    console.log('Usuarios formateados:', formattedUsers);
 
     res.status(200).json(formattedUsers);
   } catch (error) {

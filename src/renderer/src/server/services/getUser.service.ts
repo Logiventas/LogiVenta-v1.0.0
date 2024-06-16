@@ -2,6 +2,7 @@
 import User from "../models/User.model"; // Asegúrate de que esta ruta sea correcta
 
 export const getUser = async (idUser: number) => {
+  console.log('Servicio getUser :  ',idUser);
   try {
     const user = await User.findOne({
       where: {

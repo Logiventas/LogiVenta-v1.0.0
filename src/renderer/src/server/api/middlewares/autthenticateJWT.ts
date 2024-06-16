@@ -18,6 +18,7 @@ export const authenticateJWT = (req: Request, res: Response, next: NextFunction)
     if (err) {
       return res.status(403).json({ message: "Token is not valid" });
     }
+    req.user = jwt.decode(token);
     next();
   });
 };

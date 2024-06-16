@@ -1,4 +1,6 @@
- interface Country {
+import { Context} from 'react';
+import SelecteUserContext from '@client/contexts/userContext'; 
+interface Country {
     Colombia: string[];
     Perú: string[];
     Chile: string[];

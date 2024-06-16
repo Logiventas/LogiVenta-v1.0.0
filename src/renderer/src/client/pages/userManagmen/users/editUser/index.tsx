@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 //Models
 import User from "./models/User.model";
-
+import { useParams } from 'react-router-dom';
 //Componets 
 import ProfilePicture from './hooks/ProfilePicture.component';
 import { SelectorCountryCity } from './hooks/SelectorCountryCity.component';
@@ -42,7 +42,7 @@ const EditUser = () => {
 
     const [user, setUser] = useState<User>(exampleUser);
     const [profilePicture, setProfilePicture] = useState<File | null>(null);
-
+    const { idUser } = useParams();
     const handleChange = (e: { target: { id: string, value: string } }) => {
         const { id, value } = e.target;
         setUser(prevUser => ({ ...prevUser, [id]: value }));

@@ -2,10 +2,7 @@
 import Account from "../models/Account.model";
 import crypto from "crypto";
 
-async function verifyPassword(
-  password: string,
-  storedHash: string
-): Promise<boolean> {
+async function verifyPassword(password: string, storedHash: string): Promise<boolean> {
   return new Promise((resolve, reject) => {
     const [salt, key] = storedHash.split(":");
     crypto.pbkdf2(password, salt, 100000, 64, "sha512", (err, derivedKey) => {
@@ -17,30 +14,27 @@ async function verifyPassword(
 
 export const loginService = async (name: string, password: string) => {
   try {
-    const user = await Account.findOne({ where: { name } });
+    const account = await Account.findOne({ where: { name } });
 
-    if (!user) {
+    if (!account) {
       return { success: false, status: 404, data: { ms: "Usuario no encontrado" } }; // Usuario no encontrado
     }
-    if (!user.dataValues.password) {
+    if (!account.dataValues.password) {
       return { success: false, status: 400, data: { ms: "Contraseña no definida" } };
     }
 
-    const isPasswordValid = await verifyPassword(
-      password,
-      user.dataValues.password
-    );
+    const isPasswordValid = await verifyPassword(password, account.dataValues.password);
 
     if (!isPasswordValid) {
       return { success: false, status: 401, data: { ms: "Contraseña incorrecta" } };
     } else {
-      // Solo devolver los campos necesarios
-      const { id, name } = user.dataValues;
-
-      return { success: true, status: 200, data: { id, name } };
+      const { id, profileId, state } = account.dataValues;
+      if (!state) {
+        return { success: false, status: 401, data: { ms: "Usuario inactivo" } };
+      }
+      return { success: true, status: 200, data: { id, profileId } };
     }
   } catch (error) {
     return { success: false, status: 500, data: { ms: "Error en autenticación" } };
   }
 };
- 

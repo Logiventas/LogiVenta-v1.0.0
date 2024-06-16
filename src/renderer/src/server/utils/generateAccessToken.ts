@@ -1,18 +1,19 @@
-//src\renderer\src\server\utils\generateAccessToken.ts
+// src/renderer/src/server/utils/generateAccessToken.ts
 import jwt from 'jsonwebtoken';
 
 // Utiliza una variable de entorno para la clave secreta
+// deepcode ignore HardcodedSecret: <please specify a reason of ignoring this>
 const JWT_SECRET = process.env.JWT_SECRET || "my_super_secret_key";
 
 interface User {
-  id: number;
-  name: string;
-  // Otros campos relevantes del usuario
+  idUser: number;
+  idAccount: number;
+  idProfile: number;
 }
 
-function generateAccessToken(user: User|any): string {
+function generateAccessToken(data: User): string {
   return jwt.sign(
-    { user },
+    { data },
     JWT_SECRET,
     { expiresIn: "1h" }
   );

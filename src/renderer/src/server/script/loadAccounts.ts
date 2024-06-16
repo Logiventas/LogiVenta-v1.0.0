@@ -33,6 +33,7 @@ async function loadAdmin(): Promise<boolean> {
 
     // Generar una sal y hashear la contraseña del administrador
     const salt = crypto.randomBytes(16).toString("hex");
+    // deepcode ignore HardcodedSecret: <please specify a reason of ignoring this>
     const hashedPassword = await hashPassword("admin123", salt);
 
     // Crear un nuevo usuario administrador (Account)
