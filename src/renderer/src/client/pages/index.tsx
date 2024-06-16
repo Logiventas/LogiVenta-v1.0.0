@@ -41,7 +41,7 @@ const Home: React.FC = () => {
       <BarraUsuario />
       <div className="d-flex w-100 mx-auto my-5  row" >
         {user.access["GA00-00"] && <Icono  enlace="#" modulo="Gestión de Archivo" urlImg={img_gestionArchivo} />}
-        {user.access["GS00-00"] && <Icono enlace="#" modulo="Configuración de Sistema" urlImg={img_gestionSistema} />}
+        {user.access["CS00-00"] && <Icono enlace="#" modulo="Configuración de Sistema" urlImg={img_gestionSistema} />}
         {user.access["GC00-00"] && <Icono  enlace="#" modulo="Gestión de Caja" urlImg={img_gestionCaja} />}
         {user.access["GU00-00"] && <Icono enlace="/userManagement" modulo="Gestión de Usuarios" urlImg={img_gestionUsuairo} />}
         {user.access["GI00-00"] && <Icono enlace="#" modulo="Gestión de Inventario" urlImg={img_gestionIventario} />}
