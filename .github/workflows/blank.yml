@@ -1,4 +1,3 @@
-
 name: Continuous Integration and Deployment
 
 on:
@@ -6,8 +5,8 @@ on:
     branches:
       - develop
       - feature/**
-      - hotfix/**
-      - release/**
+      - Feature-usermanagmen-users/**
+      - main
   pull_request:
     branches:
       - develop
@@ -18,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      
+
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
@@ -30,13 +29,39 @@ jobs:
       - name: Run Tests
         run: npm test # Ajusta este comando para tus scripts de pruebas
 
-      - name: Setup Jira
-        uses: atlassian/gajira-cli@v3
+  sonarqube:
+    name: SonarQube Scan
+    runs-on: ubuntu-latest
+    needs: build-and-test
+    steps:
+      - uses: actions/checkout@v3
         with:
-          version: '1.0.27'  # Especifica la versión del CLI de Jira si es necesario
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20'
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: SonarQube Scan
+        uses: sonarsource/sonarqube-scan-action@master
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+
+      # If you wish to fail your job when the Quality Gate is red, uncomment the
+      # following lines. This would typically be used to fail a deployment.
+      # - name: SonarQube Quality Gate
+      #   uses: sonarsource/sonarqube-quality-gate-action@master
+      #   timeout-minutes: 5
+      #   env:
+      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
   deploy:
-    needs: build-and-test
+    needs: sonarqube
     if: github.ref == 'refs/heads/release/**' && github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
@@ -46,7 +71,7 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '20'  # Consistencia al usar Node.js 20 en todas las operaciones de construcción y despliegue
-      
+
       - name: Build
         run: npm run build # Asegúrate de que tu entorno de compilación es compatible con Node.js 20
 
