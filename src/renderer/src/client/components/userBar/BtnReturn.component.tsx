@@ -13,11 +13,9 @@ const BtnReturn: React.FC = () => {
   const isHome = location.pathname === '/home';
 
   return (
-    <>
-      <button onClick={handleShowModal} className="btn" disabled={isHome}>
+    <button onClick={handleShowModal} className="btn" disabled={isHome}>
         <img style={{ width: "40px", height: "40px" }} src={icon_atras} alt="Salir" />
       </button>
-    </>
   );
 };
 
