@@ -1,4 +1,4 @@
-import logo from '/assets/img/usuario.png';
+import logo from '@renderer/assets/img/usuario.png';
 function perfil() {
   return (
 
