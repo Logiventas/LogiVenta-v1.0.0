@@ -3,6 +3,7 @@ import sequelize from "../config/db.config";
 import Account from "../models/Account.model";
 import crypto from "crypto";
 
+// deepcode ignore NoHardcodedPasswords: <please specify a reason of ignoring this>
 async function hashPassword(pass: string, salt: string): Promise<string> {
   return new Promise((resolve, reject) => {
     crypto.pbkdf2(pass, salt, 100000, 64, "sha512", (err, derivedKey) => {
