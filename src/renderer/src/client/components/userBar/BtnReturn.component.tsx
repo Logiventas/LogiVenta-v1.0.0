@@ -1,5 +1,5 @@
 import { useNavigate, useLocation } from 'react-router-dom';
-import icon_atras from '/src/assets/icon/atras.png';
+import icon_atras from '@client/src/assets/icon/atras.png';
 
 const BtnReturn: React.FC = () => {
   const navigate = useNavigate();
