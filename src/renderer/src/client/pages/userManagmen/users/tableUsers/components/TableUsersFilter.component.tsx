@@ -15,7 +15,7 @@ const TableFilter: React.FC<TableFilterProps> = ({ onFilterChange, profileOption
         surname: "",
         secondSurname: "",
         profile: "",
-        phone1: "",
+        phone: "",
         email: "",
         job: ""
     });
@@ -107,11 +107,11 @@ const TableFilter: React.FC<TableFilterProps> = ({ onFilterChange, profileOption
             </div>
             <div className="col-4">
                 <div className="form-group text-lg d-flex">
-                    <label className="col-4" htmlFor="phone1">Teléfono</label>
+                    <label className="col-4" htmlFor="phone">Teléfono</label>
                     <input
                         type="text"
-                        id="phone1"
-                        name="phone1"
+                        id="phone"
+                        name="phone"
                         placeholder="Teléfono"
                         value={filters.phone1}
                         onChange={handleChange}
