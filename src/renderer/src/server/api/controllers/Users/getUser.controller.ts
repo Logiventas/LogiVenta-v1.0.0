@@ -2,7 +2,7 @@
 import { Request, Response } from 'express';
 
 
-export const getUserController = async (req: Request, res: Response) => {
+export const getUserController = async (_: Request, res: Response) => {
   try {
 
 

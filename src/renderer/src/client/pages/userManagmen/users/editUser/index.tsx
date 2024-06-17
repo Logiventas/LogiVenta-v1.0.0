@@ -13,29 +13,11 @@ import { TituloModulo } from '@renderer/client/components/TitleModule.component'
 import imagen from '@renderer/assets/icon/userManagmen.png';
 
 const exampleUser: User = {
-    idUser: 1,
-    identification: 12345678,
-    firstName: "Juan",
-    secondName: "Carlos",
-    surname: "Pérez",
-    secondSurname: "Gómez",
-    email: "juan.perez@example.com",
-    phone: 5551234,
-    profile: 1,
-    job: 1,
-    homeCountry: 1,
-    homeCity: 2,
-    homeAddress: "Calle Falsa 123",
-    profilePicture: null,
-    userName: "jperez",
-    password: "1234",
-    emergencyFirstName: "Maria",
-    emergencySecondName: "José",
-    emergencySurname: "Pérez",
-    emergencySecondSurname: "Gerra",
-    emergencyPhone: 555 - 5678,
-    emergencyEmail: "perge.perez@example.com",
-    emergencyRelation: "Amigo"
+    idUser: 0,identification: 0,firstName: "",secondName: "",surname: "",secondSurname: "",
+    email: "",phone: 0,profile: 0,job: 0,homeCountry: 0,homeCity: 0,homeAddress: "",
+    profilePicture: null,userName: "",password: "",emergencyFirstName: "",
+    emergencySecondName: "",emergencySurname: "",emergencySecondSurname: "",emergencyPhone: 0,emergencyEmail: "",
+    emergencyRelation: ""
 };
 
 const EditUser = () => {
@@ -43,6 +25,7 @@ const EditUser = () => {
     const [user, setUser] = useState<User>(exampleUser);
     const [profilePicture, setProfilePicture] = useState<File | null>(null);
     const { idUser } = useParams();
+    console.log(idUser)
     const handleChange = (e: { target: { id: string, value: string } }) => {
         const { id, value } = e.target;
         setUser(prevUser => ({ ...prevUser, [id]: value }));
