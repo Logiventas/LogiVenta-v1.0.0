@@ -5,11 +5,11 @@ function getLocalIPs() {
     return new Promise((resolve, reject) => {
         exec('arp -a', (error, stdout, stderr) => {
             if (error) {
-                reject(`Error al ejecutar arp -a: ${error}`);
+                reject(new Error('Network timeout'));
                 return;
             }
             if (stderr) {
-                reject(`Error en la salida del comando: ${stderr}`);
+                reject(new Error('Something went wrong'));
                 return;
             }
 
