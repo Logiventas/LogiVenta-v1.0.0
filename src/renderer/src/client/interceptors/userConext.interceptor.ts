@@ -12,7 +12,7 @@ api.interceptors.request.use(
     return config;
   },
   (error) => {
-    return Promise.reject(error);
+    return Promise.reject(new Error(`Error en la solicitud: ${error.message}`));
   }
 );
 
@@ -32,14 +32,16 @@ api.interceptors.response.use(
         console.error('No autorizado. Redirigiendo a la página de inicio de sesión.');
         window.location.href = '/iniciarSesion';
       }
+      return Promise.reject(new Error(`Error en la respuesta del servidor: ${error.response.statusText}`));
     } else if (error.request) {
       // La petición fue hecha pero no hubo respuesta
       console.error('No hubo respuesta del servidor:', error.request);
+      return Promise.reject(new Error('No hubo respuesta del servidor'));
     } else {
       // Ocurrió un error al configurar la petición
       console.error('Error al configurar la petición:', error.message);
+      return Promise.reject(new Error(`Error al configurar la petición: ${error.message}`));
     }
-    return Promise.reject(error);
   }
 );
 
