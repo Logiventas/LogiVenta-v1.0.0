@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken';
 
 // Utiliza una variable de entorno para la clave secreta
 // deepcode ignore HardcodedSecret: <please specify a reason of ignoring this>
-const JWT_SECRET = process.env.JWT_SECRET || "my_super_secret_key";
+const JWT_SECRET = process.env.JWT_SECRET ?? "my_super_secret_key";
 
 interface User {
   idUser: number;
