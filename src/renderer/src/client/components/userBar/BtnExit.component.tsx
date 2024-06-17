@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Modal from '@renderer/client/components/Modal.component';
-import icon_exit from "../../../../../../../../../../../../../../../../../../../../src/assets/icon/exit.png";
+import icon_exit from "@renderer/assets/icon/exit.png";
 import SelecteUserContext from '@client/contexts/userContext'; // Ajusta la ruta según tu estructura
 
 const BtnExit: React.FC = () => {

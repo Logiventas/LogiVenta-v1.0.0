@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import Salir from '@renderer/client/components/userBar/BtnExit.component';
 import Atras from '@renderer/client/components/userBar/BtnReturn.component';
 import SelecteUserContext from '@client/contexts/userContext';
-import avatar from '/assets/img/usuario.png';
+import avatar from '@renderer/assets/img/usuario.png';
 
 const BarraUsuario: React.FC = () => {
   const { user } = useContext(SelecteUserContext);
