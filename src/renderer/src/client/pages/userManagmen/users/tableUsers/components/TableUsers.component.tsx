@@ -29,7 +29,7 @@ const TableUsers: React.FC<TableUsersProps> = ({ data }) => {
         { headerName: "Segundo Apellido", field: "secondSurname", sortable: true, filter: false, resizable: true },
         { headerName: "Perfil", field: "profile", sortable: true, filter: false, resizable: true },
         { headerName: "Cargo", field: "job", sortable: true, filter: false, resizable: true },
-        { headerName: "Teléfono ", field: "phone1", sortable: true, filter: false, resizable: true },
+        { headerName: "Teléfono ", field: "phone", sortable: true, filter: false, resizable: true },
         { headerName: "Email", field: "email", sortable: true, filter: false, resizable: true },
         { headerName: "Sexo", field: "sex", sortable: true, filter: false, resizable: true },
         {
