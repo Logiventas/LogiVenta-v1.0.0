@@ -1,8 +1,8 @@
-// src/renderer/src/server/services/getUser.service.ts
 import User from "../models/User.model"; // Asegúrate de que esta ruta sea correcta
 
-export const getUser = async (idUser: number) => {
-  console.log('Servicio getUser :  ',idUser);
+
+export const getUser = async (idUser: number): Promise<any> => {
+  console.log('Servicio getUser :  ', idUser);
   try {
     const user = await User.findOne({
       where: {
@@ -11,12 +11,26 @@ export const getUser = async (idUser: number) => {
     });
 
     if (!user) {
-      return null;
+      return {
+        code: 200,
+        status: false,
+        message: 'No se encontró el usuario',
+        data: null,
+      };
     }
 
-    return user;
+    return {
+      code: 200,
+      status: true,
+      message: 'Usuario encontrado con éxito',
+      data: user.dataValues,
+    };
   } catch (error) {
-    console.error("Error al obtener los datos del usuario:", error);
-    throw new Error("Error al obtener los datos del usuario");
+    return {
+      code: 500,
+      status: false,
+      message: new Error(`Error al obtener los datos del usuario id: ${idUser}`),
+      data: null,
+    };
   }
 };
