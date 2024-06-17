@@ -1,6 +1,13 @@
 // src/renderer/src/server/services/initialAdmin.service.ts
+// src/renderer/src/server/services/initialAdmin.service.ts
 import Account from '../models/Account.model';  // Asegúrate de que la ruta al modelo es correcta
 import bcrypt from 'bcryptjs';
+import dotenv from 'dotenv';
+
+// Cargar las variables de entorno desde el archivo .env
+dotenv.config();
+
+const saltRounds = parseInt(process.env.BCRYPT_SALT_ROUNDS ?? '10', 10);
 
 export const updateAdminPassword = async (password: string, accountId: number) => {
     try {
@@ -13,8 +20,7 @@ export const updateAdminPassword = async (password: string, accountId: number) =
         console.log(`Cuenta encontrada: ${accountId}, actualizando contraseña...`);
 
         // Hashear la nueva contraseña antes de guardarla
-        // deepcode ignore HardcodedSecret: <please specify a reason of ignoring this>
-        const hashedPassword = await bcrypt.hash(password, 10);
+        const hashedPassword = await bcrypt.hash(password, saltRounds);
         account.set('password', hashedPassword);
         await account.save();
 

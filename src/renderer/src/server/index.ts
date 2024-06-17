@@ -44,7 +44,7 @@ app.get("/server", async (_, res) => {
 
 app.use("/api", routes);
 
-const port = 8080;
+const port = 8088;
 
 async function startServer() {
   try {

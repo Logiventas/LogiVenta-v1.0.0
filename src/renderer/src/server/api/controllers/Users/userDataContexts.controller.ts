@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { getUser } from "../../../services/getUser.service";
+import { getUser } from "@renderer/server/services/getUser";
 import { userPermissions } from "../../../services/userPermissions.service";
 const getUserDataController = async (req: Request, res: Response) => {
 

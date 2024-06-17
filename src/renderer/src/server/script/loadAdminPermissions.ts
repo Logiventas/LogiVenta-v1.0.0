@@ -13,21 +13,22 @@ const loadAdminPermission = async (): Promise<boolean> => {
 
     // Obtener todos los permisos
     const permissions = await Permission.findAll();
-    const adminPermissions = await ProfilePermission.findAll(
-      { where: { id: adminProfileId } }
-    );
-    console.log('Permisos actuales ', adminPermissions)
-    if(adminPermissions.length==0){
-      permissions.map((permiso)=>{
-        console.log(permiso.dataValues.id)
+    const adminPermissions = await ProfilePermission.findAll({
+      where: { id: adminProfileId },
+    });
+
+    console.log("Permisos actuales ", adminPermissions);
+
+    if (adminPermissions.length === 0) {
+      permissions.forEach((permiso) => {
+        console.log(permiso.dataValues.id);
         ProfilePermission.create({
           profileId: adminProfileId,
           permissionsId: permiso.dataValues.id,
           state: true,
         });
-      })
+      });
     }
-
 
     console.log("Permisos de administrador cargados exitosamente");
     return true;

@@ -24,9 +24,9 @@ export const userPermissions = async (accountId: number) => {
 
     });
     let data:any = []
-    profilePermissions.map((permision)=>{
-      data.push(permision.dataValues)
-    })
+    profilePermissions.forEach((permission) => {
+      data.push(permission.dataValues);
+    });
     return data;
   } catch (error) {
     console.error("Error al obtener los permisos del usuario:", error);

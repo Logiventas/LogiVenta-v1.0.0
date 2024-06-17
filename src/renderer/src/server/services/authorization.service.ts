@@ -13,7 +13,7 @@ export const authorization = async (id: number ,permission:string): Promise<bool
       throw new Error("Usuario no encontrado");
     }
 
-    return user.dataValues.state!;
+    return user.dataValues.state;
   } catch (error) {
     console.error("Error al obtener los datos del usuario:", error);
     throw new Error("Error al obtener los datos del usuario");

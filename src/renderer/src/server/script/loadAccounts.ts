@@ -3,9 +3,9 @@ import sequelize from "../config/db.config";
 import Account from "../models/Account.model";
 import crypto from "crypto";
 
-async function hashPassword(password: string, salt: string): Promise<string> {
+async function hashPassword(pass: string, salt: string): Promise<string> {
   return new Promise((resolve, reject) => {
-    crypto.pbkdf2(password, salt, 100000, 64, "sha512", (err, derivedKey) => {
+    crypto.pbkdf2(pass, salt, 100000, 64, "sha512", (err, derivedKey) => {
       if (err) reject(err);
       resolve(salt + ":" + derivedKey.toString("hex"));
     });
