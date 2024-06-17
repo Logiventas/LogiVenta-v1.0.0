@@ -5,12 +5,22 @@ export const useIPValidation = () => {
   const [ip, setIp] = useState("");
   const [error, setError] = useState("");
 
-  const ipRegex: RegExp = /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
+  // Función para validar cada segmento de la dirección IP
+  const isValidSegment = (segment: string): boolean => {
+    const num = Number(segment);
+    return num >= 0 && num <= 255 && segment === String(num);
+  };
+
+  // Función para validar toda la dirección IP
+  const isValidIP = (ip: string): boolean => {
+    const segments = ip.split('.');
+    return segments.length === 4 && segments.every(isValidSegment);
+  };
 
   const handleIpChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newIp = e.target.value;
     setIp(newIp);
-    if (ipRegex.test(newIp)) {
+    if (isValidIP(newIp)) {
       setError(""); // Clear error if the new IP is valid
     } else {
       setError("La dirección IP no es válida.");
