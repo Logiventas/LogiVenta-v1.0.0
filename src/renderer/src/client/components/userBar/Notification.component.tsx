@@ -1,5 +1,5 @@
 
-import icon_notificacin from '/src/assets/icon/notificacion.png'
+import icon_notificacin from '@client/src/assets/icon/notificacion.png'
 const Notification = (prop: any) => {
     return (
 
