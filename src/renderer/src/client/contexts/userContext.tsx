@@ -1,4 +1,4 @@
-import React, { createContext, useState, ReactNode, Dispatch, SetStateAction } from 'react';
+import React, { createContext, useState, ReactNode, Dispatch, SetStateAction, useMemo } from 'react';
 import userContexts from '../model/userContexts.model';
 import { Country } from '@renderer/client/model/Country.model';
 import { Job } from '../model/Job.model';
@@ -120,9 +120,9 @@ export const SelecteUserProvider: React.FC<SelecteUserProviderProps> = ({ childr
   const [profiles] = useState<Profile[]>(initialProfiles);
   const [jobs] = useState<Job[]>(initialJobs);
   const [countries] = useState<any>(initialCountries);
-
+  const value = useMemo(() => ({ user, setUser, profiles, jobs, countries }), [user, profiles, jobs, countries]);
   return (
-    <SelecteUserContext.Provider value={{ user, setUser, profiles, jobs, countries }}>
+    <SelecteUserContext.Provider value={value}>
       {children}
     </SelecteUserContext.Provider>
   );
