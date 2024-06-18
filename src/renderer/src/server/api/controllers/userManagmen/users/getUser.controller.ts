@@ -11,12 +11,12 @@ export const getUserController = async (req: Request, res: Response) => {
     if (user.status) {
       data = {
         id: user.data.dataValues.id,
+        identification: user.data.dataValues.identification,
         firstName: user.data.dataValues.firstName,
         secondName: user.data.dataValues.secondName,
         surname: user.data.dataValues.surname,
         secondSurname: user.data.dataValues.secondSurname,
         birthDate: user.data.dataValues.birth,
-        identification: user.data.dataValues.ident,
         phone: user.data.dataValues.phone,
         mail: user.data.dataValues.mail,
         sex: user.data.dataValues.sex,
