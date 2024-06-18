@@ -5,7 +5,7 @@ import api from '@client/interceptors/api.interceptor';
 api.interceptors.request.use(
   (config) => {
     // Agrega lógica aquí antes de enviar cada solicitud, como tokens de autenticación
-    console.log('Request Interceptor:', config);
+    console.log('Request Interceptor_____:', config);
     return config;
   },
   (error) => {

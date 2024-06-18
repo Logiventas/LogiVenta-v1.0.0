@@ -26,10 +26,10 @@ export const getUserController = async (req: Request, res: Response) => {
         profile:
           user.data.dataValues.Account.dataValues.Profile.dataValues.name,
         residence: user.data.dataValues.Residence.dataValues.address,
-        city: user.data.dataValues.Residence.dataValues.City.dataValues.name,
+        city: user.data.dataValues.Residence.dataValues.City.dataValues.id,
         country:
           user.data.dataValues.Residence.dataValues.City.dataValues.Country
-            .dataValues.name,
+            .dataValues.id,
         firstNameContact:
           user.data.dataValues.ContactEmergencies[0].dataValues.firstName,
         secondNameContact:

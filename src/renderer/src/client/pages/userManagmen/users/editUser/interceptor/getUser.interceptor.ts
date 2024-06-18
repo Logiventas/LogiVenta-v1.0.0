@@ -1,12 +1,12 @@
-//src\renderer\src\client\pages\userManagmen\users\tableUsers\interceptor\allUser.interceptor.ts
+//src\renderer\src\client\pages\userManagmen\users\editUser\interceptor\getUser.interceptor.ts
 import api from "@client/interceptors/api.interceptor";
 
 // Interceptor para solicitudes
 api.interceptors.request.use(
   (config) => {
-
-
+    console.log('editUser Interceptor_____:', config);
     // Por ejemplo, si tienes un token de autenticación almacenado en localStorage
+   
     const token = localStorage.getItem("token");
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
@@ -26,6 +26,7 @@ api.interceptors.request.use(
 // Interceptor para respuestas
 api.interceptors.response.use(
   (response) => {
+    console.log('Respuesta de edit ',response)
     return response;
   },
   (error) => {

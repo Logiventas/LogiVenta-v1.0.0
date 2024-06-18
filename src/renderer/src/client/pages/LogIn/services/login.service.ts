@@ -5,6 +5,8 @@ import Login from '../models/login.model';
 const URL = '/session/login';
 
 const login = async (credentials: Login) => {
+
+  console.log('se Ejecuto el login');
   try {
     const response = await api.post(URL, credentials, {
 

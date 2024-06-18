@@ -3,7 +3,7 @@ const PersonalInfoInputs = ({ data, handleChange, prefix }) => {
     const fields = [
         { label: 'Nombres', ids: [`${prefix}firstName`, `${prefix}secondName`] },
         { label: 'Apellidos', ids: [`${prefix}surname`, `${prefix}secondSurname`] },
-        { label: 'Teléfonos', ids: [`${prefix}phone1`, `${prefix}phone2`] }
+        { label: 'Teléfonos', ids: [`${prefix}phone`] }
     ];
 
     return (

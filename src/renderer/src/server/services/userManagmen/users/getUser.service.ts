@@ -32,11 +32,11 @@ export const getUser = async (idUser: number): Promise<any> => {
           include:[
             {
               model:City,
-              attributes: ['name'],
+              attributes: ['id'],
               include:[
                 {
                   model:Country,
-                  attributes: ['name'],
+                  attributes: ['id'],
                 }
               ],
           

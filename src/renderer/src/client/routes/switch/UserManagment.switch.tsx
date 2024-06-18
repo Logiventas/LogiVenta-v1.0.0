@@ -6,7 +6,7 @@ import EditUser from '@renderer/client/pages/userManagmen/users/editUser';
 const UserManagementSwitch = () => {
     return (
         <Routes>
-            <Route path="/userManagement" element={<UserManagement />}>
+            <Route path="/userManagement/*" element={<UserManagement />}>
                 <Route path="users" element={<TableUsers />} />
                 <Route path="newUser" element={<NewUser/>} />
                 <Route path="retiredUsers" element={<h1>Usuarios Retirados</h1>} />
