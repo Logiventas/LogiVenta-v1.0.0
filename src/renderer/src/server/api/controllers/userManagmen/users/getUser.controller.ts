@@ -30,15 +30,24 @@ export const getUserController = async (req: Request, res: Response) => {
         country:
           user.data.dataValues.Residence.dataValues.City.dataValues.Country
             .dataValues.name,
-        contactEmergencies: user.data.dataValues.ContactEmergencies,
+        firstNameContact:
+          user.data.dataValues.ContactEmergencies[0].dataValues.firstName,
+        secondNameContact:
+          user.data.dataValues.ContactEmergencies[0].dataValues.secondName,
+        surnameContact:
+          user.data.dataValues.ContactEmergencies[0].dataValues.surname,
+        secondSurnameContact:
+          user.data.dataValues.ContactEmergencies[0].dataValues.secondSurname,
+        mailContact:
+          user.data.dataValues.ContactEmergencies[0].dataValues.mail,
+        phoneContact:
+          user.data.dataValues.ContactEmergencies[0].dataValues.phone,
       };
       return res.status(200).json({ message: "", data: data });
-    }else{
+    } else {
       data = null;
       return res.status(204).json({ message: "", data: data });
     }
-
-
   } catch (error) {
     console.error("Error in getAllUsersController:", error);
     res.status(500).send("Error fetching users");
