@@ -4,7 +4,7 @@ import sequelize from "../config/db.config"; // Verifica la ruta
 import Permission from "./Permission.model";
 
 interface ProfilePermissionAttributes {
-  id: number;
+  id: number|null;
   profileId: number;
   permissionsId: string;
   state:boolean;

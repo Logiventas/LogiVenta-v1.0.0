@@ -4,7 +4,7 @@ import sequelize from "../config/db.config"; // Verifica la ruta
 import Country from "./Country.model"; // Verifica la ruta
 
 interface CityAttributes {
-  id: number;
+  id: number|null;
   countryId:number;
   name?: string | null;
 }
