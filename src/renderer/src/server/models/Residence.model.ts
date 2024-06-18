@@ -1,19 +1,19 @@
 // src/renderer/src/server/models/residence.model.ts
-import { DataTypes, Model, Optional } from "sequelize";
+import { DataTypes, Model } from "sequelize";
 import sequelize from "../config/db.config";
 import City from "./City.model";
 
 interface ResidenceAttributes {
-  id: number;
+
   userId: number;
   address?: string | null;
   cityId: number;
 }
 
-interface ResidenceCreationAttributes extends Optional<ResidenceAttributes, "id"> {}
 
-export class Residence extends Model<ResidenceAttributes, ResidenceCreationAttributes> implements ResidenceAttributes {
-  public id!: number;
+
+export class Residence extends Model<ResidenceAttributes> implements ResidenceAttributes {
+
   public userId!: number;
   public address?: string | null;
   public cityId!: number;
@@ -21,14 +21,10 @@ export class Residence extends Model<ResidenceAttributes, ResidenceCreationAttri
 
 Residence.init(
   {
-    id: {
-      type: DataTypes.INTEGER,
-      autoIncrement: true,
-      primaryKey: true,
-    },
     userId: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      primaryKey: true,
     },
     address: {
       type: DataTypes.STRING(45),
@@ -36,7 +32,7 @@ Residence.init(
     },
     cityId: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
     },
   },
   {
@@ -51,5 +47,8 @@ City.hasMany(Residence,{
   foreignKey: "cityId",
   sourceKey:"id"
 })
-
+Residence.belongsTo(City, {
+  foreignKey: "cityId",
+  targetKey: "id",
+});
 export default Residence;

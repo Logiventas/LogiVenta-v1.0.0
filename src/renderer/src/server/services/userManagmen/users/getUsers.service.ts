@@ -1,7 +1,7 @@
-import User from "../models/User.model"; // Asegúrate de que esta ruta sea correcta
-import Account from "../models/Account.model";
-import Profile from "../models/Profile.model";
-import Job from "../models/Job.model";
+import User from "../../../models/User.model"; // Asegúrate de que esta ruta sea correcta
+import Account from "../../../models/Account.model";
+import Profile from "../../../models/Profile.model";
+import Job from "../../../models/Job.model";
 
 export const getUsers = async () => {
   try {

@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
-import { loginService } from "../../../services/login.service";
-import { getIdUser } from "../../../services/getIdUser.service";
-import generateAccessToken from '../../../utils/generateAccessToken';
+import { loginService } from "../../../../../services/userManagmen/users/login/login.service";
+import { getIdUser } from "../../../../../services/userManagmen/users/login/getIdUser.service";
+import generateAccessToken from '../../../../../utils/generateAccessToken';
 
 export const loginController = async (req: Request, res: Response) => {
   const { userName, password } = req.body;

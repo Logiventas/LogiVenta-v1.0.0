@@ -1,4 +1,4 @@
-import perission from "../models/ProfilePermission.model";
+import perission from "../../../../models/ProfilePermission.model";
 
 export const authorization = async (id: number ,permission:string): Promise<boolean> => {
   try {

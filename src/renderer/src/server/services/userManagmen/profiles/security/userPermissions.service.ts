@@ -1,5 +1,5 @@
-import ProfilePermission from "../models/ProfilePermission.model";
-import Account from "../models/Account.model";
+import ProfilePermission from "../../../../models/ProfilePermission.model";
+import Account from "../../../../models/Account.model";
 
 export const userPermissions = async (accountId: number) => {
   try {

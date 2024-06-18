@@ -1,10 +1,10 @@
-import User from "../models/User.model";
+import User from "../../../../models/User.model";
 
-export const getIdUser = async (id: number): Promise<number> => {
+export const getIdUser = async (accountId: number): Promise<number> => {
   try {
     const user = await User.findOne({
       where: {
-        accountId: id,
+        accountId: accountId,
       },
     });
 

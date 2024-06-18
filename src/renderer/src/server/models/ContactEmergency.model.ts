@@ -1,65 +1,63 @@
 // src/renderer/src/server/models/contactEmergency.model.ts
-import { DataTypes, Model, Optional } from "sequelize";
+import { DataTypes, Model } from "sequelize";
 import sequelize from "../config/db.config"; // Verifica la ruta
 
-interface ContactEmergencyAttributes {
-  id: number;
-  idUser: number;
+export interface ContactEmergencyAtributes{
+  id: number|null;
+  idUser: number|null;
   firstName?: string | null;
   secondName?: string | null;
   surname?: string | null;
   secondSurname?: string | null;
   mail?: string | null;
-  phone?: string | null;
+  phone?: number | null;
 }
 
-interface ContactEmergencyCreationAttributes extends Optional<ContactEmergencyAttributes, "id"> {}
-
-export class ContactEmergency extends Model<ContactEmergencyAttributes, ContactEmergencyCreationAttributes> implements ContactEmergencyAttributes {
-  public id!: number;
-  public idUser!: number;
+export class ContactEmergency extends Model<ContactEmergencyAtributes> implements ContactEmergencyAtributes {
+  public id!: number|null;
+  public idUser!: number|null;
   public firstName?: string | null;
   public secondName?: string | null;
   public surname?: string | null;
   public secondSurname?: string | null;
   public mail?: string | null;
-  public phone?: string | null;
+  public phone?: number | null;
 }
 
 ContactEmergency.init(
   {
     id: {
       type: DataTypes.INTEGER,
-      autoIncrement: true,
       primaryKey: true,
+      autoIncrement: true,
     },
     idUser: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
     firstName: {
-      type: DataTypes.STRING(45),
-      allowNull: true,
+      type: DataTypes.STRING,
+      allowNull: false,
     },
     secondName: {
-      type: DataTypes.STRING(45),
-      allowNull: true,
+      type: DataTypes.STRING,
+      allowNull: false,
     },
     surname: {
-      type: DataTypes.STRING(45),
-      allowNull: true,
+      type: DataTypes.STRING,
+      allowNull: false,
     },
     secondSurname: {
-      type: DataTypes.STRING(45),
-      allowNull: true,
+      type: DataTypes.STRING,
+      allowNull: false,
     },
     mail: {
-      type: DataTypes.STRING(45),
-      allowNull: true,
+      type: DataTypes.STRING,
+      allowNull: false,
     },
     phone: {
-      type: DataTypes.STRING(45),
-      allowNull: true,
+      type: DataTypes.INTEGER,
+      allowNull: false,
     },
   },
   {

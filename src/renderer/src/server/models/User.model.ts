@@ -20,7 +20,7 @@ interface UserAttributes {
   accountId?: number | null;
   jobId?: number | null;
   photo?: Blob  | null; // Añadido el tipo para photo
-  
+
 }
 
 export class User extends Model<UserAttributes> implements UserAttributes {
@@ -39,6 +39,7 @@ export class User extends Model<UserAttributes> implements UserAttributes {
   public Account?: any; // Relación con Account
   public Job?: any; // Relación con Job
   public photo?: Blob  | null; // Corregido el tipo para photo
+
 }
 
 User.init(

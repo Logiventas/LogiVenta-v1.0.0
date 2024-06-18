@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { authorization } from '../../services/authorization.service';
+import { authorization } from '../../services/userManagmen/profiles/security/authorization.service';
 
 export const authorize = async (req: Request, res: Response, next: NextFunction) => {
   const permissionCode = req.headers['x-permission-code'] as string;

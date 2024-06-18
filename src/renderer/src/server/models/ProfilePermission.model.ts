@@ -1,5 +1,5 @@
 //src\renderer\src\server\models\ProfilePermission.model.ts
-import { DataTypes, Model, Optional } from "sequelize";
+import { DataTypes, Model} from "sequelize";
 import sequelize from "../config/db.config"; // Verifica la ruta
 import Permission from "./Permission.model";
 
@@ -10,9 +10,7 @@ interface ProfilePermissionAttributes {
   state:boolean;
 }
 
-interface ProfilePermissionCreationAttributes extends Optional<ProfilePermissionAttributes, "id"> {}
-
-export class ProfilePermission extends Model<ProfilePermissionAttributes, ProfilePermissionCreationAttributes> implements ProfilePermissionAttributes {
+export class ProfilePermission extends Model<ProfilePermissionAttributes> implements ProfilePermissionAttributes {
   public id!: number;
   public profileId!: number;
   public permissionsId!: string;

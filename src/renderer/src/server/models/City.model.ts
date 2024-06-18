@@ -1,5 +1,5 @@
 //src\renderer\src\server\models\City.model.ts
-import { DataTypes, Model, Optional } from "sequelize";
+import { DataTypes, Model } from "sequelize";
 import sequelize from "../config/db.config"; // Verifica la ruta
 import Country from "./Country.model"; // Verifica la ruta
 
@@ -9,9 +9,9 @@ interface CityAttributes {
   name?: string | null;
 }
 
-interface CityCreationAttributes extends Optional<CityAttributes, "id"> {}
 
-export class City extends Model<CityAttributes, CityCreationAttributes> implements CityAttributes {
+
+export class City extends Model<CityAttributes> implements CityAttributes {
   public id!: number;
   public name?: string | null;
   public countryId!: number;
@@ -26,7 +26,7 @@ City.init(
     },
     countryId:{
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
     },
     name: {
       type: DataTypes.STRING(45),
@@ -46,5 +46,9 @@ Country.hasMany(City,{
   foreignKey: 'countryId',
   sourceKey: 'id'
 })
+City.belongsTo(Country, {
+  foreignKey: "countryId",
+  targetKey: "id",
+});
 
 export default City;

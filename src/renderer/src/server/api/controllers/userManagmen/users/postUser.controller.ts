@@ -1,6 +1,6 @@
 //src\renderer\src\server\api\controllers\Users\setUser.controller.ts
 import { Request, Response } from 'express';
-import { setUser } from '../../../services/setUser.service';
+import { setUser } from '../../../../services/userManagmen/users/setUser.service';
 
 export const setUserController = async (req: Request, res: Response) => {
   try {

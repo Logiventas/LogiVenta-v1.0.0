@@ -1,5 +1,5 @@
 // src\renderer\src\server\services\setUser.service.ts
-import User from "../models/User.model"; // Asegúrate de que esta ruta sea correcta
+import User from "../../../models/User.model"; // Asegúrate de que esta ruta sea correcta
 export const setUser = async (userInput: User) => {
     try {
       // Verificar si el usuario ya existe

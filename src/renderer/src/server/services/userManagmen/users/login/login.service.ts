@@ -1,5 +1,5 @@
 // src/renderer/src/server/services/login.service.ts
-import Account from "../models/Account.model";
+import Account from "../../../../models/Account.model";
 import crypto from "crypto";
 
 async function verifyPassword(password: string, storedHash: string): Promise<boolean> {
