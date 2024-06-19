@@ -7,6 +7,9 @@ import loadPermissions from './loadPermissions';
 import loadUser from './loadUser';
 import loadAdmin from "./loadAccounts";
 import loadAdminPermission from './loadAdminPermissions';
+import loadResidence from "./loadResidence";
+import loadContact from "./loadContactEmergency";
+
 const initializeDatabase = async () => {
   try {
     // Sincroniza la base de datos
@@ -60,6 +63,17 @@ const initializeDatabase = async () => {
     success = await loadAdminPermission();
     if (!success) {
       console.error("Fallo en la carga de permisos de administrador");
+      return false;
+    }
+    success = await loadResidence();
+    if (!success) {
+      console.error("Fallo en la carga de residencias");
+      return false;
+    }
+
+    success = await loadContact();
+    if (!success) {
+      console.error("Fallo en la carga de contactos");
       return false;
     }
 

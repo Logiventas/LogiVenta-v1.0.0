@@ -2,6 +2,12 @@ import Job from "../models/Job.model"; // Verifica la ruta
 
 const jobs = [
   {
+    name:null,
+    salaryBase: 0,
+    description: "",
+    paymentPeriod: new Date(0, 0, 0),
+  },
+  {
     name: "Software Engineer",
     salaryBase: 60000,
     description: "Develop and maintain software applications.",

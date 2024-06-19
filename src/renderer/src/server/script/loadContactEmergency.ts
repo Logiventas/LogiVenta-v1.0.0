@@ -1,10 +1,10 @@
 //src\renderer\src\server\script\loadUser.ts
-import User from "../models/User.model"; 
+import User from "../models/ContactEmergency.model"; 
 
 const loadUser = async (): Promise<boolean> => {
   try {
     // Verificar si el usuario ya existe
-    const existingUser = await User.findOne({ where: { identification: 1032447061 } });
+    const existingUser = await User.findOne({ where: { idUser: 1 } });
     if (existingUser) {
       console.log("El usuario ya existe.");
       return true; // Retorna true si el usuario ya existe
@@ -12,25 +12,19 @@ const loadUser = async (): Promise<boolean> => {
 
     // Crear un nuevo usuario (User)
     await User.create({
-      id:1,
-      firstName: "Usuario",
-      secondName: "",
-      surname: "Administrador",
-      secondSurname: "",
-      birthDate: "",
-      identification: 1032447061,
-      phone: 1221,
-      mail: "bguevara@gmail.com",
-      sex: null,
-      accountId:1,
-      photo:null,
-      jobId:1
+        idUser: 1,
+        firstName: "John",
+        secondName: "Doe",
+        surname: "Smith",
+        secondSurname: "Jones",
+        mail: "john.doe",
+        phone: 123456789
     });
 
     console.log("Usuario cargado exitosamente");
     return true;
   } catch (error) {
-    console.error("Error al cargar el usuario:", error);
+    console.error("Error al cargar la recidencia del usuario:", error);
     return false;
   }
 };

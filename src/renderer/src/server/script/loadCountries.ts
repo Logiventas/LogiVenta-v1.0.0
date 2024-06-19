@@ -1,6 +1,7 @@
 import Country from "../models/Country.model"; 
 
 const countries = [
+  { name: null },
   { name: "Argentina" },
   { name: "Bolivia" },
   { name: "Chile" },

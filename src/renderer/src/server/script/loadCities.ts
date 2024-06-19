@@ -1,9 +1,10 @@
 import City from "../models/City.model"; 
 
 const cities = [
-  { countryId: 1, name: "Buenos Aires" },
-  { countryId: 2, name: "La Paz" },
-  { countryId: 3, name: "Santiago" },
+  { countryId: 1, name: null },
+  { countryId: 2, name: "Buenos Aires" },
+  { countryId: 3, name: "La Paz" },
+  { countryId: 4, name: "Santiago" },
 ];
 
 const loadCities = async (): Promise<boolean> => {
