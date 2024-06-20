@@ -6,7 +6,7 @@ interface StatusModalProps {
   onHide: () => void;
 }
 
-const StatusModal: React.FC<StatusModalProps> = ({ message, success, onHide }) => {
+const Toasts: React.FC<StatusModalProps> = ({ message, success, onHide }) => {
   const [visible, setVisible] = useState<boolean>(true);
 
   useEffect(() => {
@@ -37,4 +37,4 @@ const StatusModal: React.FC<StatusModalProps> = ({ message, success, onHide }) =
   );
 };
 
-export default StatusModal;
+export default Toasts;

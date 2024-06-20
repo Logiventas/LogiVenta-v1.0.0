@@ -11,7 +11,7 @@ import imagen from '@renderer/assets/icon/userManagmen.png';
 import { getUserAdapter } from './adapters/getUser.adapter';
 import GenderSelect from './components/GenderSelect.component';
 import { putUserAdapter } from './adapters/putUser.adapter';
-import StatusModal from '@client/components/StatusModal.component';
+import Toasts from '@client/components/Toasts.component';
 
 const exampleUser: User = {
     id: 0,
@@ -152,7 +152,7 @@ const EditUser: React.FC = () => {
                     </div>
                 </div>
             </form>
-            {showModal && <StatusModal message={message} success={success} onHide={handleModalHide} />}
+            {showModal && <Toasts message={message} success={success} onHide={handleModalHide} />}
         </div>
     );
 };
