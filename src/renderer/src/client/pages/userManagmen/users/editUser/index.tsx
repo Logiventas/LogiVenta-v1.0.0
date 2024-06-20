@@ -10,7 +10,7 @@ import { TituloModulo } from '@renderer/client/components/TitleModule.component'
 import imagen from '@renderer/assets/icon/userManagmen.png';
 import { getUserAdapter } from './adapters/getUser.adapter';
 import GenderSelect from './components/GenderSelect.component';
-
+import { putUserAdapter } from './adapters/putUser.adapter';
 const exampleUser: User = {
     id:0,
     idUser: 0, identification: 0, sex: '', userName: '', account:0, firstName: "", secondName: "", surname: "", secondSurname: "",
@@ -54,7 +54,7 @@ const EditUser = () => {
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        console.log(user);
+        putUserAdapter(user);
     };
 
     return (
