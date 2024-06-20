@@ -2,74 +2,39 @@ import React, { useEffect, useState, useContext } from 'react';
 import SelecteUserContext from '@client/contexts/userContext';
 
 // Definición de datos de países y ciudades con identificadores numéricos
-const countryCityData = {
-  1: { name: null, cities: { 1: null } },
-  2: {
-    name: "Argentina",
-    cities: {
-      2: "Buenos Aires",
-      3: "Córdoba",
-      4: "Rosario",
-      5: "Mendoza",
-      6: "La Plata"
-    }
-  },
-  3: {
-    name: "Bolivia",
-    cities: {
-      7: "La Paz",
-      8: "Santa Cruz de la Sierra",
-      9: "Cochabamba",
-      10: "Sucre",
-      11: "Oruro"
-    }
-  },
-  4: {
-    name: "Chile",
-    cities: {
-      12: "Santiago",
-      13: "Valparaíso",
-      14: "Concepción",
-      15: "La Serena",
-      16: "Antofagasta"
-    }
-  },
-  5: {
-    name: "Colombia",
-    cities: {
-      17: "Bogotá",
-      18: "Medellín",
-      19: "Cali",
-      20: "Barranquilla",
-      21: "Cartagena"
-    }
-  },
-  // Añadir el resto de los países y ciudades...
-};
-
 const SelectorCountryCity = ({ user, handleChange }) => {
   const [cities, setCities] = useState<{ id: number, name: string }[]>([]);
   const { countries } = useContext(SelecteUserContext);
 
   useEffect(() => {
     if (user.homeCountry) {
-      const cityValues:any = Object.entries(countryCityData[user.homeCountry]?.cities || [])
-        .filter(([, cityName]) => cityName !== null)
-        .map(([id, name]) => ({ id: parseInt(id, 10), name }));
-      setCities(cityValues);
+      const country = countries.find(c => c.id === user.homeCountry);
+      if (country) {
+        const cityValues = country.cities
+          .filter(city => city.name !== null)
+          .map(city => ({ id: city.id, name: city.name as string }));
+        setCities(cityValues);
+      } else {
+        setCities([]);
+      }
     } else {
       setCities([]);
     }
-  }, [user.homeCountry]);
+  }, [user.homeCountry, countries]);
 
   const handleCountryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedCountryId = parseInt(e.target.value, 10);
     handleChange({ target: { id: 'homeCountry', value: selectedCountryId } });
-    handleChange({ target: { id: 'homeCity', value: '' } }); // Restablecer ciudad a "Seleccione"
-    const cityValues:any = Object.entries(countryCityData[selectedCountryId]?.cities || [])
-      .filter(([, cityName]) => cityName !== null)
-      .map(([id, name]) => ({ id: parseInt(id, 10), name }));
-    setCities(cityValues);
+    handleChange({ target: { id: 'homeCity', value: '' } });
+    const country = countries.find(c => c.id === selectedCountryId);
+    if (country) {
+      const cityValues = country.cities
+        .filter(city => city.name !== null)
+        .map(city => ({ id: city.id, name: city.name as string }));
+      setCities(cityValues);
+    } else {
+      setCities([]);
+    }
   };
 
   const handleCityChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -87,10 +52,10 @@ const SelectorCountryCity = ({ user, handleChange }) => {
           onChange={handleCountryChange}
         >
           <option value="" disabled>Seleccione</option>
-          {Object.entries(countryCityData)
-            .filter(([id, country]) => country.name !== null)
-            .map(([id, country]) => (
-              <option key={id} value={id}>
+          {countries
+            .filter(country => country.name !== null)
+            .map(country => (
+              <option key={country.id} value={country.id}>
                 {country.name}
               </option>
             ))}
@@ -104,7 +69,7 @@ const SelectorCountryCity = ({ user, handleChange }) => {
           onChange={handleCityChange}
         >
           <option value="" disabled>Seleccione</option>
-          {cities.map((city) => (
+          {cities.map(city => (
             <option key={city.id} value={city.id}>
               {city.name}
             </option>
