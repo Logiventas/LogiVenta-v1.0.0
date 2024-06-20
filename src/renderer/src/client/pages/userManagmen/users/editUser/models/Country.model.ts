@@ -1,5 +1,5 @@
 import City from "./City.model";
-export default interface countries {
+export default interface Countries {
   idCountry: number;
   name: string;
   citys: City[];
