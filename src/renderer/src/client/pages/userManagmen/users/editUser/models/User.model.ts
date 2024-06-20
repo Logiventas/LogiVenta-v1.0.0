@@ -1,12 +1,13 @@
 import user from "@renderer/client/model/User.model"
 interface User extends user{
+    id:number
     identification:number
-    account:string
+    account:number
     email:string
     phone:number
-    profile:string
+    profile:number
     sex:string
-    job:string
+    job:number
     userName:string
     homeCountry:number
     homeCity:number

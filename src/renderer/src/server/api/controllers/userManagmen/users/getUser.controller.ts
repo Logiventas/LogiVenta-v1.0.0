@@ -21,10 +21,10 @@ export const getUserController = async (req: Request, res: Response) => {
         mail: user.data.dataValues.mail,
         sex: user.data.dataValues.sex,
         photo: user.data.dataValues.photo,
-        job: user.data.dataValues.Job.dataValues.name,
-        account: user.data.dataValues.Account.dataValues.name,
+        job: user.data.dataValues.Job.dataValues.id,
+        account: user.data.dataValues.Account.dataValues.id,
         profile:
-          user.data.dataValues.Account.dataValues.Profile.dataValues.name,
+          user.data.dataValues.Account.dataValues.Profile.dataValues.id,
         residence: user.data.dataValues.Residence.dataValues.address,
         city: user.data.dataValues.Residence.dataValues.City.dataValues.id,
         country:

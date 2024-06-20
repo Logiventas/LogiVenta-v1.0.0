@@ -12,8 +12,9 @@ import { getUserAdapter } from './adapters/getUser.adapter';
 import GenderSelect from './components/GenderSelect.component';
 
 const exampleUser: User = {
-    idUser: 0, identification: 0, sex: '', userName: '', account: '', firstName: "", secondName: "", surname: "", secondSurname: "",
-    email: "", phone: 0, profile: '', job: '', homeCountry: 0, homeCity: 0, homeAddress: "",
+    id:0,
+    idUser: 0, identification: 0, sex: '', userName: '', account:0, firstName: "", secondName: "", surname: "", secondSurname: "",
+    email: "", phone: 0, profile: 0, job: 0, homeCountry: 0, homeCity: 0, homeAddress: "",
     profilePicture: null, password: "", emergencyFirstName: "",
     emergencySecondName: "", emergencySurname: "", emergencySecondSurname: "", emergencyPhone: 0, emergencyEmail: "",
 };

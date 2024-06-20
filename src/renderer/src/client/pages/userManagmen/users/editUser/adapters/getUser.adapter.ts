@@ -12,6 +12,7 @@ export const getUserAdapter = async (id: any): Promise<User> => {
             const data = userData.data;
             console.log('DATOS DE USUARIO: ',data)
             const user: User = {
+                id:data.id,
                 idUser: data.id,
                 identification: data.identification , 
                 account: data.account,

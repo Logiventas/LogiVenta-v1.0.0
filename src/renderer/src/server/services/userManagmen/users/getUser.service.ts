@@ -13,18 +13,18 @@ export const getUser = async (idUser: number): Promise<any> => {
       include: [
         {
           model: Account,
-          attributes: ['name'],
+          attributes: ['id'],
           include: [
             {
               model: Profile,
-              attributes: ['name'],
+              attributes: ['id'],
             },
           ],
      
         },
         {
           model: Job,
-          attributes: ['name'],
+          attributes: ['id'],
         },
         {
           model:Residence,
