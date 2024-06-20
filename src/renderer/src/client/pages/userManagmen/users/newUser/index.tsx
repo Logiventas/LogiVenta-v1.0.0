@@ -11,6 +11,7 @@ import { TituloModulo } from '@renderer/client/components/TitleModule.component'
 import imagen from '@renderer/assets/icon/userManagmen.png';
 
 const exampleUser: User = {
+    id:0,
     idUser: 0,
     identification: 0,
     firstName: "",
@@ -18,14 +19,14 @@ const exampleUser: User = {
     surname: "",
     secondSurname: "",
     email: "",
-    profile: '',
-    account:'',
+    profile: 0,
+    account:0,
     phone: 255,
     homeCountry:1,
     homeCity: 1,
     homeAddress: "",
     profilePicture: null,
-    job: '',
+    job: 0,
     sex: '',
     emergencyFirstName:"",
     emergencySecondName: "",
@@ -40,7 +41,7 @@ const exampleUser: User = {
 const newUser = () => {
 
     console.log('Edit User')
-    const [user, setUser] = useState<User>(exampleUser);
+    const [user, setUser] = useState<any>(exampleUser);
     const [profilePicture, setProfilePicture] = useState<File | null>(null);
 
     const handleChange = (e: { target: { id: string, value: string } }) => {
