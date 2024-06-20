@@ -1,12 +1,27 @@
-import Country from "../models/Country.model"; 
-
+import Country from "../models/Country.model";
 const countries = [
-  { name: null },
-  { name: "Argentina" },
-  { name: "Bolivia" },
-  { name: "Chile" },
-  // Añade más países según sea necesario
+  { id: 1, name: null },
+  { id: 2, name: "Argentina" },
+  { id: 3, name: "Bolivia" },
+  { id: 4, name: "Chile" },
+  { id: 5, name: "Colombia" },
+  { id: 6, name: "Costa Rica" },
+  { id: 7, name: "Cuba" },
+  { id: 8, name: "Ecuador" },
+  { id: 9, name: "El Salvador" },
+  { id: 10, name: "España" },
+  { id: 11, name: "Guatemala" },
+  { id: 12, name: "Honduras" },
+  { id: 13, name: "México" },
+  { id: 14, name: "Nicaragua" },
+  { id: 15, name: "Panamá" },
+  { id: 16, name: "Paraguay" },
+  { id: 17, name: "Perú" },
+  { id: 18, name: "República Dominicana" },
+  { id: 19, name: "Uruguay" },
+  { id: 20, name: "Venezuela" }
 ];
+
 
 const loadCountries = async (): Promise<boolean> => {
   try {
