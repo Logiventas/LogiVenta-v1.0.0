@@ -2,11 +2,11 @@
 import { putUser } from '../services/putUser.service';
 import User from "../models/User.model";
 
-export const putUserAdapter = async (user: User): Promise<void> => {
+export const putUserAdapter = async (user: User): Promise<any> => {
 
 
     try {
-        await putUser(user.idUser, {
+       const respose= await putUser(user.idUser, {
             identification: user.identification,
             account: user.account,
             firstName: user.firstName,
@@ -31,6 +31,9 @@ export const putUserAdapter = async (user: User): Promise<void> => {
             emergencyPhone: user.emergencyPhone,
             emergencyEmail: user.emergencyEmail
         });
+ console.log('datos ',respose);
+            return {success:respose.success , message:respose.message };
+
     } catch (error) {
         console.error('Error al actualizar los datos del usuario:', error);
         throw error;

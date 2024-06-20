@@ -34,6 +34,7 @@ api.interceptors.response.use(
       console.log('Cookies recibidas:', setCookieHeader);
       // Opcional: puedes hacer algo con las cookies aquí
     }
+    console.log('Response Interceptor:', response);
     return response;
   },
   async (error: AxiosError) => {

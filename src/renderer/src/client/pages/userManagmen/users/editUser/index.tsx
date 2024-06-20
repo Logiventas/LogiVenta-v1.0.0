@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import User from "./models/User.model";
 import ProfilePicture from './components/ProfilePicture.component';
 import { SelectorCountryCity } from './components/SelectorCountryCity.component';
@@ -11,18 +11,24 @@ import imagen from '@renderer/assets/icon/userManagmen.png';
 import { getUserAdapter } from './adapters/getUser.adapter';
 import GenderSelect from './components/GenderSelect.component';
 import { putUserAdapter } from './adapters/putUser.adapter';
+import StatusModal from '@client/components/StatusModal.component';
+
 const exampleUser: User = {
-    id:0,
-    idUser: 0, identification: 0, sex: '', userName: '', account:0, firstName: "", secondName: "", surname: "", secondSurname: "",
+    id: 0,
+    idUser: 0, identification: 0, sex: '', userName: '', account: 0, firstName: "", secondName: "", surname: "", secondSurname: "",
     email: "", phone: 0, profile: 0, job: 0, homeCountry: 0, homeCity: 0, homeAddress: "",
     profilePicture: null, password: "", emergencyFirstName: "",
     emergencySecondName: "", emergencySurname: "", emergencySecondSurname: "", emergencyPhone: 0, emergencyEmail: "",
 };
 
-const EditUser = () => {
+const EditUser: React.FC = () => {
     const { idUser } = useParams<{ idUser: string }>();
+    const navigate = useNavigate();
     const [user, setUser] = useState<User>(exampleUser);
     const [profilePicture, setProfilePicture] = useState<File | null>(null);
+    const [message, setMessage] = useState<string>('');
+    const [success, setSuccess] = useState<boolean>(false);
+    const [showModal, setShowModal] = useState<boolean>(false);
 
     useEffect(() => {
         const fetchUser = async () => {
@@ -48,13 +54,30 @@ const EditUser = () => {
         setProfilePicture(file);
     };
 
-    const handleDelete = () => {
-        console.log('ID del usuario:', user.idUser);
+    const handleDelete = (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.preventDefault();
+        // Aquí iría la lógica para eliminar el usuario
+        alert('Usuario eliminado correctamente');
     };
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        putUserAdapter(user);
+        try {
+            const response = await putUserAdapter(user);
+            setMessage(response.message);
+            setSuccess(response.status === 'success');
+            setShowModal(true);
+        } catch (error) {
+            console.error('Error al actualizar el usuario:', error);
+            setMessage('Error al actualizar el usuario');
+            setSuccess(false);
+            setShowModal(true);
+        }
+    };
+
+    const handleModalHide = () => {
+        setShowModal(false); // Restablecer el estado del modal
+        navigate(`/userManagement/editUser/${idUser}`, { replace: true });
     };
 
     return (
@@ -129,6 +152,7 @@ const EditUser = () => {
                     </div>
                 </div>
             </form>
+            {showModal && <StatusModal message={message} success={success} onHide={handleModalHide} />}
         </div>
     );
 };
