@@ -11,7 +11,6 @@ interface AccountAttributes {
   password?: string ;
   name?: string ;
   state?: boolean | null;
-  creationDate?: Date | null;
   profileId:number
 }
 
@@ -22,7 +21,6 @@ export class Account extends Model<AccountAttributes, AccountCreationAttributes>
   public password?: string ;
   public name?: string ;
   public state?: boolean | null;
-  public creationDate?: Date | null;
   public profileId!:number;
   
 }
@@ -48,10 +46,6 @@ Account.init(
       allowNull: true,
       defaultValue: 1,
     },
-    creationDate: {
-      type: DataTypes.DATE,
-      allowNull: true,
-    },
     profileId: {
       type: DataTypes.INTEGER,
       allowNull: true,
@@ -61,7 +55,7 @@ Account.init(
     sequelize,
     modelName: "Account",
     tableName: "Account",
-    timestamps: false,
+    timestamps: true,
   }
 );
 
