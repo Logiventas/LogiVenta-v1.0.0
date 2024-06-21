@@ -20,7 +20,7 @@ const UserManagement = () => {
                 {location.pathname === '/userManagement' && (
                     <>
                         {user.access["GU01-00"] && <Icono enlace="/userManagement/users" modulo="Usuarios" urlImg={icon_user} />}
-                        {user.access["GU02-00"] && <Icono enlace="#" modulo="Perfiles de Usuario" urlImg={icon_profile} />}
+                        {user.access["GU02-00"] && <Icono enlace="/userManagement/profiles" modulo="Perfiles de Usuario" urlImg={icon_profile} />}
                         {user.access["GU03-00"] && <Icono enlace="#" modulo="Gestión de Cargos" urlImg={icon_job} />}
                     </>
                 )}
