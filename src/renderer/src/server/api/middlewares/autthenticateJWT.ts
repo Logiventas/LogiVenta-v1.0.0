@@ -5,7 +5,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 // deepcode ignore HardcodedSecret: <please specify a reason of ignoring this>
-const JWT_SECRET = process.env.JWT_SECRET || "my_super_secret_key";
+const JWT_SECRET = process.env.JWT_SECRET ?? "my_super_secret_key";
 
 export const authenticateJWT = (req: Request, res: Response, next: NextFunction) => {
   const token = req.cookies.token;
