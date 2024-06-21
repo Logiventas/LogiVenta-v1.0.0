@@ -19,7 +19,8 @@ const SelectProfile: React.FC<SelectProfileProps> = ({ handleChange }) => {
     }, []);
 
     const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        setSelectedProfile(e.target.value);
+        const value = e.target.value;
+        setSelectedProfile(value);
         handleChange(e);
     };
 
@@ -27,7 +28,7 @@ const SelectProfile: React.FC<SelectProfileProps> = ({ handleChange }) => {
         <select required id="profile" className="form-select" value={selectedProfile} onChange={handleSelectChange}>
             <option value="" disabled>Selecciona</option>
             {Object.entries(profiles).map(([id, profile]) => (
-                <option key={id} value={id === "0" ? "" : id}>{profile}</option>
+                <option key={id} value={id}>{profile}</option>
             ))}
         </select>
     );
