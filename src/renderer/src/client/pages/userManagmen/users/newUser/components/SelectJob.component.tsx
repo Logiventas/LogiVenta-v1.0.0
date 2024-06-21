@@ -1,24 +1,27 @@
-import  { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
-export const SelectJob = ({ user, handleChange }) => {
-    const jobData = ['Manager', 'Usuario', 'Invitado'];
-    const [profiles, setProfiles] = useState<string[]>(jobData);
+interface SelectJobProps {
+    handleChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+}
 
-    useEffect(() => {
-        // Simulamos la carga de datos desde una fuente externa
-        const fetchProfiles = async () => {
-            setProfiles(jobData)
-        };
+const SelectJob: React.FC<SelectJobProps> = ({ handleChange }) => {
+    const jobData = { 2: 'Software Engineer', 3: 'Data Scientist', 4: 'Project Manager', 5: 'Product Manager', 6: 'UI/UX Designer' };
+    const [jobs] = useState<{ [key: number]: string }>(jobData);
+    const [selectedJob, setSelectedJob] = useState<string>('');
 
-        fetchProfiles();
-    }, []);
+    const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        setSelectedJob(e.target.value);
+        handleChange(e);
+    };
 
     return (
-        <select id="job" className="form-select" value={user.job} onChange={handleChange}>
+        <select id="job" className="form-select" value={selectedJob} onChange={handleSelectChange}>
             <option value="" disabled>Selecciona</option>
-            {profiles.map((job, index) => (
-                <option key={index} value={job}>{job}</option>
+            {Object.entries(jobs).map(([id, job]) => (
+                <option key={id} value={id}>{job}</option>
             ))}
         </select>
     );
 };
+
+export default SelectJob;

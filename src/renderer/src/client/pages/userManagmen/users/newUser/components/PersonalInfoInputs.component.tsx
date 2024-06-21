@@ -1,40 +1,70 @@
+import React from 'react';
+import User from '../models/User.model';
 
-const PersonalInfoInputs = ({ data, handleChange, prefix }) => {
-    const fields = [
-        { label: 'Nombres', ids: [`${prefix}firstName`, `${prefix}secondName`] },
-        { label: 'Apellidos', ids: [`${prefix}surname`, `${prefix}secondSurname`] },
-        { label: 'Teléfonos', ids: [`${prefix}phone1`, `${prefix}phone2`] }
-    ];
+interface PersonalInfoInputsProps {
+  data: User;
+  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  prefix: string;
+}
 
-    return (
-        <>
-            {fields.map(({ label, ids }) => (
-                <div className="d-flex flex-column  flex-md-row" key={label}>
-                   <div className="col-4 col-md-4 col-xl-3 "> <label className="col-form-label me-1" htmlFor={ids[0]}>{label}</label></div>
-                    {ids.map(id => (
-                        <input
-                            key={id}
-                            type="text"
-                            className="form-control mb-2 ms-2 mb-lg-1"
-                            id={id}
-                            value={data[id] || ''}
-                            onChange={handleChange}
-                        />
-                    ))}
-                </div>
-            ))}
-            <div className="d-flex flex-column flex-md-row">
-                <div className="col-4 col-xl-3">  <label className=" form-label me-1" htmlFor={`${prefix}email`}>Email</label></div>
-                <input
-                    type="email"
-                    className=" form-control  my-1 ms-1 "
-                    id={`${prefix}email`}
-                    value={data[`${prefix}email`] || ''}
-                    onChange={handleChange}
-                />
-            </div>
-        </>
-    );
+const PersonalInfoInputs: React.FC<PersonalInfoInputsProps> = ({ data, handleChange, prefix }) => {
+  return (
+    <>
+    
+      <div className="col-12 d-flex gap-2 mb-1">
+        <label className="form-label col-lg-2 col-md-3 my-auto" htmlFor={`${prefix}firstName`}>Nombres</label>
+        <input
+          className="form-control"
+          id={`${prefix}firstName`}
+          value={data[`${prefix}firstName`] || ''}
+          onChange={handleChange}
+          required
+        />
+        <input
+          className="form-control"
+          id={`${prefix}secondName`}
+          value={data[`${prefix}secondName`] || ''}
+          onChange={handleChange}
+        
+        />
+      </div>
+      <div className="col-12 d-flex gap-2 mb-1">
+        <label className="form-label col-lg-2 col-md-3 my-auto" htmlFor={`${prefix}surname`}>Apellidos</label>
+        <input
+          className="form-control"
+          id={`${prefix}surname`}
+          value={data[`${prefix}surname`] || ''}
+          onChange={handleChange}
+          required
+        />
+        <input
+          className="form-control"
+          id={`${prefix}secondSurname`}
+          value={data[`${prefix}secondSurname`] || ''}
+          onChange={handleChange}
+        />
+      </div>
+      <div className="col-12 d-flex gap-2 mb-1">
+        <label className="form-label col-lg-2 col-md-3 my-auto" htmlFor={`${prefix}phone`}>Teléfonos</label>
+        <input
+          className="form-control"
+          id={`${prefix}phone`}
+          value={data[`${prefix}phone`] || ''}
+          onChange={handleChange}
+        />
+      </div>
+      <div className="col-12 d-flex pb-2">
+        <label className="form-label col-lg-2 col-md-3 my-auto me-2" htmlFor={`${prefix}email`}>Email</label>
+        <input
+          type="email"
+          className="form-control"
+          id={`${prefix}email`}
+          value={data[`${prefix}email`] || ''}
+          onChange={handleChange}
+        />
+      </div>
+    </>
+  );
 };
 
 export default PersonalInfoInputs;

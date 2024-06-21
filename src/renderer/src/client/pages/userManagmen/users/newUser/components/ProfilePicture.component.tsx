@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Resizer from 'react-image-file-resizer';
 import defaultProfilePicture from '../../../../../../assets/img/usuario.png'; // Ajusta la ruta según sea necesario
- // Importa el nuevo componente
 
 interface ProfilePictureProps {
     file: File | null;
@@ -10,7 +9,6 @@ interface ProfilePictureProps {
 
 const ProfilePicture: React.FC<ProfilePictureProps> = ({ file, onFileChange }) => {
     const [preview, setPreview] = useState<string>(defaultProfilePicture);
-
 
     React.useEffect(() => {
         if (file) {
@@ -37,8 +35,6 @@ const ProfilePicture: React.FC<ProfilePictureProps> = ({ file, onFileChange }) =
         }
     };
 
-
-
     return (
         <div className=''>
             <div style={{ borderRadius: "50%", overflow: "hidden" ,width:'150px',height:'150px' }} className="img-fluid m-auto img-thumbnail mb-1">
@@ -48,7 +44,7 @@ const ProfilePicture: React.FC<ProfilePictureProps> = ({ file, onFileChange }) =
                     className='w-100 h-100'
                     style={{  objectFit: "cover", borderRadius: "50%" }}
                 />
-       
+            
             </div>
             <div className='d-flex'>
                 <input
@@ -61,11 +57,10 @@ const ProfilePicture: React.FC<ProfilePictureProps> = ({ file, onFileChange }) =
                 <label
                     htmlFor="profilePicture"
                     style={{ }}
-                    className="btn btn-primary col-6 form-control-sm mb-2"
+                    className="btn btn-primary col-12 form-control-sm mb-2"
                 >
-                   Foto
+                   Cargar Foto
                 </label>
-
             </div>
         </div>
     );
