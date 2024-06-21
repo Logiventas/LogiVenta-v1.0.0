@@ -1,54 +1,25 @@
-//src\renderer\src\server\api\router\routes_user_management.routes.ts
-import express, { Request, Response } from "express";
-import { initAdmin } from '../controllers/Admin/updatePassword.controller';
-import getUserDataController  from "../controllers/Users/userData.controller";
+///src\renderer\src\server\api\router\routes_user_management.routes.ts
+import express from "express";
 
+import getUserDataController from "../controllers/userManagmen/users/login/userDataContexts.controller";
+import { getAllUsersController } from '../controllers/userManagmen/users/allUseres.controlller'; // Importa el controlador correctamente
+import {getUserController} from '../controllers/userManagmen/users/getUser.controller'
+import { authorize } from "../middlewares/authorize";
+import {putUserController} from "../controllers/userManagmen/users/putUser.controller"
+import {postUserController} from "../controllers/userManagmen/users/postUser.controller"
 const router = express.Router();
 
-// Define la ruta GET para '/users'
-router.get('/allUsers', (_: Request, res: Response) => {
-    res.json([
-        {
-            idUser: 1,
-            identification: 12345678,
-            firstName: "Juan",
-            secondName: "Carlos",
-            surname: "Pérez",
-            secondSurname: "Gómez",
-            email: "juan.perez@example.com",
-            phone1: 5551234,
-            profile: "Perfil2",
-            job: "Administracion"
-        },
-        {
-            idUser: 2,
-            identification: 87654321,
-            firstName: "Ana",
-            secondName: "Luisa",
-            surname: "Martínez",
-            secondSurname: "Ramírez",
-            email: "ana.martinez@example.com",
-            phone1: 5552345,
-            profile: "Perfil1",
-            job: "Cajero"
-        },
-        // Agrega más usuarios si es necesario
-    ]);
-});
+// Define la ruta GET para '/allUsers'
+router.get('/allUsers',authorize,getAllUsersController); // Usa el controlador
+// Get all users
+router.get('/user', getUserController); //
+// Ruta POST editar usaurio
+router.put('/user', putUserController);
+// Ruta POST crear usaurio
+router.post('/user',postUserController);
 
-// Ruta POST para inicializar admin (o actualizar contraseña, según lo que hace `initAdmin`)
-router.post('/admin/init', async (req: Request, res: Response) => {
-    try {
-        await initAdmin(req, res);
-    } catch (error) {
-        console.error('Error durante initAdmin:', error);
-        res.status(500).send('Ocurrió un error interno del servidor');
-    }
-});
+router.get('/data', getUserDataController); // Ruta protegida para obtener datos del usuario
 
-
-// Ruta protegida para obtener datos del usuario
-router.get('/data', getUserDataController);
 
 
 export default router;

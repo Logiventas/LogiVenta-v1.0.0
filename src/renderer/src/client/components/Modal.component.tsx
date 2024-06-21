@@ -12,7 +12,7 @@ const Modal: React.FC<ModalProps> = ({ mensaje, titulo, onClose, isOpen, myOncli
   const modalClass = isOpen ? "modal fade show" : "modal fade";
 
   return (
-    <>
+ 
       <div className={modalClass} style={isOpen ? { display: "block" } : { display: "none" }} aria-labelledby="exampleModalLabel" aria-hidden={!isOpen}>
         <div style={{ translate: '0 20vh' }} className="modal-dialog">
           <div style={{
@@ -32,7 +32,7 @@ const Modal: React.FC<ModalProps> = ({ mensaje, titulo, onClose, isOpen, myOncli
           </div>
         </div>
       </div>
-    </>
+
   );
 };
 

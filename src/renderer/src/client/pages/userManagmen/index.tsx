@@ -1,23 +1,27 @@
 
+import { useContext } from "react";
+import SelecteUserContext from '@client/contexts/userContext';
 import { Outlet, useLocation } from 'react-router-dom';
-import Icono from "../../components/component_icono";
+import Icono from "../../components/Icon.component";
 import icon_user from '@renderer/assets/icon/userManagmen.png';
 import icon_profile from '@renderer/assets/icon/userProfile.png';
-import BarraUsuario from "@renderer/client/components/barraUsuario/component_barraUsuario";
+import icon_job from '@renderer/assets/icon/job.png'
+import BarraUsuario from "@renderer/client/components/userBar/index";
 
 const UserManagement = () => {
     const location = useLocation();
-
+    const { user} = useContext(SelecteUserContext);
     return (
         <>
  
             <BarraUsuario />
-            <div className="d-flex w-100 h-75 align-content-center mx-auto my-5 justify-content-center row">
+            <div style={{maxHeight:'100%',minHeight:'85vh'}} className="d-flex w-100 align-content-center mx-auto my-1 justify-content-center row">
                 {/* Renderizar iconos solo si la ruta actual es exactamente /userManagement */}
                 {location.pathname === '/userManagement' && (
                     <>
-                        <Icono enlace="/userManagement/users" modulo="Usuarios" urlImg={icon_user} />
-                        <Icono enlace="#" modulo="Perfiles de Usuario" urlImg={icon_profile} />
+                        {user.access["GU01-00"] && <Icono enlace="/userManagement/users" modulo="Usuarios" urlImg={icon_user} />}
+                        {user.access["GU02-00"] && <Icono enlace="/userManagement/profiles" modulo="Perfiles de Usuario" urlImg={icon_profile} />}
+                        {user.access["GU03-00"] && <Icono enlace="#" modulo="Gestión de Cargos" urlImg={icon_job} />}
                     </>
                 )}
                 <Outlet />

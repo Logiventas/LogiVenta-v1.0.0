@@ -8,15 +8,15 @@ import inventory from './routes_inventory_management.routes';
 import users from './routes_user_management.routes'; // Corrección del nombre
 import sales from './routes_sales_management.routes';
 import { authenticateJWT } from "../middlewares/autthenticateJWT";
-import csrfProtection from "../middlewares/csrfProtection";
+
 
 const router = express.Router();
 
 // Rutas para diferentes módulos de la aplicación
 router.use('/session', sesion);
-router.use('/cash', authenticateJWT, csrfProtection, cash);
-router.use('/inventory', authenticateJWT, csrfProtection, inventory);
-router.use('/users', authenticateJWT, csrfProtection, users);
-router.use('/sales', authenticateJWT, csrfProtection, sales);
+router.use('/cash', authenticateJWT, cash);
+router.use('/inventory', authenticateJWT, inventory);
+router.use('/users', authenticateJWT, users);
+router.use('/sales', authenticateJWT, sales);
 
 export default router;

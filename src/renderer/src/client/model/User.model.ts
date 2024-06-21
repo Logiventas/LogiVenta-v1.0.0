@@ -14,6 +14,8 @@ interface User {
     
       /** Segundo apellido del usuario (opcional) */
       secondSurname?: string | null;
+
+      sex?: string;
     }
     
     export default User;

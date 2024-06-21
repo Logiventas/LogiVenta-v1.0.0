@@ -1,7 +1,7 @@
 //src\renderer\src\server\api\router\routes_sessions.routes.ts
 import express, { Request, Response } from "express";
-import {loginController} from '../controllers/Session/login.controller';
-import { verifyTokenController } from '../controllers/Session/verifyToken.controller';
+import {loginController} from '../controllers/userManagmen/users/login/login.controller';
+import { verifyTokenController } from '../controllers/userManagmen/profiles/security/verifyToken.controller';
 import { authenticateJWT } from '../middlewares/autthenticateJWT';
 
 const router = express.Router();

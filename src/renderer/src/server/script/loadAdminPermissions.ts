@@ -1,27 +1,41 @@
-// src/scripts/loadAdminPermissions.ts
-import { UserPermission } from "../api/models/UserPermission.model";
+// src/renderer/src/server/script/loadAdminPermission.ts
+import sequelize from "../config/db.config";
+import ProfilePermission from "../models/ProfilePermission.model";
+import Permission from "../models/Permission.model";
 
-export async function loadAdminPermissions() {
-    try {
-        const existingPermissions = await UserPermission.findOne({ where: { userId: 1 } });
-        if (!existingPermissions) {
-            const adminPermissions = await UserPermission.create({
-                id: 1,
-                userId: 1,
-                gestionArchivo: true,
-                gestionSistema: true,
-                gestionCaja: true,
-                gestionUsuario: true,
-                gestionInventario: true,
-                gestionProveedores: true,
-                registroVentas: true,
-            });
-            console.log("Permisos de administrador creados con éxito:", adminPermissions);
-        } else {
-            console.log("Los permisos ya existen, no se crearon nuevos.");
-        }
-        
-    } catch (error) {
-        console.error("Error al crear los permisos de administrador:", error);
+const loadAdminPermission = async (): Promise<boolean> => {
+  try {
+    // Sincronizar modelos
+    await sequelize.sync();
+
+    // Obtener el perfil de administrador (suponiendo que tiene un ID conocido, ej: 1)
+    const adminProfileId = 1;
+
+    // Obtener todos los permisos
+    const permissions = await Permission.findAll();
+    const adminPermissions = await ProfilePermission.findAll({
+      where: { id: adminProfileId },
+    });
+
+    console.log("Permisos actuales ", adminPermissions);
+
+    if (adminPermissions.length === 0) {
+      permissions.forEach((permiso) => {
+        console.log(permiso.dataValues.id);
+        ProfilePermission.create({
+          profileId: adminProfileId,
+          permissionsId: permiso.dataValues.id,
+          state: true,
+        });
+      });
     }
-}
+
+    console.log("Permisos de administrador cargados exitosamente");
+    return true;
+  } catch (error) {
+    console.error("Error al cargar los permisos de administrador:", error);
+    return false;
+  }
+};
+
+export default loadAdminPermission;

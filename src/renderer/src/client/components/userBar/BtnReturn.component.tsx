@@ -1,5 +1,5 @@
 import { useNavigate, useLocation } from 'react-router-dom';
-import icon_atras from '/src/assets/icon/atras.png';
+import icon_atras from '@renderer/assets/icon/atras.png';
 
 const BtnReturn: React.FC = () => {
   const navigate = useNavigate();
@@ -13,11 +13,9 @@ const BtnReturn: React.FC = () => {
   const isHome = location.pathname === '/home';
 
   return (
-    <>
-      <button onClick={handleShowModal} className="btn" disabled={isHome}>
+    <button onClick={handleShowModal} className="btn" disabled={isHome}>
         <img style={{ width: "40px", height: "40px" }} src={icon_atras} alt="Salir" />
       </button>
-    </>
   );
 };
 
