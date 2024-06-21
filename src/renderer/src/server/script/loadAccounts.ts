@@ -1,17 +1,8 @@
 // src/renderer/src/server/script/loadAdminUser.ts
 import sequelize from "../config/db.config";
 import Account from "../models/Account.model";
-import crypto from "crypto";
+import {hashPassword} from "../utils/hashPassword";
 
-// deepcode ignore NoHardcodedPasswords: <please specify a reason of ignoring this>
-async function hashPassword(pass: string, salt: string): Promise<string> {
-  return new Promise((resolve, reject) => {
-    crypto.pbkdf2(pass, salt, 100000, 64, "sha512", (err, derivedKey) => {
-      if (err) reject(err);
-      resolve(salt + ":" + derivedKey.toString("hex"));
-    });
-  });
-}
 
 async function loadAdmin(): Promise<boolean> {
   try {
@@ -33,9 +24,9 @@ async function loadAdmin(): Promise<boolean> {
     }
 
     // Generar una sal y hashear la contraseña del administrador
-    const salt = crypto.randomBytes(16).toString("hex");
+
     // deepcode ignore HardcodedSecret: <please specify a reason of ignoring this>
-    const hashedPassword = await hashPassword("admin123", salt);
+    const hashedPassword = await hashPassword("admin123");
 
     // Crear un nuevo usuario administrador (Account)
     await Account.create({
@@ -43,7 +34,6 @@ async function loadAdmin(): Promise<boolean> {
       password: hashedPassword,
       name: "admin",
       state: true,
-      creationDate: new Date(),
       profileId: 1,
     });
 
