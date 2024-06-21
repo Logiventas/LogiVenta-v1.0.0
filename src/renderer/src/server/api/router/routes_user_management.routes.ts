@@ -7,6 +7,8 @@ import {getUserController} from '../controllers/userManagmen/users/getUser.contr
 import { authorize } from "../middlewares/authorize";
 import {putUserController} from "../controllers/userManagmen/users/putUser.controller"
 import {postUserController} from "../controllers/userManagmen/users/postUser.controller"
+import {getAllProfilesController} from "../controllers/userManagmen/profiles/getAllProfiles.controller"
+
 const router = express.Router();
 
 // Define la ruta GET para '/allUsers'
@@ -20,6 +22,8 @@ router.post('/user',postUserController);
 
 router.get('/data', getUserDataController); // Ruta protegida para obtener datos del usuario
 
+// Ruta GET para obtener todos los perfiles
+router.get('/profile/allProfiles', getAllProfilesController);
 
 
 export default router;
