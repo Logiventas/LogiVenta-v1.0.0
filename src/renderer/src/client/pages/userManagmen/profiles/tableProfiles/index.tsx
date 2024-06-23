@@ -4,13 +4,13 @@ import SelecteUserContext from '@client/contexts/userContext';
 import { TituloModulo } from "@renderer/client/components/TitleModule.component";
 import icon_profiles from '@renderer/assets/icon/userProfile.png';
 import { Link } from "react-router-dom";
-import TableUsers from "./components/TableProfile.component";
+import TableProfile from "./components/TableProfile.component";
 import TableFilter from "./components/TableProfileFilter.component";
 import { useProfileFilter } from './hooks/useProfileFilter.hooks';
 
 const Profiles = () => {
     const { user } = useContext(SelecteUserContext);
-    const { filteredUsers, handleFilterChange } = useProfileFilter();
+    const { filteredUsers, handleFilterChange, reloadProfiles } = useProfileFilter();
 
     return (
         <div style={{ width: '98%' }} className="m-auto">
@@ -22,12 +22,12 @@ const Profiles = () => {
                         <div className="d-flex gap-2 my-3">
                             <TableFilter onFilterChange={handleFilterChange} />
                             {user.access["GU01-01"] && (
-                                <Link to="/userManagement/newUser" className="btn btn-primary mb-1">Nuevo Perfil</Link>
+                                <Link to="/userManagement/newPrfile" className="btn btn-primary mb-1">Nuevo Perfil</Link>
                             )}
                         </div>
                     </div>
                     <div>
-                        <TableUsers data={filteredUsers} />
+                        <TableProfile data={filteredUsers} reloadProfiles={reloadProfiles} />
                     </div>
                 </div>
             </div>

@@ -15,7 +15,7 @@ const UserManagement = () => {
         <>
  
             <BarraUsuario />
-            <div style={{maxHeight:'100%',minHeight:'85vh'}} className="d-flex w-100 align-content-center mx-auto my-1 justify-content-center row">
+            <div style={{maxHeight:'100%',minHeight:'85vh'}} className="d-flex w-100 align-between mx-auto  justify-content-center row">
                 {/* Renderizar iconos solo si la ruta actual es exactamente /userManagement */}
                 {location.pathname === '/userManagement' && (
                     <>
@@ -30,4 +30,4 @@ const UserManagement = () => {
     );
 };
 
-export default UserManagement
+export default UserManagement 

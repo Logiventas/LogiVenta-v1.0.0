@@ -12098,4 +12098,12 @@ label {
   height: 100%;
 }
 
+.highlight-row {
+  background-color: var(--color-accent) !important;
+}
+
+.highlight-row2 {
+  background-color: var(--color-primary-red) !important;
+}
+
 /*# sourceMappingURL=main.css.map */

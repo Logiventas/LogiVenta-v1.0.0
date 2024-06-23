@@ -4,6 +4,9 @@ import TableUsers from '@renderer/client/pages/userManagmen/users/tableUsers';
 import NewUser from '@renderer/client/pages/userManagmen/users/newUser';
 import EditUser from '@renderer/client/pages/userManagmen/users/editUser';
 import Profiles from '@renderer/client/pages/userManagmen/profiles/tableProfiles';
+import {EditProfile} from '@renderer/client/pages/userManagmen/profiles/editProfile';
+import {NewProfile} from '@renderer/client/pages/userManagmen/profiles/newProfile';
+
 const UserManagementSwitch = () => {
     return (
         <Routes>
@@ -16,7 +19,8 @@ const UserManagementSwitch = () => {
                 <Route path="Profiles/*" element={<Profiles />}>
         
                 </Route>
-                <Route path="editProfile" element={<h1>Nuevo Perfil</h1>} />
+                <Route path="editProfile/:idProfile" element={<EditProfile/>} />
+                <Route path="newPrfile/" element={<NewProfile/>} />
             </Route>
 
         </Routes>
