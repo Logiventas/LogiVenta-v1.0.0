@@ -4,13 +4,13 @@ import SelecteUserContext from '@client/contexts/userContext';
 import { TituloModulo } from "@renderer/client/components/TitleModule.component";
 import icon_profiles from '@renderer/assets/icon/userProfile.png';
 import { Link } from "react-router-dom";
-import TableUsers from "./components/TableProfile.component";
+import TableProfile from "./components/TableProfile.component";
 import TableFilter from "./components/TableProfileFilter.component";
 import { useProfileFilter } from './hooks/useProfileFilter.hooks';
 
 const Profiles = () => {
     const { user } = useContext(SelecteUserContext);
-    const { filteredUsers, handleFilterChange } = useProfileFilter();
+    const { filteredUsers, handleFilterChange, reloadProfiles } = useProfileFilter();
 
     return (
         <div style={{ width: '98%' }} className="m-auto">
@@ -27,7 +27,7 @@ const Profiles = () => {
                         </div>
                     </div>
                     <div>
-                        <TableUsers data={filteredUsers} />
+                        <TableProfile data={filteredUsers} reloadProfiles={reloadProfiles} />
                     </div>
                 </div>
             </div>

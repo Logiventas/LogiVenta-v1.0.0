@@ -6,7 +6,7 @@ import EditUser from '@renderer/client/pages/userManagmen/users/editUser';
 import Profiles from '@renderer/client/pages/userManagmen/profiles/tableProfiles';
 import {EditProfile} from '@renderer/client/pages/userManagmen/profiles/editProfile';
 import {NewProfile} from '@renderer/client/pages/userManagmen/profiles/newProfile';
-import {DeleteProfile} from '@renderer/client/pages/userManagmen/profiles/deleteProfile';
+
 const UserManagementSwitch = () => {
     return (
         <Routes>
@@ -21,7 +21,6 @@ const UserManagementSwitch = () => {
                 </Route>
                 <Route path="editProfile/:idProfile" element={<EditProfile/>} />
                 <Route path="newPrfile/" element={<NewProfile/>} />
-                <Route path="deleteProfile/:idProfile/:profile" element={<DeleteProfile/>} />
             </Route>
 
         </Routes>
