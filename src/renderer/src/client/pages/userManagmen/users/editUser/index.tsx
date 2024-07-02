@@ -91,7 +91,7 @@ const EditUser: React.FC = () => {
                 <div className="d-flex">
                     <div className="col-lg-2 d-flex mx-2 flex-column">
                         <h4 className="">Perfil</h4>
-                        <ProfilePicture file={profilePicture} onFileChange={handleFileChange} />
+                      { /* <ProfilePicture file={profilePicture} onFileChange={handleFileChange} />*/}
                         <div className="my-1">
                             <label className="form-label">Perfil de Usuario</label>
                             <SelectProfile user={userData} handleChange={handleChange} />
@@ -150,7 +150,7 @@ const EditUser: React.FC = () => {
                             </div>
                         </div>
                         <div className="h-25 d-flex justify-content-end align-items-end">
-                           {user.access['GU01-03']&&<button style={{ height: '40px' }} type="button" onClick={handleDelete} className="btn btn-secondary mt-2 ms-2">Eliminar usuario</button>} 
+                           {/*user.access['GU01-03']&&<button style={{ height: '40px' }} type="button" onClick={handleDelete} className="btn btn-secondary mt-2 ms-2">Eliminar usuario</button>*/} 
                            {user.access['GU01-02']&& <button style={{ height: '40px' }} type="submit" className="btn btn-primary mt-2 ms-2">Guardar</button>}
                         </div>
                     </div>

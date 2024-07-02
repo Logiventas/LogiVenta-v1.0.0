@@ -30,7 +30,7 @@ const Users = () => {
                 </div>
                 <div className="d-flex mx-4 my-auto align-content-center justify-content-end">
                     {user.access["GU01-01"] && <Link to="/userManagement/newUser" className="btn btn-primary mx-3">Nuevo Usuario</Link>}
-                    {user.access["GU01-04"] && <Link to="/userManagement/retiredUsers" className="btn btn-primary">Usuarios Retirados</Link>}
+                    {/*user.access["GU01-04"] && <Link to="/userManagement/retiredUsers" className="btn btn-primary">Usuarios Retirados</Link>*/}
                 </div>
             </div>
         </div>

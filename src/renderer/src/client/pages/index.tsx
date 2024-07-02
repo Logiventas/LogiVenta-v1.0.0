@@ -5,13 +5,8 @@ import SelecteUserContext from '@client/contexts/userContext';
 import BarraUsuario from '@client/components/userBar/index';
 import userContextController from '@renderer/client/adapters/userConext.adapters';
 
-import img_gestionArchivo from '/assets/icon/gestionDeArchivo.png';
-import img_gestionSistema from '/assets/icon/configuracionSistema.png';
-import img_gestionCaja from '/assets/icon/gestionDeCaja.png';
 import img_gestionUsuairo from '/assets/icon/gestionDeUsuario.png';
-import img_gestionIventario from '/assets/icon/gestionInventario.png';
-import img_registroVentas from '/assets/icon/resgistroDeVentas.png';
-import img_gestionProveedores from '/assets/icon/gestionDeProveedores.png';
+
 
 const Home: React.FC = () => {
   const { user, setUser } = useContext(SelecteUserContext);

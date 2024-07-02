@@ -58,11 +58,11 @@ const EditUser: React.FC = () => {
 
     return (
         <div style={{ width: '97%' }} className="row d-flex justify-content-center">
-            <form style={{ height: '80%' }} className="row" onSubmit={handleSubmit}>
+            <form style={{ height: '80%' }} className="row mt-5" onSubmit={handleSubmit}>
                 <div className="d-flex">
                     <div className="col-lg-2 d-flex mx-2 flex-column">
                         <h4 className="">Perfil</h4>
-                        <ProfilePicture file={profilePicture} onFileChange={handleFileChange} />
+                        {/*<ProfilePicture file={profilePicture} onFileChange={handleFileChange} />*/}
                         <div className="my-1">
                             <label htmlFor='profile' className="form-label">Perfil de Usuario</label>
                             <SelectProfile  handleChange={handleChange} />
