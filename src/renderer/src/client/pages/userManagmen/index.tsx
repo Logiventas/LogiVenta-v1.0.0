@@ -18,11 +18,11 @@ const UserManagement = () => {
             <div style={{maxHeight:'100%',minHeight:'85vh'}} className="d-flex w-100 align-between mx-auto  justify-content-center row">
                 {/* Renderizar iconos solo si la ruta actual es exactamente /userManagement */}
                 {location.pathname === '/userManagement' && (
-                    <>
+                    <div className="d-flex justify-content-center ">
                         {user.access["GU01-00"] && <Icono enlace="/userManagement/users" modulo="Usuarios" urlImg={icon_user} />}
                         {user.access["GU02-00"] && <Icono enlace="/userManagement/profiles" modulo="Perfiles de Usuario" urlImg={icon_profile} />}
                         {user.access["GU03-00"] && <Icono enlace="#" modulo="Gestión de Cargos" urlImg={icon_job} />}
-                    </>
+                    </div>
                 )}
                 <Outlet />
             </div>

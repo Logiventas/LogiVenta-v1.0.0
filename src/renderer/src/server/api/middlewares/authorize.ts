@@ -5,22 +5,22 @@ export const authorize = async (req: Request, res: Response, next: NextFunction)
   const permissionCode = req.headers['x-permission-code'] as string;
 
   if (!permissionCode) {
-    return res.status(400).json({ message: "Permission code is missing" });
+    return res.status(401).json({ message: "Falta el código de permiso" });
   }
 
   const { idProfile } = req.user.data;
 
   try {
-    console.log(permissionCode)
+
     const isAuthorized = await authorization(idProfile, permissionCode);
-    console.log(isAuthorized)
+    
     if (isAuthorized===true) {
       next();
-      console.log('Usuario autorizado')
     } else {
-      return res.status(401).json({ message: "You don't have permission" });
+      return res.status(403).json({ message: "no tienes permiso" });
     }
   } catch (error) {
-    return res.status(500).json({ message: "Internal server error" });
+    return res.status(500).json({ message: "Error Interno del Servidor" });
+
   }
 };

@@ -87,9 +87,6 @@ export const DeleteProfile: React.FC<DeleteProfileProps> = ({ show, handleClose,
             <form onSubmit={handleDelete} noValidate className={validated ? 'was-validated' : ''}>
               <div className="modal-header">
                 <h5 className="modal-title">Eliminar Perfil</h5>
-                <button type="button" className="close" aria-label="Close" onClick={handleClose}>
-                  <span aria-hidden="true">&times;</span>
-                </button>
               </div>
               <div className="modal-body">
                 <p><strong>ID del Perfil:</strong> {idProfile}</p>
@@ -126,7 +123,7 @@ export const DeleteProfile: React.FC<DeleteProfileProps> = ({ show, handleClose,
                 ) : (
                   <>
                     <button type="button" className="btn btn-secondary" onClick={() => setIsFirstConfirmation(false)}>Regresar</button>
-                    <button type="submit" className="btn btn-danger">Eliminar definitivamente</button>
+                    <button type="submit" className="btn btn-primary">Eliminar definitivamente</button>
                   </>
                 )}
               </div>
